@@ -69,7 +69,16 @@ API
 
 ### VObject.attendee
 
-
+#### setCUType
+#### getCUType
+#### setRole
+#### getRole
+#### setPartStat
+#### getPartStat
+#### setRSVP
+#### getRSVP
+#### setCN
+#### getCN
 
 ### VObject.component
 #### addProperty
