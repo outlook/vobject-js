@@ -1,0 +1,12 @@
+{
+  "name": "vobject",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "latest"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha test/* --check-leaks"
+  }
+}
