@@ -1,7 +1,7 @@
 VObject
 =====
 
-VObject allows you to easily manipulate iCalendar objects using JavaScript. Implements [rfc5545](http://tools.ietf.org/html/rfc5545).
+VObject allows you to easily manipulate iCalendar objects using JavaScript. Implements [rfc5545](http://tools.ietf.org/html/rfc5545). Inspired by [node-icalendar](https://github.com/tritech/node-icalendar) and [ical.js](https://github.com/mozilla-comm/ical.js/).
 
 Installation
 ---
