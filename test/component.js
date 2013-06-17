@@ -22,7 +22,14 @@ describe('addProperty', function() {
   it('should add properties with name and value', function() {
     var component = VObject.component();
     component.addProperty('name', 'value');
-    assert.equal(component.properties['name'][0].value, 'value');
+    assert.equal(component.properties['NAME'][0].value, 'value');
+  });
+
+  it('should handle Property as value', function() {
+    var component = VObject.component();
+    var property = VObject.property('NAME', 'value');
+    component.addProperty(property);
+    assert.equal(component.properties['NAME'][0].value, 'value');
   });
 });
 
@@ -31,7 +38,28 @@ describe('setProperty', function() {
     var component = VObject.component();
     component.setProperty('name', 'initialValue');
     component.setProperty('name', 'updatedValue');
-    assert.deepEqual(component.properties['name'][0].value, 'updatedValue');
+    assert.deepEqual(component.properties['NAME'][0].value, 'updatedValue');
+  });
+
+  it('should handle Property as value', function() {
+    var component = VObject.component();
+    var property = VObject.property('NAME', 'value');
+    component.setProperty(property);
+    assert.equal(component.properties['NAME'][0].value, 'value');
+  });
+});
+
+describe('getProperties', function() {
+  it('should get all properties with name', function() {
+    var component = VObject.component();
+    component.addProperty('ATTENDEE', ['A']);
+    component.addProperty('ATTENDEE', ['B']);
+    assert.deepEqual(component.getProperties('ATTENDEE').length, 2);
+  });
+
+  it('should return [] if property is undefined', function() {
+    var component = VObject.component();
+    assert.deepEqual(component.getProperties('NAME'), []);
   });
 });
 

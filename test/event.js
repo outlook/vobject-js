@@ -113,6 +113,64 @@ describe('getStatus', function() {
   });
 });
 
+describe('setDTStart', function() {
+  it('should handle DateTime', function() {
+    var event = VObject.event();
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+    event.setDTStart(dateTime);
+    assert.equal(event.getDTStart(), '19861018T110000Z');
+  });
+
+  it('should handle Date', function() {
+    var event = VObject.event();
+    var dateTime = VObject.date();
+    dateTime.parse('1986-10-18');
+    event.setDTStart(dateTime);
+    assert.equal(event.getDTStart(), 'VALUE=DATE:19861018');
+  });
+});
+
+describe('getDTStart', function() {
+  it('should get DTEND', function(done) {
+    var event = VObject.event();
+    event.getPropertyValue = function(name) {
+      assert.equal(name, 'DTSTART');
+      done();
+    };
+    event.getDTStart();
+  });
+});
+
+describe('setDTEnd', function() {
+  it('should handle DateTime', function() {
+    var event = VObject.event();
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+    event.setDTEnd(dateTime);
+    assert.equal(event.getDTEnd(), '19861018T110000Z');
+  });
+
+  it('should handle Date', function() {
+    var event = VObject.event();
+    var dateTime = VObject.date();
+    dateTime.parse('1986-10-18');
+    event.setDTEnd(dateTime);
+    assert.equal(event.getDTEnd(), 'VALUE=DATE:19861018');
+  });
+});
+
+describe('getDTEnd', function() {
+  it('should get DTEND', function(done) {
+    var event = VObject.event();
+    event.getPropertyValue = function(name) {
+      assert.equal(name, 'DTEND');
+      done();
+    };
+    event.getDTEnd();
+  });
+});
+
 describe('setDTStamp', function() {
   it('should set DTSTAMP', function(done) {
     var event = VObject.event();
@@ -170,5 +228,47 @@ describe('getCreated', function() {
     var event = VObject.event();
     event.setCreated('value');
     assert.equal(event.getCreated(), 'value');
+  });
+});
+
+describe('setOrganizer', function() {
+  it('should set ORGANIZER', function(done) {
+    var event = VObject.event();
+    event.setProperty = function(name, value) {
+      assert.equal(name, 'ORGANIZER');
+      assert.equal(value, 'value');
+      done();
+    };
+    event.setOrganizer('value');
+  });
+});
+
+describe('getOrganizer', function() {
+  it('should get ORGANIZER', function() {
+    var event = VObject.event();
+    event.setOrganizer('value');
+    assert.equal(event.getOrganizer(), 'value');
+  });
+});
+
+describe('addAttendee', function() {
+  it('should add ATTENDEE', function(done) {
+    var event = VObject.event();
+    event.addProperty = function(name, value) {
+      assert.equal(name, 'ATTENDEE');
+      assert.equal(value, 'value');
+      done();
+    };
+    event.addAttendee('value');
+  });
+});
+
+describe('getAttendees', function() {
+  it('should get all ATTENDEE', function() {
+    var event = VObject.event();
+    event.addAttendee('attendeeA');
+    event.addAttendee('attendeeB');
+    assert.deepEqual(event.getAttendees()[0].value, 'attendeeA');
+    assert.deepEqual(event.getAttendees()[1].value, 'attendeeB');
   });
 });

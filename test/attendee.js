@@ -107,3 +107,19 @@ describe('getCN', function() {
     assert.equal(attendee.getCN(), 'value');
   });
 });
+
+describe('setMail', function() {
+  it('should set VALUE to mailto:MAIL', function() {
+    var attendee = VObject.attendee();
+    attendee.setMail('user@domain.com');
+    assert.equal(attendee.getValue(), 'mailto:user@domain.com');
+  });
+});
+
+describe('getMail', function() {
+  it('should parse VALUE', function() {
+    var attendee = VObject.attendee();
+    attendee.setValue('mailto:user@domain.com');
+    assert.equal(attendee.getMail(), 'user@domain.com');
+  });
+});

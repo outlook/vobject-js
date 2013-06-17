@@ -47,7 +47,8 @@ describe('setValue', function() {
 
 describe('getValue', function() {
   it('should get .value', function() {
-    var property = VObject.property('name', 'value');
+    var property = VObject.property();
+    property.value = 'value';
     assert.equal(property.getValue(), 'value');
   });
 });
