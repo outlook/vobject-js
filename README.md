@@ -64,7 +64,7 @@ DateTime:
 var dateTime = VObject.dateTime();
 dateTime.set(1986, 10, 18, 13, 05, 00, 120); // last parameter is offset in minutes
 // or
-dateTime.parseISO8601('1986-10-18T13:00:00+02:00') // ISO 8601 (with TimeZone support)
+dateTime.parseISO8601('1986-10-18T13:00:00+02:00'); // ISO 8601 (with TimeZone support)
 ```
 
 Then attach `date` or `dateTime` to an event:
@@ -79,7 +79,7 @@ event.setDTStart(dateTime)
 VObject includes a convenient way to handle people.
 
 ```js
-var attendee = VObjet.attendee();
+var attendee = VObject.attendee();
 attendee.setCN('Pierre Valade');
 attendee.setMail('user@domain.com');
 attendee.setPartStat('ACCEPTED');
@@ -137,7 +137,9 @@ API
 
 ### VObject.component
 #### addProperty
+#### addPropertyWithNameAndValue
 #### setProperty
+#### setPropertyWithNameAndValue
 #### getProperty
 #### getPropertyValue
 

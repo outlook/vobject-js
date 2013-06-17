@@ -8,16 +8,23 @@ describe('initialize', function() {
   });
 });
 
-describe('stringify', function() {
+describe('toICS', function() {
   it('should format w/o parameters', function() {
     var property = VObject.property('calscale', 'GREGORIAN');
-    assert.equal(property.stringify(), 'CALSCALE:GREGORIAN');
+    assert.equal(property.toICS(), 'CALSCALE:GREGORIAN');
   });
 
   it('should format w/ parameters', function() {
     var property = VObject.property('ATTENDEE', 'mailto:pierre@valade.info');
     property.setParameter('PARTSTAT', 'NEEDS-ACTION');
-    assert.equal(property.stringify(), 'ATTENDEE;PARTSTAT=NEEDS-ACTION:mailto:pierre@valade.info');
+    assert.equal(property.toICS(), 'ATTENDEE;PARTSTAT=NEEDS-ACTION:mailto:pierre@valade.info');
+  });
+
+  it('should format w/ multiple parameters', function() {
+    var property = VObject.property('ATTENDEE', 'mailto:pierre@valade.info');
+    property.setParameter('PARTSTAT', 'NEEDS-ACTION');
+    property.setParameter('CN', 'Pierre Valade');
+    assert.equal(property.toICS(), 'ATTENDEE;PARTSTAT=NEEDS-ACTION;CN=Pierre Valade:mailto:pierre@valade.info');
   });
 });
 

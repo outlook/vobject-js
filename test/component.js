@@ -18,14 +18,16 @@ describe('initialize', function() {
   });
 });
 
-describe('addProperty', function() {
+describe('addPropertyWithNameAndValue', function() {
   it('should add properties with name and value', function() {
     var component = VObject.component();
-    component.addProperty('name', 'value');
+    component.addPropertyWithNameAndValue('name', 'value');
     assert.equal(component.properties['NAME'][0].value, 'value');
   });
+});
 
-  it('should handle Property as value', function() {
+describe('addProperty', function() {
+  it('should add property to HASH', function() {
     var component = VObject.component();
     var property = VObject.property('NAME', 'value');
     component.addProperty(property);
@@ -34,13 +36,6 @@ describe('addProperty', function() {
 });
 
 describe('setProperty', function() {
-  it('should set UNIQUE properties[name]', function() {
-    var component = VObject.component();
-    component.setProperty('name', 'initialValue');
-    component.setProperty('name', 'updatedValue');
-    assert.deepEqual(component.properties['NAME'][0].value, 'updatedValue');
-  });
-
   it('should handle Property as value', function() {
     var component = VObject.component();
     var property = VObject.property('NAME', 'value');
@@ -49,11 +44,20 @@ describe('setProperty', function() {
   });
 });
 
+describe('setPropertyWithNameAndValue', function() {
+  it('should set UNIQUE properties[name]', function() {
+    var component = VObject.component();
+    component.setPropertyWithNameAndValue('name', 'initialValue');
+    component.setPropertyWithNameAndValue('name', 'updatedValue');
+    assert.deepEqual(component.properties['NAME'][0].value, 'updatedValue');
+  });
+});
+
 describe('getProperties', function() {
   it('should get all properties with name', function() {
     var component = VObject.component();
-    component.addProperty('ATTENDEE', ['A']);
-    component.addProperty('ATTENDEE', ['B']);
+    component.addPropertyWithNameAndValue('ATTENDEE', ['A']);
+    component.addPropertyWithNameAndValue('ATTENDEE', ['B']);
     assert.deepEqual(component.getProperties('ATTENDEE').length, 2);
   });
 
@@ -66,7 +70,7 @@ describe('getProperties', function() {
 describe('getPropertyValue', function() {
   it('should get property value', function() {
     var component = VObject.component();
-    component.addProperty('name', 'value');
+    component.addPropertyWithNameAndValue('name', 'value');
     assert.equal(component.getPropertyValue('name'), 'value');
   });
 
@@ -76,14 +80,14 @@ describe('getPropertyValue', function() {
   });
 });
 
-describe('stringifyToArray', function() {
+describe('toICSArray', function() {
   it('should transform into ICS', function() {
     var calendar = VObject.calendar('');
     var event = VObject.event();
     event.setSummary('Hello World!');
     calendar.addComponent(event);
 
-    assert.deepEqual(calendar.stringifyToArray(),
+    assert.deepEqual(calendar.toICSArray(),
       [
         'BEGIN:VCALENDAR',
         'VERSION:2',

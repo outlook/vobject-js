@@ -16,7 +16,7 @@ describe('initialize', function() {
 describe('setUID', function() {
   it('should set SUMMARY', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'UID');
       assert.equal(value, 'value');
       done();
@@ -36,7 +36,7 @@ describe('getUID', function() {
 describe('setSummary', function() {
   it('should set SUMMARY', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'SUMMARY');
       assert.equal(value, 'value');
       done();
@@ -56,7 +56,7 @@ describe('getSummary', function() {
 describe('setDescription', function() {
   it('should set DESCRIPTION', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'DESCRIPTION');
       assert.equal(value, 'value');
       done();
@@ -76,7 +76,7 @@ describe('getDescription', function() {
 describe('setLocation', function() {
   it('should set LOCATION', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'LOCATION');
       assert.equal(value, 'value');
       done();
@@ -96,7 +96,7 @@ describe('getLocation', function() {
 describe('setStatus', function() {
   it('should set STATUS', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'STATUS');
       assert.equal(value, 'value');
       done();
@@ -174,7 +174,7 @@ describe('getDTEnd', function() {
 describe('setDTStamp', function() {
   it('should set DTSTAMP', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'DTSTAMP');
       assert.equal(value, 'value');
       done();
@@ -194,7 +194,7 @@ describe('getDTStamp', function() {
 describe('setSequence', function() {
   it('should set SEQUENCE', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'SEQUENCE');
       assert.equal(value, 'value');
       done();
@@ -214,7 +214,7 @@ describe('getSequence', function() {
 describe('setCreated', function() {
   it('should set CREATED', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'CREATED');
       assert.equal(value, 'value');
       done();
@@ -234,7 +234,7 @@ describe('getCreated', function() {
 describe('setOrganizer', function() {
   it('should set ORGANIZER', function(done) {
     var event = VObject.event();
-    event.setProperty = function(name, value) {
+    event.setPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'ORGANIZER');
       assert.equal(value, 'value');
       done();
@@ -254,8 +254,7 @@ describe('getOrganizer', function() {
 describe('addAttendee', function() {
   it('should add ATTENDEE', function(done) {
     var event = VObject.event();
-    event.addProperty = function(name, value) {
-      assert.equal(name, 'ATTENDEE');
+    event.addProperty = function(value) {
       assert.equal(value, 'value');
       done();
     };
@@ -266,9 +265,10 @@ describe('addAttendee', function() {
 describe('getAttendees', function() {
   it('should get all ATTENDEE', function() {
     var event = VObject.event();
-    event.addAttendee('attendeeA');
-    event.addAttendee('attendeeB');
-    assert.deepEqual(event.getAttendees()[0].value, 'attendeeA');
-    assert.deepEqual(event.getAttendees()[1].value, 'attendeeB');
+    event.getProperties = function(name) {
+      assert.equal(name, 'ATTENDEE');
+      return 'value';
+    };
+    assert.equal(event.getAttendees(), 'value');
   });
 });
