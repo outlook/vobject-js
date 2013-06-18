@@ -86,7 +86,9 @@ describe('toICSArray', function() {
     var event = VObject.event();
     event.setSummary('Hello World!');
     calendar.addComponent(event);
-
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+    event.setDTStart(dateTime);
     assert.deepEqual(calendar.toICSArray(),
       [
         'BEGIN:VCALENDAR',
@@ -96,6 +98,7 @@ describe('toICSArray', function() {
         'BEGIN:VEVENT',
         'SEQUENCE:0',
         'SUMMARY:Hello World!',
+        'DTSTART;VALUE=DATE-TIME:19861018T110000Z',
         'END:VEVENT',
         'END:VCALENDAR'
       ]);

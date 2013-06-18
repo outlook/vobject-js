@@ -114,25 +114,37 @@ describe('getStatus', function() {
 });
 
 describe('setDTStart', function() {
-  it('should handle DateTime', function() {
+  it('should handle DateTime', function(done) {
     var event = VObject.event();
     var dateTime = VObject.dateTime();
     dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+
+    event.addProperty = function(property) {
+      assert.equal(property.name, 'DTSTART');
+      assert.equal(property.getParameter('VALUE'), 'DATE-TIME');
+      assert.equal(property.value, '19861018T110000Z');
+      done();
+    };
     event.setDTStart(dateTime);
-    assert.equal(event.getDTStart(), '19861018T110000Z');
   });
 
-  it('should handle Date', function() {
+  it('should handle Date', function(done) {
     var event = VObject.event();
-    var dateTime = VObject.date();
-    dateTime.parse('1986-10-18');
-    event.setDTStart(dateTime);
-    assert.equal(event.getDTStart(), 'VALUE=DATE:19861018');
+    var date = VObject.date();
+    date.parse('1986-10-18');
+
+    event.addProperty = function(property) {
+      assert.equal(property.name, 'DTSTART');
+      assert.equal(property.getParameter('VALUE'), 'DATE');
+      assert.equal(property.value, '19861018');
+      done();
+    };
+    event.setDTStart(date);
   });
 });
 
 describe('getDTStart', function() {
-  it('should get DTEND', function(done) {
+  it('should get DTSTART', function(done) {
     var event = VObject.event();
     event.getPropertyValue = function(name) {
       assert.equal(name, 'DTSTART');
@@ -143,20 +155,32 @@ describe('getDTStart', function() {
 });
 
 describe('setDTEnd', function() {
-  it('should handle DateTime', function() {
+  it('should handle DateTime', function(done) {
     var event = VObject.event();
     var dateTime = VObject.dateTime();
     dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+
+    event.addProperty = function(property) {
+      assert.equal(property.name, 'DTEND');
+      assert.equal(property.getParameter('VALUE'), 'DATE-TIME');
+      assert.equal(property.value, '19861018T110000Z');
+      done();
+    };
     event.setDTEnd(dateTime);
-    assert.equal(event.getDTEnd(), '19861018T110000Z');
   });
 
-  it('should handle Date', function() {
+  it('should handle Date', function(done) {
     var event = VObject.event();
-    var dateTime = VObject.date();
-    dateTime.parse('1986-10-18');
-    event.setDTEnd(dateTime);
-    assert.equal(event.getDTEnd(), 'VALUE=DATE:19861018');
+    var date = VObject.date();
+    date.parse('1986-10-18');
+
+    event.addProperty = function(property) {
+      assert.equal(property.name, 'DTEND');
+      assert.equal(property.getParameter('VALUE'), 'DATE');
+      assert.equal(property.value, '19861018');
+      done();
+    };
+    event.setDTEnd(date);
   });
 });
 
@@ -172,30 +196,22 @@ describe('getDTEnd', function() {
 });
 
 describe('setDTStamp', function() {
-  it('should handle DateTime', function() {
+  it('should (ONLY) handle DateTime', function() {
     var event = VObject.event();
     var dateTime = VObject.dateTime();
     dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
     event.setDTStamp(dateTime);
     assert.equal(event.getDTStamp(), '19861018T110000Z');
   });
-
-  it('should handle Date', function() {
-    var event = VObject.event();
-    var date = VObject.date();
-    date.parse('1986-10-18');
-    event.setDTStamp(date);
-    assert.equal(event.getDTStamp(), 'VALUE=DATE:19861018');
-  });
 });
 
 describe('getDTStamp', function() {
   it('should get DTSTAMP', function() {
     var event = VObject.event();
-    var date = VObject.date();
-    date.parse('1986-10-18');
-    event.setDTStamp(date);
-    assert.equal(event.getDTStamp(), 'VALUE=DATE:19861018');
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+    event.setDTStamp(dateTime);
+    assert.equal(event.getDTStamp(), '19861018T110000Z');
   });
 });
 
