@@ -253,7 +253,7 @@ describe('setOrganizer', function() {
 describe('getOrganizer', function() {
   it('should get ORGANIZER', function() {
     var event = VObject.event();
-    event.getPropertyValue = function(name) {
+    event.getProperty = function(name) {
       assert.equal(name, 'ORGANIZER');
       return 'value';
     };
