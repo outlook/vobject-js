@@ -130,6 +130,7 @@ API
 #### addAttendee
 #### getAttendees
 #### addRRule
+#### getRRules
 
 ### VObject.attendee
 

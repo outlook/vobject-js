@@ -294,3 +294,14 @@ describe('addRRule', function() {
     event.addRRule('value');
   });
 });
+
+describe('getRRules', function() {
+  it('should get all RRULE', function() {
+    var event = VObject.event();
+    event.getProperties = function(name) {
+      assert.equal(name, 'RRULE');
+      return 'value';
+    };
+    assert.equal(event.getRRules(), 'value');
+  });
+});
