@@ -86,6 +86,14 @@ attendee.setPartStat('ACCEPTED');
 event.addAttendee(attendee);
 ```
 
+Organizer:
+```js
+var organizer = VObject.organizer();
+organizer.setCN('Jeremy Le Van');
+organizer.setMail('user@domain.com');
+event.setOrganizer(organizer);
+```
+
 API
 ---
 
@@ -134,6 +142,18 @@ API
 #### getRSVP
 #### setCN
 #### getCN
+#### setMail
+#### getMail
+#### setCUType
+#### getCUType
+
+### VObjet.organizer
+#### setCN
+#### getCN
+#### setMail
+#### getMail
+#### setCUType
+#### getCUType
 
 ### VObject.component
 #### addProperty
