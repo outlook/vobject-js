@@ -1,6 +1,8 @@
 var VObject = require('./index');
 
 var calendar = VObject.calendar();
+calendar.setMethod('REQUEST');
+
 var event = VObject.event();
 event.setSummary('Hello World!');
 event.setDescription('(made with Sunrise)');
