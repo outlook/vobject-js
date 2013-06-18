@@ -12,13 +12,25 @@ describe('parseISO8601', function() {
   it('should parse 1986-10-18T13:10:05+02:00', function() {
     var dateTime = VObject.dateTime();
     dateTime.parseISO8601('1986-10-18T13:10:05+02:00');
-    assert.equal(dateTime.year, 1986);
-    assert.equal(dateTime.month, 10);
-    assert.equal(dateTime.day, 18);
-    assert.equal(dateTime.hours, 13);
-    assert.equal(dateTime.minutes, 10);
-    assert.equal(dateTime.seconds, 05);
-    assert.equal(dateTime.offset, 2 * 60);
+    assert.strictEqual(dateTime.year, 1986);
+    assert.strictEqual(dateTime.month, 10);
+    assert.strictEqual(dateTime.day, 18);
+    assert.strictEqual(dateTime.hours, 13);
+    assert.strictEqual(dateTime.minutes, 10);
+    assert.strictEqual(dateTime.seconds, 05);
+    assert.strictEqual(dateTime.offset, 2 * 60);
+  });
+
+  it('should parse as integer (and without zeros) month, day, hours, minutes, seconds', function() {
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('2013-06-04T03:02:01+00:00');
+    assert.strictEqual(dateTime.year, 2013);
+    assert.strictEqual(dateTime.month, 6);
+    assert.strictEqual(dateTime.day, 4);
+    assert.strictEqual(dateTime.hours, 03);
+    assert.strictEqual(dateTime.minutes, 02);
+    assert.strictEqual(dateTime.seconds, 01);
+    assert.strictEqual(dateTime.offset, 0);
   });
 });
 
