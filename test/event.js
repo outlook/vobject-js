@@ -172,22 +172,30 @@ describe('getDTEnd', function() {
 });
 
 describe('setDTStamp', function() {
-  it('should set DTSTAMP', function(done) {
+  it('should handle DateTime', function() {
     var event = VObject.event();
-    event.setPropertyWithNameAndValue = function(name, value) {
-      assert.equal(name, 'DTSTAMP');
-      assert.equal(value, 'value');
-      done();
-    };
-    event.setDTStamp('value');
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+    event.setDTStamp(dateTime);
+    assert.equal(event.getDTStamp(), '19861018T110000Z');
+  });
+
+  it('should handle Date', function() {
+    var event = VObject.event();
+    var date = VObject.date();
+    date.parse('1986-10-18');
+    event.setDTStamp(date);
+    assert.equal(event.getDTStamp(), 'VALUE=DATE:19861018');
   });
 });
 
 describe('getDTStamp', function() {
   it('should get DTSTAMP', function() {
     var event = VObject.event();
-    event.setDTStamp('value');
-    assert.equal(event.getDTStamp(), 'value');
+    var date = VObject.date();
+    date.parse('1986-10-18');
+    event.setDTStamp(date);
+    assert.equal(event.getDTStamp(), 'VALUE=DATE:19861018');
   });
 });
 
