@@ -129,6 +129,7 @@ API
 #### getOrganizer
 #### addAttendee
 #### getAttendees
+#### addRRule
 
 ### VObject.attendee
 

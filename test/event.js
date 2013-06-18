@@ -282,3 +282,15 @@ describe('getAttendees', function() {
     assert.equal(event.getAttendees(), 'value');
   });
 });
+
+describe('addRRule', function() {
+  it('should add RRULE', function(done) {
+    var event = VObject.event();
+    event.addPropertyWithNameAndValue = function(name, value) {
+      assert.equal(name, 'RRULE');
+      assert.equal(value, 'value');
+      done();
+    };
+    event.addRRule('value');
+  });
+});
