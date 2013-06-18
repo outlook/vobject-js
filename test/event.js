@@ -242,8 +242,7 @@ describe('getCreated', function() {
 describe('setOrganizer', function() {
   it('should set ORGANIZER', function(done) {
     var event = VObject.event();
-    event.setPropertyWithNameAndValue = function(name, value) {
-      assert.equal(name, 'ORGANIZER');
+    event.setProperty = function(value) {
       assert.equal(value, 'value');
       done();
     };
@@ -254,7 +253,10 @@ describe('setOrganizer', function() {
 describe('getOrganizer', function() {
   it('should get ORGANIZER', function() {
     var event = VObject.event();
-    event.setOrganizer('value');
+    event.getPropertyValue = function(name) {
+      assert.equal(name, 'ORGANIZER');
+      return 'value';
+    };
     assert.equal(event.getOrganizer(), 'value');
   });
 });
