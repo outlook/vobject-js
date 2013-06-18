@@ -90,7 +90,7 @@ describe('toICSArray', function() {
     assert.deepEqual(calendar.toICSArray(),
       [
         'BEGIN:VCALENDAR',
-        'VERSION:2',
+        'VERSION:2.0',
         'CALSCALE:GREGORIAN',
         'PRODID:-//Sunrise Atelier, Inc//EN',
         'BEGIN:VEVENT',

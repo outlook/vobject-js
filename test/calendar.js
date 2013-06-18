@@ -9,7 +9,7 @@ describe('initialize', function() {
 
   it('should set VERSION = 2', function() {
     var calendar = VObject.calendar();
-    assert.equal(calendar.getPropertyValue('VERSION'), '2');
+    assert.equal(calendar.getPropertyValue('VERSION'), '2.0');
   });
 
   it('should set PRODID', function() {
