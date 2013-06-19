@@ -32,6 +32,24 @@ describe('parseISO8601', function() {
     assert.strictEqual(dateTime.seconds, 01);
     assert.strictEqual(dateTime.offset, 0);
   });
+
+  it('should parse with 08 everywhere', function() {
+    // see WHY here:
+    // http://stackoverflow.com/questions/12318830/parseint08-returns-0
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('2013-08-08T08:08:08-08:00');
+    assert.strictEqual(dateTime.month, 8);
+    assert.strictEqual(dateTime.day, 8);
+    assert.strictEqual(dateTime.hours, 8);
+    assert.strictEqual(dateTime.minutes, 8);
+    assert.strictEqual(dateTime.seconds, 8);
+  });
+
+  it('should parse negative offset', function() {
+    var dateTime = VObject.dateTime();
+    dateTime.parseISO8601('2013-08-08T08:08:08-08:00');
+    assert.strictEqual(dateTime.offset, -8 * 60);
+  });
 });
 
 describe('setOffset', function() {
@@ -45,6 +63,12 @@ describe('setOffset', function() {
     var dateTime = VObject.dateTime();
     dateTime.parseOffset('-12:00');
     assert.equal(dateTime.offset, -12 * 60);
+  });
+
+  it('should accept -08:00', function() {
+    var dateTime = VObject.dateTime();
+    dateTime.parseOffset('-08:00');
+    assert.equal(dateTime.offset, -8 * 60);
   });
 });
 
