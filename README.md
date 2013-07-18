@@ -1,3 +1,6 @@
+This module is NOT ready for production usage. Please wait until 1.0.0 is released.
+---
+
 VObject
 =====
 
