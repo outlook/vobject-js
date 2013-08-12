@@ -1,0 +1,117 @@
+{
+  /*
+   * ENFORCING OPTIONS
+   * =================
+   */
+
+  // This option prohibits the use of bitwise operators such as ^ (XOR), | (OR) and others. Bitwise operators
+  // are very rare in JavaScript programs and quite often & is simply a mistyped &&.
+  "bitwise": true,
+
+  // This option allows you to force all variable names to use either camelCase style or UPPER_CASE
+  // with underscores.
+  "camelcase": false,
+
+  // This option requires you to always put curly braces around blocks in loops and conditionals.
+  "curly": true,
+
+  // This options prohibits the use of == and != in favor of === and !==. The former try to coerce values
+  // before comparing them which can lead to some unexpected results. The latter don't do any coercion so
+  // they are generally safer.
+  "eqeqeq": true,
+
+  // This option requires all for in loops to filter object's items. The for in statement allows for looping
+  // through the names of all of the properties of an object including those inherited throught the prototype chain.
+  "forin": true,
+
+  // This option prohibits the use of immediate function invocations without wrapping them in parentheses.
+  // Wrapping parentheses assists readers of your code in understanding that the expression is the result of a
+  // function, and not the function itself.
+  "immed": true,
+
+  // Enforce tab width of 2 spaces.
+  "indent": 2,
+
+  // This option prohibits the use of a variable before it was defined. JavaScript has function scope only and, in
+  // addition to that, all variables are always moved—or hoisted— to the top of the function. This behavior can
+  // lead to some very nasty bugs and that's why it is safer to always use variable only after they have been
+  // explicitly defined.
+  "latedef": true,
+
+  // Require capitalized names for constructor functions. Capitalizing functions that are
+  // intended to be used with new operator is just a convention that helps programmers to visually distinguish
+  // constructor functions from other types of functions to help spot mistakes when using this.
+  "newcap": true,
+
+  // This option prohibits the use of arguments.caller and arguments.callee. Both .caller and .callee
+  // make quite a few optimizations impossible so they were deprecated in future versions of JavaScript. In
+  // fact, ECMAScript 5 forbids the use of arguments.callee in strict mode.
+  "noarg": true,
+
+  // This option warns when you have an empty block in your code. JSLint was originally warning for all empty
+  // blocks and we simply made it optional. There were no studies reporting that empty blocks in JavaScript
+  // break your code in any way.
+  "noempty": true,
+
+  // This option prohibits the use of constructor functions for side-effects. Some people like to call constructor
+  // functions without assigning its result to any variable.
+  "nonew": true,
+
+  // This option prohibits the use of unary increment and decrement operators. Some people think that ++ and
+  // -- reduces the quality of their coding styles and there are programming languages—such as Python—
+  // that go completely without these operators.
+  "plusplus": true,
+
+  // This option enforces the consistency of quotation marks used throughout your code. It accepts three
+  // values: true if you don't want to enforce one particular style but want some consistency, "single" if you
+  // want to allow only single quotes and "double" if you want to allow only double quotes.
+  "quotmark": "single",
+
+  // This option prohibits the use of explicitly undeclared variables. This option is very useful for spotting
+  // leaking and mistyped variables.
+  "undef": true,
+
+  // This option warns when you define and never use your variables. It is very useful for general code cleanup,
+  // especially when used in addition to undef.
+  "unused": true,
+
+  // This option requires all functions to run in ECMAScript 5's strict mode. Strict mode is a way to opt in to a
+  // restricted variant of JavaScript. Strict mode eliminates some JavaScript pitfalls that didn't cause errors by
+  // changing them to produce errors. It also fixes mistakes that made it difficult for the JavaScript engines to
+  // perform certain optimizations.
+  "strict": false,
+
+  // This option makes it an error to leave a trailing whitespace in your code. Trailing whitespaces can be
+  // source of nasty bugs with multi-line strings in JavaScript:
+  "trailing": true,
+
+  // This option lets you set the max number of formal parameters allowed per function
+  "maxparams": 5,
+
+  /*
+   * RELAXING OPTIONS
+   * =================
+   */
+
+  // This option suppresses warnings about using [] notation when it can be expressed in dot notation.
+  "sub": true,
+
+  /*
+   * ENVIRONMENTS
+   * =================
+   */
+
+  // This option defines globals available when your code is running inside of the Node runtime environment.
+  // Node.js is a server-side JavaScript environment that uses an asynchronous event-driven model.
+  "node": true,
+
+  /*
+   * GLOBALS
+   * =================
+   */
+  "globals": {
+    "describe": false,
+    "it": false,
+    "beforeEach": false
+  }
+}

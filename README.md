@@ -47,6 +47,8 @@ calendar.toICS();
 
 ## API
 
+### [VObject.property](docs/property.md)
+
 ### [VObject.calendar](docs/calendar.md)
 ##### getMethod
 ##### setMethod

@@ -2,12 +2,14 @@
   "name": "vobject",
   "version": "0.0.1",
   "dependencies": {
-    "moment": "2.0.0"
+    "moment": "2.1.x",
+    "underscore": "1.5.x"
   },
   "devDependencies": {
-    "mocha": "latest"
+    "mocha": "latest",
+    "jshint": "latest"
   },
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha test/* --check-leaks"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --check-leaks test/*"
   }
 }
