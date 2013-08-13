@@ -101,16 +101,16 @@ event.setDTStart(dateTime)
 ##### [property.toICS()](docs/property.md#propertytoics)
 
 ### [VObject.component(name)](docs/component.md)
-##### component.pushProperty(property)
-##### component.getProperties(name)
+##### [component.pushProperty(property)](docs/component.md#componentpushpropertyproperty)
+##### [component.getProperties(name)](docs/component.md#componentgetpropertiesname)
 
-##### component.setProperty(property)
-##### component.getProperty(name, index=0)
+##### [component.setProperty(property)](docs/component.md#componentsetpropertyproperty)
+##### [component.getProperty(name, index=0)](docs/component.md#componentgetpropertyname-index0)
 
-##### component.pushComponent(childComponent)
+##### [component.pushComponent(childComponent)](docs/component.md#componentpushcomponentchildcomponent)
 
-##### component.toICSLines()
-##### component.toICS()
+##### [component.toICSLines()](docs/component.md#componenttoicslines)
+##### [component.toICS()](docs/component.md#componenttoics)
 
 ### [VObject.calendar()](docs/calendar.md)
 ##### calendar.setMethod(method)

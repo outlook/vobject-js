@@ -1,8 +1,8 @@
-# VObject.component
+# VObject.component(name)
 
 This is the base iCalendar object which consists of [`properties`](./property.md) and child `components`.
 
-#### Example:
+Example:
 
 ```
 BEGIN:VCALENDAR
@@ -21,9 +21,7 @@ BEGIN:VCALENDAR
 END:VCALENDAR
 ```
 
-`VCALENDAR` is an instance of a `VObject.component`, `PRODID, VERSION, CALSCALE` are properties of the component, and `VEVENT` is a sub-component.
-
-#### var component = VObject.component(name)
+where `VCALENDAR` is an instance of a `VObject.component`, `PRODID, VERSION, CALSCALE` are properties of the component, and `VEVENT` is a sub-component.
 
 - `name` of the component. Ex: `VCALENDAR`, `VEVENT`
 
