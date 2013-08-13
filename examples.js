@@ -29,5 +29,5 @@ organizer.setMail('user@domain.com');
 event.setOrganizer(organizer);
 
 // ICS
-calendar.addComponent(event);
+calendar.pushComponent(event);
 console.log(calendar.toICS());

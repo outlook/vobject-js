@@ -36,7 +36,7 @@ event.setDescription('(made with Sunrise)');
 Then, add the event to that calendar (events need to be added to a calendar to be a proper iCal object):
 
 ```js
-calendar.addComponent(event);
+calendar.pushComponent(event);
 ```
 
 Then, to ICS:
@@ -52,6 +52,16 @@ calendar.toICS();
 ##### setParameter(name, value)
 ##### getValue()
 ##### setValue(value)
+##### toICS()
+
+### [VObject.component(name)](docs/component.md)
+##### pushProperty(property)
+##### pushPropertyWithNameAndValue(name, value)
+##### setProperty(property)
+##### setPropertyWithNameAndValue(name, value)
+##### getProperties(name)
+##### getProperty(name, index=0)
+##### getPropertyValue(name, index=0)
 ##### toICS()
 
 ### [VObject.calendar](docs/calendar.md)
@@ -110,14 +120,6 @@ calendar.toICS();
 ##### getMail
 ##### setCUType
 ##### getCUType
-
-### [VObject.component](docs/component.md)
-##### addProperty
-##### addPropertyWithNameAndValue
-##### setProperty
-##### setPropertyWithNameAndValue
-##### getProperty
-##### getPropertyValue
 
 ### [VObject.date](docs/date.md)
 ##### set(year, month, day)

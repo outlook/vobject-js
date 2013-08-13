@@ -119,7 +119,7 @@ describe('setDTStart', function() {
     var dateTime = VObject.dateTime();
     dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
 
-    event.addProperty = function(property) {
+    event.pushProperty = function(property) {
       assert.equal(property.name, 'DTSTART');
       assert.equal(property.getParameter('VALUE'), 'DATE-TIME');
       assert.equal(property.value, '19861018T110000Z');
@@ -133,7 +133,7 @@ describe('setDTStart', function() {
     var date = VObject.date();
     date.parse('1986-10-18');
 
-    event.addProperty = function(property) {
+    event.pushProperty = function(property) {
       assert.equal(property.name, 'DTSTART');
       assert.equal(property.getParameter('VALUE'), 'DATE');
       assert.equal(property.value, '19861018');
@@ -160,7 +160,7 @@ describe('setDTEnd', function() {
     var dateTime = VObject.dateTime();
     dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
 
-    event.addProperty = function(property) {
+    event.pushProperty = function(property) {
       assert.equal(property.name, 'DTEND');
       assert.equal(property.getParameter('VALUE'), 'DATE-TIME');
       assert.equal(property.value, '19861018T110000Z');
@@ -174,7 +174,7 @@ describe('setDTEnd', function() {
     var date = VObject.date();
     date.parse('1986-10-18');
 
-    event.addProperty = function(property) {
+    event.pushProperty = function(property) {
       assert.equal(property.name, 'DTEND');
       assert.equal(property.getParameter('VALUE'), 'DATE');
       assert.equal(property.value, '19861018');
@@ -280,7 +280,7 @@ describe('getOrganizer', function() {
 describe('addAttendee', function() {
   it('should add ATTENDEE', function(done) {
     var event = VObject.event();
-    event.addProperty = function(value) {
+    event.pushProperty = function(value) {
       assert.equal(value, 'value');
       done();
     };
@@ -302,7 +302,7 @@ describe('getAttendees', function() {
 describe('addRRule', function() {
   it('should add RRULE', function(done) {
     var event = VObject.event();
-    event.addPropertyWithNameAndValue = function(name, value) {
+    event.pushPropertyWithNameAndValue = function(name, value) {
       assert.equal(name, 'RRULE');
       assert.equal(value, 'value');
       done();

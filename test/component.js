@@ -7,7 +7,7 @@ describe('initialize', function() {
     assert.equal(component.name, 'VCALENDAR');
   });
 
-  it('should set .components to empty []', function() {
+  it('should set .components to empty {}', function() {
     var component = VObject.component();
     assert.deepEqual(component.components, {});
   });
@@ -18,19 +18,19 @@ describe('initialize', function() {
   });
 });
 
-describe('addPropertyWithNameAndValue', function() {
-  it('should add properties with name and value', function() {
+describe('pushProperty', function() {
+  it('should add property to HASH', function() {
     var component = VObject.component();
-    component.addPropertyWithNameAndValue('name', 'value');
+    var property = VObject.property('NAME', 'value');
+    component.pushProperty(property);
     assert.equal(component.properties['NAME'][0].value, 'value');
   });
 });
 
-describe('addProperty', function() {
-  it('should add property to HASH', function() {
+describe('pushPropertyWithNameAndValue', function() {
+  it('should add properties with name and value', function() {
     var component = VObject.component();
-    var property = VObject.property('NAME', 'value');
-    component.addProperty(property);
+    component.pushPropertyWithNameAndValue('name', 'value');
     assert.equal(component.properties['NAME'][0].value, 'value');
   });
 });
@@ -53,11 +53,15 @@ describe('setPropertyWithNameAndValue', function() {
   });
 });
 
+describe('getProperty', function() {
+  it('should return ')
+});
+
 describe('getProperties', function() {
   it('should get all properties with name', function() {
     var component = VObject.component();
-    component.addPropertyWithNameAndValue('ATTENDEE', ['A']);
-    component.addPropertyWithNameAndValue('ATTENDEE', ['B']);
+    component.pushPropertyWithNameAndValue('ATTENDEE', ['A']);
+    component.pushPropertyWithNameAndValue('ATTENDEE', ['B']);
     assert.deepEqual(component.getProperties('ATTENDEE').length, 2);
   });
 
@@ -70,7 +74,7 @@ describe('getProperties', function() {
 describe('getPropertyValue', function() {
   it('should get property value', function() {
     var component = VObject.component();
-    component.addPropertyWithNameAndValue('name', 'value');
+    component.pushPropertyWithNameAndValue('name', 'value');
     assert.equal(component.getPropertyValue('name'), 'value');
   });
 
@@ -85,7 +89,7 @@ describe('toICSArray', function() {
     var calendar = VObject.calendar('');
     var event = VObject.event();
     event.setSummary('Hello World!');
-    calendar.addComponent(event);
+    calendar.pushComponent(event);
     var dateTime = VObject.dateTime();
     dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
     event.setDTStart(dateTime);
