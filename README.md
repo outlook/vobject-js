@@ -73,44 +73,44 @@ calendar.toICS();
 ##### calendar.getMethod()
 
 ### [VObject.event](docs/event.md)
-##### event.setUID(uid)
-##### event.getUID()
+##### [event.setUID(uid)](docs/event.md#eventsetuiduid-rfc)
+##### [event.getUID()](docs/event.md#eventgetuid-rfc)
 
-##### event.setSummary(summary)
-##### event.getSummary()
+##### [event.setSummary(summary)](docs/event.md#eventsetsummarysummary-rfc)
+##### [event.getSummary()](docs/event.md#eventgetsummary-rfc)
 
-##### event.setDTStart(date)
-##### event.getDTStart()
+##### [event.setDTStart(date)](docs/event.md#eventsetdtstartdate-rfc)
+##### [event.getDTStart()](docs/event.md#eventgetdtstart-rfc)
 
-##### event.setDTEnd(date)
-##### event.getDTEnd()
+##### [event.setDTEnd(date)](docs/event.md#eventsetdtenddate-rfc)
+##### [event.getDTEnd()](docs/event.md#eventgetdtend-rfc)
 
-##### event.setDescription(description)
-##### event.getDescription()
+##### [event.setDescription(description)](docs/event.md#eventsetdescriptiondescription-rfc)
+##### [event.getDescription()](docs/event.md#eventgetdescription-rfc)
 
-##### event.setLocation(location)
-##### event.getLocation()
+##### [event.setLocation(location)](docs/event.md#eventsetlocationlocation-rfc)
+##### [event.getLocation()](docs/event.md#eventgetlocation-rfc)
 
-##### event.setStatus(status)
-##### event.getStatus()
+##### [event.setStatus(status)](docs/event.md#eventsetstatusstatus-rfc)
+##### [event.getStatus()](docs/event.md#eventgetstatus-rfc)
 
-##### event.setDTStamp(date)
-##### event.getDTStamp()
+##### [event.setDTStamp(date)](docs/event.md#eventsetdtstampdate-rfc)
+##### [event.getDTStamp()](docs/event.md#eventgetdtstamp-rfc)
 
-##### event.setSequence(integer)
-##### event.getSequence()
+##### [event.setSequence(integer)](docs/event.md#eventsetsequenceinteger-rfc)
+##### [event.getSequence()](docs/event.md#eventgetsequence-rfc)
 
-##### event.setCreated(date)
-##### event.getCreated()
+##### [event.setCreated(date)](docs/event.md#eventsetcreateddate-rfc)
+##### [event.getCreated()](docs/event.md#eventgetcreated-rfc)
 
-##### event.setOrganizer(organizer)
-##### event.getOrganizer()
+##### [event.setOrganizer(organizer)](docs/event.md#eventsetorganizerorganizer-rfc)
+##### [event.getOrganizer()](docs/event.md#eventgetorganizer-rfc)
 
-##### event.addAttendee(attendee)
-##### event.getAttendees()
+##### [event.addAttendee(attendee)](docs/event.md#eventaddattendeeattendee-rfc)
+##### [event.getAttendees()](docs/event.md#eventgetattendees-rfc)
 
-##### event.addRRULE(rrule)
-##### event.getRRULEs()
+##### [event.addRRULE(rrule)](docs/event.md#eventaddrrulerrule-rfc)
+##### [event.getRRULEs()](docs/event.md#eventgetrrules-rfc)
 
 ### [VObject.attendee](docs/people.md)
 ##### setCUType
