@@ -31,24 +31,14 @@ END:VCALENDAR
 
 - `property` to push onto the component. Expects a [`property`](./property.md) object
 
-#### component.pushPropertyWithNameAndValue(name, value)
-
-- `name` of the simple property to push onto the component
-- `value` of the simple property to push onto the component
-
-#### component.setProperty(property)
-
-- `property` to set as a unique property for the component. Expects a [`property`](./property.md) object
-
-#### component.setPropertyWithNameAndValue(name, value)
-
-- `name` of the unique property to set for the component
-- `value` of the unique property to set for the component
-
 #### component.getProperties(name)
 
 - `name` of the property to retrieve
 - **returns** an array of [`property`](./property.md) objects set for `name`, `[]` by default
+
+#### component.setProperty(property)
+
+- `property` to set as a unique property for the component. Expects a [`property`](./property.md) object
 
 #### component.getProperty(name, index=0)
 
@@ -56,15 +46,12 @@ END:VCALENDAR
 - `index` of the property in cases of multiple instances of the property
 - **returns** the [`property`](./property.md) object at the specified `name` and `index`, `undefined` by default
 
-#### component.getPropertyValue(name, index=0)
-
-- `name` of the property to retrieve
-- `index` of the property in cases of multiple instances of the property
-- **returns** the string value at the specified `name` and `index`, `undefined` by default
-
 #### component.pushComponent(childComponent)
 
 - `childComponent` to be pushed onto the component. Expects a `component` object
+
+#### component.toICSLines()
+- **returns** rendered iCalendar representation of the component as an array of lines
 
 #### component.toICS()
 
