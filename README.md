@@ -140,14 +140,14 @@ event.setOrganizer(organizer);
 ##### [person.getMail()](docs/person.md#persongetmail)
 
 ### [VObject.attendee](docs/people.md)
-##### attendee.setRole(role)
-##### attendee.getRole()
+##### [attendee.setRole(role)](docs/attendee.md#attendeesetrolerole-rfc)
+##### [attendee.getRole()](docs/attendee.md#attendeegetrole-rfc)
 
-##### attendee.setPartStat(partstat)
-##### attendee.getPartStat()
+##### [attendee.setPartStat(partstat)](docs/attendee.md#attendeesetpartstatpartstat-rfc)
+##### [attendee.getPartStat()](docs/attendee.md#attendeegetpartstat-rfc)
 
-##### attendee.setRSVP(rsvp)
-##### attendee.getRSVP()
+##### [attendee.setRSVP(rsvp)](docs/attendee.md#attendeesetrsvprsvp-rfc)
+##### [attendee.getRSVP()](docs/attendee.md#attendeegetrsvp-rfc)
 
 ### [VObject.organizer](docs/people.md)
 ##### setCN
