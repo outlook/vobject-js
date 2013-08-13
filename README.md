@@ -62,6 +62,33 @@ organizer.setMail('user@domain.com');
 event.setOrganizer(organizer);
 ```
 
+### Set Dates for an Event
+
+Date:
+
+```js
+var date = VObject.date();
+date.setDate(1986, 10, 18);
+// or
+date.parseDate('1986-10-18');
+```
+
+Date Time:
+
+```js
+var dateTime = VObject.dateTime();
+dateTime.setDateTime(1986, 10, 18, 13, 05, 00, 120); // last parameter is offset in minutes
+// or
+dateTime.parseISO8601('1986-10-18T13:00:00+02:00'); // ISO 8601 (with TimeZone support)
+```
+
+Then attach `date` or `dateTime` to an event:
+
+```js
+event.setDTStart(date)
+event.setDTStart(dateTime)
+```
+
 ## API
 
 ### [VObject.property(name, value, parameters)](docs/property.md)
@@ -139,7 +166,7 @@ event.setOrganizer(organizer);
 ##### [person.setMail(mail)](docs/person.md#personsetmailmail)
 ##### [person.getMail()](docs/person.md#persongetmail)
 
-### [VObject.attendee](docs/people.md)
+### [VObject.attendee](docs/attendee.md)
 ##### [attendee.setRole(role)](docs/attendee.md#attendeesetrolerole-rfc)
 ##### [attendee.getRole()](docs/attendee.md#attendeegetrole-rfc)
 
@@ -149,18 +176,14 @@ event.setOrganizer(organizer);
 ##### [attendee.setRSVP(rsvp)](docs/attendee.md#attendeesetrsvprsvp-rfc)
 ##### [attendee.getRSVP()](docs/attendee.md#attendeegetrsvp-rfc)
 
-### [VObject.organizer](docs/people.md)
-##### setCN
-##### getCN
-##### setMail
-##### getMail
-##### setCUType
-##### getCUType
+### [VObject.organizer](docs/organizer.md)
 
 ### [VObject.date](docs/date.md)
-##### set(year, month, day)
-##### parse('YYYY-MM-DD')
-##### toICS
+##### [date.isDate()](docs/date.md#dateisdate)
+##### [date.isDateTime()](docs/date.md#dateisdatetime)
+##### [date.setDate(year, month, day)](docs/date.md#datesetdateyearmonthday)
+##### [date.parseDate(dateString)](docs/date.md#dateparsedatedatestring)
+##### [date.toICS()](docs/date.md#datetoics)
 
 ### [VObject.dateTime](docs/date.md)
 ##### set(year, month, day, hours, minutes, seconds, offsetInMinutes)

@@ -1,28 +1,33 @@
-# Dates
+# VObject.date [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.4)
 
-VObject-JS includes a convenient way to handle Date and DateTime.
+This is a DATE value type to represent a calendar date.
 
-Date:
+Example:
 
-```js
-var date = VObject.date();
-date.set(1986, 10, 18);
-// or
-date.parse('1986-10-18');
+```
+20130714
 ```
 
-DateTime:
+which translates to July 14th, 2013
 
-```js
-var dateTime = VObject.dateTime();
-dateTime.set(1986, 10, 18, 13, 05, 00, 120); // last parameter is offset in minutes
-// or
-dateTime.parseISO8601('1986-10-18T13:00:00+02:00'); // ISO 8601 (with TimeZone support)
-```
+##### date.isDate()
 
-Then attach `date` or `dateTime` to an event:
+- **returns** true because this object has no time data
 
-```js
-event.setDTStart(date)
-event.setDTStart(dateTime)
-```
+##### date.isDateTime()
+
+- **returns** false because this object has no time data
+
+##### date.setDate(year, month, day)
+
+- `year` to set for the date. Ex: 2013
+- `month` to set for the date. Ex: 7
+- `day` to set for the date. Ex: 14
+
+##### date.parseDate(dateString)
+
+- `dateString` to parse into year, month, day. Expects the format YYYY-MM-DD. Ex: 2013-07-14
+
+##### date.toICS()
+
+- **returns** rendered iCalendar string representation of the DATE value type. Ex: 20130714
