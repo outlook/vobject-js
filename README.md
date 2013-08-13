@@ -79,7 +79,7 @@ Date Time:
 var dateTime = VObject.dateTime();
 dateTime.setDateTime(1986, 10, 18, 13, 05, 00, 120); // last parameter is offset in minutes
 // or
-dateTime.parseISO8601('1986-10-18T13:00:00+02:00'); // ISO 8601 (with TimeZone support)
+dateTime.parseDateTime('1986-10-18T13:00:00+02:00'); // ISO 8601 (with TimeZone support)
 ```
 
 Then attach `date` or `dateTime` to an event:
@@ -186,6 +186,7 @@ event.setDTStart(dateTime)
 ##### [date.toICS()](docs/date.md#datetoics)
 
 ### [VObject.dateTime](docs/date.md)
-##### set(year, month, day, hours, minutes, seconds, offsetInMinutes)
-##### parseISO8601('YYYY-MM-DDTHH:mm:ssZ')
-##### toICS
+##### [date.isDate()](docs/date_time.md#dateisdate)
+##### [date.isDateTime()](docs/date_time.md#dateisdatetime)
+##### [date.parseDateTime(dateTimeString)](docs/date_time.md#dateparsedatetimedatetimestring)
+##### [date.toICS()](docs/date_time.md#datetoics)

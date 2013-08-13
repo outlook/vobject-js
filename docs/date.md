@@ -1,6 +1,6 @@
 # VObject.date [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.4)
 
-This is a DATE value type to represent a calendar date.
+This is a DATE value type to represent a calendar date. The object methods closely resembles the [`date time`](./date_time.md) object.
 
 Example:
 

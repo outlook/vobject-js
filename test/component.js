@@ -92,7 +92,7 @@ describe('lib/component.js', function() {
       var event = VObject.event();
       event.setSummary('Hello World!');
       var dateTime = VObject.dateTime();
-      dateTime.parseISO8601('1986-10-18T13:00:00+02:00');
+      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStart(dateTime);
 
       calendar.pushComponent(event);
