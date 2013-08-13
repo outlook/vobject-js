@@ -140,20 +140,14 @@ event.setOrganizer(organizer);
 ##### [person.getMail()](docs/person.md#persongetmail)
 
 ### [VObject.attendee](docs/people.md)
-##### setCUType
-##### getCUType
-##### setRole
-##### getRole
-##### setPartStat
-##### getPartStat
-##### setRSVP
-##### getRSVP
-##### setCN
-##### getCN
-##### setMail
-##### getMail
-##### setCUType
-##### getCUType
+##### attendee.setRole(role)
+##### attendee.getRole()
+
+##### attendee.setPartStat(partstat)
+##### attendee.getPartStat()
+
+##### attendee.setRSVP(rsvp)
+##### attendee.getRSVP()
 
 ### [VObject.organizer](docs/people.md)
 ##### setCN
