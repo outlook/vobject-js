@@ -48,57 +48,69 @@ calendar.toICS();
 ## API
 
 ### [VObject.property(name, value, parameters)](docs/property.md)
-##### getParameter(name)
-##### setParameter(name, value)
+##### property.getParameter(name)
+##### property.setParameter(name, value)
 
-##### getValue()
-##### setValue(value)
+##### property.getValue()
+##### property.setValue(value)
 
-##### toICS()
+##### property.toICS()
 
 ### [VObject.component(name)](docs/component.md)
-##### pushProperty(property)
-##### getProperties(name)
+##### component.pushProperty(property)
+##### component.getProperties(name)
 
-##### setProperty(property)
-##### getProperty(name, index=0)
+##### component.setProperty(property)
+##### component.getProperty(name, index=0)
 
-##### pushComponent(childComponent)
+##### component.pushComponent(childComponent)
 
-##### toICSLines()
-##### toICS()
+##### component.toICSLines()
+##### component.toICS()
 
 ### [VObject.calendar()](docs/calendar.md)
-##### setMethod(method)
-##### getMethod()
+##### calendar.setMethod(method)
+##### calendar.getMethod()
 
 ### [VObject.event](docs/event.md)
-##### setUID (required)
-##### getUID
-##### setSummary
-##### getSummary
-##### setDescription
-##### getDescription
-##### setLocation
-##### setLocation
-##### setStatus
-##### getStatus
-##### setDTStart
-##### getDTStart
-##### setDTEnd
-##### getDTEnd
-##### setDTStamp
-##### getDTStamp
-##### setSequence
-##### getSequence (Default 0)
-##### setCreated
-##### getCreated
-##### setOrganizer
-##### getOrganizer
-##### addAttendee
-##### getAttendees
-##### addRRule
-##### getRRules
+##### event.setUID(uid)
+##### event.getUID()
+
+##### event.setSummary(summary)
+##### event.getSummary()
+
+##### event.setDTStart(date)
+##### event.getDTStart()
+
+##### event.setDTEnd(date)
+##### event.getDTEnd()
+
+##### event.setDescription(description)
+##### event.getDescription()
+
+##### event.setLocation(location)
+##### event.getLocation()
+
+##### event.setStatus(status)
+##### event.getStatus()
+
+##### event.setDTStamp(date)
+##### event.getDTStamp()
+
+##### event.setSequence(integer)
+##### event.getSequence()
+
+##### event.setCreated(date)
+##### event.getCreated()
+
+##### event.setOrganizer(organizer)
+##### event.getOrganizer()
+
+##### event.addAttendee(attendee)
+##### event.getAttendees()
+
+##### event.addRRULE(rrule)
+##### event.getRRULEs()
 
 ### [VObject.attendee](docs/people.md)
 ##### setCUType

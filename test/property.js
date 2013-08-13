@@ -29,7 +29,7 @@ describe('lib/property.js', function() {
   describe('getParameter', function() {
     it('should get .parameters[name]', function() {
       var property = VObject.property();
-      property.parameters['name'] = 'value';
+      property.parameters['NAME'] = 'value';
       assert.equal(property.getParameter('name'),  'value');
     });
 
@@ -43,7 +43,7 @@ describe('lib/property.js', function() {
     it('should set .parameters[name]', function() {
       var property = VObject.property();
       property.setParameter('name', 'value');
-      assert.equal(property.parameters['name'],  'value');
+      assert.equal(property.parameters['NAME'],  'value');
     });
   });
 

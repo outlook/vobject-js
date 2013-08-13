@@ -120,7 +120,7 @@ describe('lib/component.js', function() {
         return ['a', 'b'];
       };
 
-      assert.equal(component.toICS, 'a\r\nb\r\n');
+      assert.equal(component.toICS(), 'a\r\nb\r\n');
     });
   });
 });
