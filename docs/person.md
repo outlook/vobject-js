@@ -1,6 +1,8 @@
-# VObject.person
+# VObject.person(name)
 
 This is a base structure of a person object. Person should only be instantiated by one of it's subclasses: [`attendee`](./attendee.md) or [`organizer`](./organizer.md)
+
+- `name` the name of the person object. Ex: `ATTENDEE`, `ORGANIZER`
 
 ##### person.setCUType(type) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.2.3)
 

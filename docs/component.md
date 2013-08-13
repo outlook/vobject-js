@@ -2,6 +2,8 @@
 
 This is the base iCalendar object which consists of [`properties`](./property.md) and child `components`.
 
+- `name` of the component. Ex: `VCALENDAR`, `VEVENT`
+
 Example:
 
 ```
@@ -22,8 +24,6 @@ END:VCALENDAR
 ```
 
 where `VCALENDAR` is an instance of a `VObject.component`, `PRODID, VERSION, CALSCALE` are properties of the component, and `VEVENT` is a sub-component.
-
-- `name` of the component. Ex: `VCALENDAR`, `VEVENT`
 
 #### component.pushProperty(property)
 

@@ -1,4 +1,4 @@
-# VObject.calendar
+# VObject.calendar()
 
 This is a VCALENDAR component which is an instance of a [`component`](./component.md) object.
 

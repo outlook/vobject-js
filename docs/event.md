@@ -1,4 +1,4 @@
-# VObject.event [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.6.1)
+# VObject.event() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.6.1)
 
 This is a VEVENT component which is an instance of a [`component`](./component.md) object.
 

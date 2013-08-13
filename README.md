@@ -113,10 +113,10 @@ event.setDTStart(dateTime)
 ##### [component.toICS()](docs/component.md#componenttoics)
 
 ### [VObject.calendar()](docs/calendar.md)
-##### calendar.setMethod(method)
-##### calendar.getMethod()
+##### [calendar.setMethod(method)](docs/calendar.md#setmethodmethod)
+##### [calendar.getMethod()](docs/calendar.md#getmethod)
 
-### [VObject.event](docs/event.md)
+### [VObject.event()](docs/event.md)
 ##### [event.setUID(uid)](docs/event.md#eventsetuiduid-rfc)
 ##### [event.getUID()](docs/event.md#eventgetuid-rfc)
 
@@ -156,7 +156,7 @@ event.setDTStart(dateTime)
 ##### [event.addRRULE(rrule)](docs/event.md#eventaddrrulerrule-rfc)
 ##### [event.getRRULEs()](docs/event.md#eventgetrrules-rfc)
 
-### [VObject.person](docs/person.md)
+### [VObject.person(name)](docs/person.md)
 ##### [person.setCUType(type)](docs/person.md#personsetcutypetype-rfc)
 ##### [person.getCUType()](docs/person.md#persongetcutype-rfc)
 
@@ -166,7 +166,7 @@ event.setDTStart(dateTime)
 ##### [person.setMail(mail)](docs/person.md#personsetmailmail)
 ##### [person.getMail()](docs/person.md#persongetmail)
 
-### [VObject.attendee](docs/attendee.md)
+### [VObject.attendee()](docs/attendee.md)
 ##### [attendee.setRole(role)](docs/attendee.md#attendeesetrolerole-rfc)
 ##### [attendee.getRole()](docs/attendee.md#attendeegetrole-rfc)
 
@@ -176,16 +176,16 @@ event.setDTStart(dateTime)
 ##### [attendee.setRSVP(rsvp)](docs/attendee.md#attendeesetrsvprsvp-rfc)
 ##### [attendee.getRSVP()](docs/attendee.md#attendeegetrsvp-rfc)
 
-### [VObject.organizer](docs/organizer.md)
+### [VObject.organizer()](docs/organizer.md)
 
-### [VObject.date](docs/date.md)
+### [VObject.date()](docs/date.md)
 ##### [date.isDate()](docs/date.md#dateisdate)
 ##### [date.isDateTime()](docs/date.md#dateisdatetime)
 ##### [date.setDate(year, month, day)](docs/date.md#datesetdateyearmonthday)
 ##### [date.parseDate(dateString)](docs/date.md#dateparsedatedatestring)
 ##### [date.toICS()](docs/date.md#datetoics)
 
-### [VObject.dateTime](docs/date.md)
+### [VObject.dateTime()](docs/date.md)
 ##### [date.isDate()](docs/date_time.md#dateisdate)
 ##### [date.isDateTime()](docs/date_time.md#dateisdatetime)
 ##### [date.parseDateTime(dateTimeString)](docs/date_time.md#dateparsedatetimedatetimestring)
