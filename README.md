@@ -92,13 +92,13 @@ event.setDTStart(dateTime)
 ## API
 
 ### [VObject.property(name, value, parameters)](docs/property.md)
-##### property.getParameter(name)
-##### property.setParameter(name, value)
+##### [property.setParameter(name, value)](docs/property.md#propertysetparameternamevalue)
+##### [property.getParameter(name)](docs/property.md#propertygetparametername)
 
-##### property.getValue()
-##### property.setValue(value)
+##### [property.setValue(value)](docs/property.md#propertysetvaluevalue)
+##### [property.getValue()](docs/property.md#propertygetvalue)
 
-##### property.toICS()
+##### [property.toICS()](docs/property.md#propertytoics)
 
 ### [VObject.component(name)](docs/component.md)
 ##### component.pushProperty(property)

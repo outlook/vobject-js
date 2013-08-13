@@ -26,6 +26,14 @@ describe('lib/property.js', function() {
     });
   });
 
+  describe('setParameter', function() {
+    it('should set .parameters[name]', function() {
+      var property = VObject.property();
+      property.setParameter('name', 'value');
+      assert.equal(property.parameters['NAME'],  'value');
+    });
+  });
+
   describe('getParameter', function() {
     it('should get .parameters[name]', function() {
       var property = VObject.property();
@@ -39,11 +47,11 @@ describe('lib/property.js', function() {
     });
   });
 
-  describe('setParameter', function() {
-    it('should set .parameters[name]', function() {
+  describe('setValue', function() {
+    it('should set .value', function() {
       var property = VObject.property();
-      property.setParameter('name', 'value');
-      assert.equal(property.parameters['NAME'],  'value');
+      property.setValue('value');
+      assert.equal(property.value, 'value');
     });
   });
 
@@ -57,14 +65,6 @@ describe('lib/property.js', function() {
     it('should return undefined by default', function() {
       var property = VObject.property();
       assert.equal(property.getValue(), undefined);
-    });
-  });
-
-  describe('setValue', function() {
-    it('should set .value', function() {
-      var property = VObject.property();
-      property.setValue('value');
-      assert.equal(property.value, 'value');
     });
   });
 
