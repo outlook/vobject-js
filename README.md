@@ -68,7 +68,7 @@ calendar.toICS();
 ##### toICSLines()
 ##### toICS()
 
-### [VObject.calendar](docs/calendar.md)
+### [VObject.calendar()](docs/calendar.md)
 ##### setMethod(method)
 ##### getMethod()
 
