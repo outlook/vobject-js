@@ -50,24 +50,27 @@ calendar.toICS();
 ### [VObject.property(name, value, parameters)](docs/property.md)
 ##### getParameter(name)
 ##### setParameter(name, value)
+
 ##### getValue()
 ##### setValue(value)
+
 ##### toICS()
 
 ### [VObject.component(name)](docs/component.md)
 ##### pushProperty(property)
-##### pushPropertyWithNameAndValue(name, value)
-##### setProperty(property)
-##### setPropertyWithNameAndValue(name, value)
 ##### getProperties(name)
+
+##### setProperty(property)
 ##### getProperty(name, index=0)
-##### getPropertyValue(name, index=0)
+
+##### pushComponent(childComponent)
+
+##### toICSLines()
 ##### toICS()
 
 ### [VObject.calendar](docs/calendar.md)
-##### getMethod
-##### setMethod
-##### toICS
+##### setMethod(method)
+##### getMethod()
 
 ### [VObject.event](docs/event.md)
 ##### setUID (required)

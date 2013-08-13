@@ -7,14 +7,27 @@ describe('initialize', function() {
     assert.equal(calendar.name, 'VCALENDAR');
   });
 
-  it('should set VERSION = 2', function() {
+  it('should set VERSION = 2.0', function() {
     var calendar = VObject.calendar();
-    assert.equal(calendar.getPropertyValue('VERSION'), '2.0');
+    assert.equal(calendar.getProperty('VERSION').value, '2.0');
+  });
+
+  it('should set CALSCALE to GREGORIAN', function() {
+    var calendar = VObject.calendar();
+    assert.equal(calendar.getProperty('CALSCALE').value, 'GREGORIAN');
   });
 
   it('should set PRODID', function() {
     var calendar = VObject.calendar();
-    assert.equal(calendar.getPropertyValue('PRODID'), '-//Sunrise Atelier, Inc//EN');
+    assert.equal(calendar.getProperty('PRODID').value, '-//Sunrise Atelier, Inc//EN');
+  });
+});
+
+describe('setMethod', function() {
+  it('should set METHOD', function() {
+    var calendar = VObject.calendar();
+    calendar.setMethod('value');
+    assert.equal(calendar.getProperty('METHOD').value, 'value');
   });
 });
 
@@ -23,13 +36,5 @@ describe('getMethod', function() {
     var calendar = VObject.calendar();
     calendar.setMethod('value');
     assert.equal(calendar.getMethod(), 'value');
-  });
-});
-
-describe('setMethod', function() {
-  it('should set METHOD', function() {
-    var calendar = VObject.calendar();
-    calendar.setMethod('value');
-    assert.equal(calendar.getPropertyValue('METHOD'), 'value');
   });
 });
