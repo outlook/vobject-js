@@ -45,6 +45,23 @@ Then, to ICS:
 calendar.toICS();
 ```
 
+### Add Attendees and Organizer
+
+```js
+var attendee = VObject.attendee();
+attendee.setCN('Pierre Valade');
+attendee.setMail('user@domain.com');
+attendee.setPartStat('ACCEPTED');
+event.addAttendee(attendee);
+```
+
+```js
+var organizer = VObject.organizer();
+organizer.setCN('Jeremy Le Van');
+organizer.setMail('user@domain.com');
+event.setOrganizer(organizer);
+```
+
 ## API
 
 ### [VObject.property(name, value, parameters)](docs/property.md)
