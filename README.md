@@ -112,6 +112,16 @@ calendar.toICS();
 ##### [event.addRRULE(rrule)](docs/event.md#eventaddrrulerrule-rfc)
 ##### [event.getRRULEs()](docs/event.md#eventgetrrules-rfc)
 
+### [VObject.person](docs/person.md)
+##### [person.setCUType(type)](docs/person.md#personsetcutypetype-rfc)
+##### [person.getCUType()](docs/person.md#persongetcutype-rfc)
+
+##### [person.setCN(cn)](docs/person.md#personsetcncn-rfc)
+##### [person.getCN()](docs/person.md#persongetcn-rfc)
+
+##### [person.setMail(mail)](docs/person.md#personsetmailmail)
+##### [person.getMail()](docs/person.md#persongetmail)
+
 ### [VObject.attendee](docs/people.md)
 ##### setCUType
 ##### getCUType

@@ -1,4 +1,4 @@
-# VObject.event
+# VObject.event [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.6.1)
 
 This is a VEVENT component which is an instance of a [`component`](./component.md) object.
 
@@ -14,7 +14,7 @@ DTSTART:20130814T230000Z
 DTEND:20130815T003000Z
 DTSTAMP:20130812T182800Z
 ORGANIZER;CN=jeremy@sunrise.im:mailto:jeremy@sunrise.im
-UID:6ltoah87095h15kgqugp2ombm8@google.com
+UID:6ltoah87095h151231fqugp2ombm8@sunrise.am
 ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
  TRUE;CN=Joey Dong;X-NUM-GUESTS=0:mailto:joey@sunrise.am
 ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
