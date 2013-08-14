@@ -2,10 +2,6 @@
 
 This is a VEVENT component which is an instance of a [`component`](./component.md) object.
 
-Default Properties:
-
-`SEQUENCE` = `0`
-
 Example:
 
 ```

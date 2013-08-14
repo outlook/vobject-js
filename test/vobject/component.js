@@ -104,7 +104,6 @@ describe('lib/vobject/component.js', function() {
           'CALSCALE:GREGORIAN',
           'PRODID:-//Sunrise Atelier, Inc//EN',
           'BEGIN:VEVENT',
-          'SEQUENCE:0',
           'SUMMARY:Hello World!',
           'DTSTART;VALUE=DATE-TIME:19861018T110000Z',
           'END:VEVENT',

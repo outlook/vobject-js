@@ -7,11 +7,6 @@ describe('lib/vobject/event.js', function() {
       var event = VObject.event();
       assert.equal(event.name, 'VEVENT');
     });
-
-    it('should set SEQUENCE to 0', function() {
-      var event = VObject.event();
-      assert.equal(event.getSequence(), '0');
-    });
   });
 
   describe('setUID', function() {
