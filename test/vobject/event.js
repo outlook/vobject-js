@@ -182,7 +182,7 @@ describe('lib/vobject/event.js', function() {
       var event = VObject.event();
       event.setProperty = function(property) {
         assert.equal(property.name, 'STATUS');
-        assert.equal(property.value, 'value');
+        assert.equal(property.value, 'VALUE');
         done();
       };
       event.setStatus('value');
@@ -193,7 +193,7 @@ describe('lib/vobject/event.js', function() {
     it('should get STATUS', function() {
       var event = VObject.event();
       event.setStatus('value');
-      assert.equal(event.getStatus(), 'value');
+      assert.equal(event.getStatus(), 'VALUE');
     });
   });
 

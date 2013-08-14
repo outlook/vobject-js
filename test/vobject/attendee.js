@@ -34,7 +34,7 @@ describe('lib/vobject/attendee.js', function() {
       var attendee = VObject.attendee();
       attendee.setParameter = function(name, value) {
         assert.equal(name, 'PARTSTAT');
-        assert.equal(value, 'value');
+        assert.equal(value, 'VALUE');
         done();
       };
       attendee.setPartStat('value');
@@ -45,7 +45,7 @@ describe('lib/vobject/attendee.js', function() {
     it('should get PARTSTAT', function() {
       var attendee = VObject.attendee();
       attendee.setPartStat('value');
-      assert.equal(attendee.getPartStat(), 'value');
+      assert.equal(attendee.getPartStat(), 'VALUE');
     });
   });
 
