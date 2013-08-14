@@ -91,5 +91,10 @@ describe('lib/vobject/property.js', function() {
       property.setParameter('CN', 'Pierre Valade');
       assert.equal(property.toICS(), 'ATTENDEE;PARTSTAT=NEEDS-ACTION;CN=Pierre Valade:mailto:pierre@valade.info');
     });
+
+    it('should fold at 75 characters', function() {
+      var property = VObject.property('DESCRIPTION', 'Interactive Telecommunications Program\\nTisch School of the Arts\\nNew York University\\n721 Broadway\\, 4th Floor\\, South Elevators\\nNew York NY 10003\\n\\nTake the left elevators to the 4th Floor\\nThis event is free and open to the public\\nNo need to RSVP');
+      assert.equal(property.toICS(), 'DESCRIPTION:Interactive Telecommunications Program\\nTisch School of the Art\r\n s\\nNew York University\\n721 Broadway\\, 4th Floor\\, South Elevators\\nNew Yor\r\n k NY 10003\\n\\nTake the left elevators to the 4th Floor\\nThis event is free\r\n and open to the public\\nNo need to RSVP');
+    });
   });
 });
