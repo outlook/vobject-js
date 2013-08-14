@@ -1,5 +1,5 @@
 var assert = require('assert');
-var VObject = require('../index');
+var VObject = require('../../index');
 
 describe('lib/property.js', function() {
   describe('initialize', function() {

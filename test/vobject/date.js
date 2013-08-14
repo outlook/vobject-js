@@ -1,5 +1,5 @@
 var assert = require('assert');
-var VObject = require('../index');
+var VObject = require('../../index');
 
 describe('lib/date.js', function() {
   describe('isDate', function() {

@@ -1,5 +1,5 @@
 var assert = require('assert');
-var VObject = require('../index');
+var VObject = require('../../index');
 var moment = require('moment');
 
 describe('lib/date_time.js', function() {
