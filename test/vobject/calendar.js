@@ -28,7 +28,7 @@ describe('lib/vobject/calendar.js', function() {
     it('should set METHOD', function() {
       var calendar = VObject.calendar();
       calendar.setMethod('value');
-      assert.equal(calendar.getProperty('METHOD').value, 'value');
+      assert.equal(calendar.getProperty('METHOD').value, 'VALUE');
     });
   });
 
@@ -36,7 +36,7 @@ describe('lib/vobject/calendar.js', function() {
     it('should get METHOD', function() {
       var calendar = VObject.calendar();
       calendar.setMethod('value');
-      assert.equal(calendar.getMethod(), 'value');
+      assert.equal(calendar.getMethod(), 'VALUE');
     });
   });
 });

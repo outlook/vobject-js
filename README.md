@@ -178,14 +178,14 @@ event.setDTStart(dateTime)
 
 ### [VObject.organizer()](docs/vobject/organizer.md)
 
-### [VObject.dateValue()](docs/vobject/dateValue.md)
+### [VObject.dateValue(dateString='')](docs/vobject/dateValue.md)
 ##### [date.isDate()](docs/vobject/dateValue.md#dateisdate)
 ##### [date.isDateTime()](docs/vobject/dateValue.md#dateisdatetime)
 ##### [date.setDate(year, month, day)](docs/vobject/dateValue.md#datesetdateyearmonthday)
 ##### [date.parseDate(dateString)](docs/vobject/dateValue.md#dateparsedatedatestring)
 ##### [date.toICS()](docs/vobject/dateValue.md#datetoics)
 
-### [VObject.dateTimeValue()](docs/vobject/dateTimeValue.md)
+### [VObject.dateTimeValue(dateTimeString='')](docs/vobject/dateTimeValue.md)
 ##### [date.isDate()](docs/vobject/dateTimeValue.md#dateisdate)
 ##### [date.isDateTime()](docs/vobject/dateTimeValue.md#dateisdatetime)
 ##### [date.parseDateTime(dateTimeString)](docs/vobject/dateTimeValue.md#dateparsedatetimedatetimestring)

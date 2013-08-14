@@ -1,6 +1,8 @@
-# VObject.dateTimeValue() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.5)
+# VObject.dateTimeValue(dateTimeString='') [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.5)
 
 This is a DATE-TIME value type to represent a calendar date and time. The object methods closely resembles the [`date`](./dateValue.md) object.
+
+- `dateTimeString` is an optional constructor date time string parameter in the format `YYYY-MM-DDTHH:mm:ssZ`. If omitted, the dateTimeValue is defaulted to the current date and time.
 
 Example:
 
@@ -20,7 +22,7 @@ which translates to August 13th, 2013 - 9:33:40pm UTC
 
 ##### date.parseDateTime(dateTimeString)
 
-- `dateTimeString` to parse into year, month, day. Expects the format YYYY-MM-DDTHH:mm:ssZ. Ex: 2013-08-13T17:33:40-04:00
+- `dateTimeString` to parse into year, month, day. Expects the format `YYYY-MM-DDTHH:mm:ssZ`. Ex: 2013-08-13T17:33:40-04:00
 
 ##### date.toICS()
 
