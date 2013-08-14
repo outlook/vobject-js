@@ -8,7 +8,7 @@ event.setSummary('Hello World!');
 event.setDescription('(made with Sunrise)');
 
 // Date
-var dateTime = VObject.dateTime();
+var dateTime = VObject.dateTimeValue();
 dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
 event.setDTStart(dateTime);
 

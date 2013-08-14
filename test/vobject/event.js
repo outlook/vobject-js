@@ -1,7 +1,7 @@
 var assert = require('assert');
 var VObject = require('../../index');
 
-describe('lib/event.js', function() {
+describe('lib/vobject/event.js', function() {
   describe('initialize', function() {
     it('should set name to VEVENT', function() {
       var event = VObject.event();
@@ -57,7 +57,7 @@ describe('lib/event.js', function() {
   describe('setDTStart', function() {
     it('should handle DateTime', function(done) {
       var event = VObject.event();
-      var dateTime = VObject.dateTime();
+      var dateTime = VObject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
 
       event.pushProperty = function(property) {
@@ -71,7 +71,7 @@ describe('lib/event.js', function() {
 
     it('should handle Date', function(done) {
       var event = VObject.event();
-      var date = VObject.date();
+      var date = VObject.dateValue();
       date.parseDate('1986-10-18');
 
       event.pushProperty = function(property) {
@@ -99,7 +99,7 @@ describe('lib/event.js', function() {
   describe('setDTEnd', function() {
     it('should handle DateTime', function(done) {
       var event = VObject.event();
-      var dateTime = VObject.dateTime();
+      var dateTime = VObject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
 
       event.pushProperty = function(property) {
@@ -113,7 +113,7 @@ describe('lib/event.js', function() {
 
     it('should handle Date', function(done) {
       var event = VObject.event();
-      var date = VObject.date();
+      var date = VObject.dateValue();
       date.parseDate('1986-10-18');
 
       event.pushProperty = function(property) {
@@ -200,7 +200,7 @@ describe('lib/event.js', function() {
   describe('setDTStamp', function() {
     it('should (ONLY) handle DateTime', function() {
       var event = VObject.event();
-      var dateTime = VObject.dateTime();
+      var dateTime = VObject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStamp(dateTime);
       assert.equal(event.getDTStamp(), '19861018T110000Z');
@@ -210,7 +210,7 @@ describe('lib/event.js', function() {
   describe('getDTStamp', function() {
     it('should get DTSTAMP', function() {
       var event = VObject.event();
-      var dateTime = VObject.dateTime();
+      var dateTime = VObject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStamp(dateTime);
       assert.equal(event.getDTStamp(), '19861018T110000Z');
@@ -240,7 +240,7 @@ describe('lib/event.js', function() {
   describe('setCreated', function() {
     it('should set CREATED', function() {
       var event = VObject.event();
-      var dateTime = VObject.dateTime();
+      var dateTime = VObject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setCreated(dateTime);
       assert.equal(event.getCreated(), '19861018T110000Z');
@@ -250,7 +250,7 @@ describe('lib/event.js', function() {
   describe('getCreated', function() {
     it('should get CREATED', function() {
       var event = VObject.event();
-      var dateTime = VObject.dateTime();
+      var dateTime = VObject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setCreated(dateTime);
       assert.equal(event.getCreated(), '19861018T110000Z');

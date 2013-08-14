@@ -1,6 +1,6 @@
-# VObject.dateTime() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.5)
+# VObject.dateTimeValue() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.5)
 
-This is a DATE-TIME value type to represent a calendar date and time. The object methods closely resembles the [`date`](./date.md) object.
+This is a DATE-TIME value type to represent a calendar date and time. The object methods closely resembles the [`date`](./dateValue.md) object.
 
 Example:
 

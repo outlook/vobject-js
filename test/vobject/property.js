@@ -1,7 +1,7 @@
 var assert = require('assert');
 var VObject = require('../../index');
 
-describe('lib/property.js', function() {
+describe('lib/vobject/property.js', function() {
   describe('initialize', function() {
     it('should set defaults for name, parameters, value', function() {
       var property = VObject.property();

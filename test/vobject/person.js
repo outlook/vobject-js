@@ -1,7 +1,7 @@
 var assert = require('assert');
 var VObject = require('../../index');
 
-describe('lib/person.js', function() {
+describe('lib/vobject/person.js', function() {
   describe('setCUType', function() {
     it('should set CUTYPE', function(done) {
       var person = VObject.person();

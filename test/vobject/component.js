@@ -1,7 +1,7 @@
 var assert = require('assert');
 var VObject = require('../../index');
 
-describe('lib/component.js', function() {
+describe('lib/vobject/component.js', function() {
   describe('initialize', function() {
     it('should set .name UPPERCASE', function() {
       var component = VObject.component('componentname');
@@ -91,7 +91,7 @@ describe('lib/component.js', function() {
 
       var event = VObject.event();
       event.setSummary('Hello World!');
-      var dateTime = VObject.dateTime();
+      var dateTime = VObject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStart(dateTime);
 
