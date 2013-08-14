@@ -50,5 +50,11 @@ describe('lib/vobject/dateValue.js', function() {
       dateValue.parseDate('1986-10-18');
       assert.equal(dateValue.toICS(), '19861018');
     });
+
+    it('should zero pad dates', function() {
+      var dateValue = vobject.dateValue();
+      dateValue.parseDate('2013-08-01');
+      assert.equal(dateValue.toICS(), '20130801');
+    });
   });
 });
