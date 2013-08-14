@@ -44,6 +44,12 @@ describe('lib/vobject/event.js', function() {
       };
       event.setSummary('value');
     });
+
+    it('should escape special characters', function() {
+      var event = VObject.event();
+      event.setSummary('\n;,');
+      assert.equal(event.getSummary(), '\\n\\;\\,');
+    });
   });
 
   describe('getSummary', function() {
@@ -146,6 +152,12 @@ describe('lib/vobject/event.js', function() {
         done();
       };
       event.setDescription('value');
+    });
+
+    it('should escape special characters', function() {
+      var event = VObject.event();
+      event.setDescription('\n;,');
+      assert.equal(event.getDescription(), '\\n\\;\\,');
     });
   });
 
