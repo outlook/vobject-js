@@ -1,0 +1,83 @@
+var assert = require('assert');
+var vobject = require('../../lib/vobject');
+
+describe('lib/vobject/durationValue.js', function() {
+  describe('initialize', function() {
+    it('type should be durationValue', function() {
+      var durationValue = vobject.durationValue();
+      assert.equal(durationValue.type, 'durationValue');
+    });
+
+    it('should accept constructor options', function() {
+      var durationValue = vobject.durationValue({
+        value: -1,
+        minute: 5
+      });
+      assert.equal(durationValue.value, -1);
+      assert.equal(durationValue.minute, 5);
+    });
+  });
+
+  describe('setDuration', function() {
+    it('should set duration as integers', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.setDuration({
+        value: -1,
+        day: '5',
+        hour: '4',
+        minute: '3',
+        second: '2'
+      });
+      assert.equal(durationValue.value, -1);
+      assert.equal(durationValue.day, 5);
+      assert.equal(durationValue.hour, 4);
+      assert.equal(durationValue.minute, 3);
+      assert.equal(durationValue.second, 2);
+    });
+
+    it('should reset values to undefined', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.setDuration({
+        value: 1,
+        day: 5
+      });
+      assert.equal(durationValue.value, 1);
+      assert.equal(durationValue.day, 5);
+      assert.equal(durationValue.hour, undefined);
+      assert.equal(durationValue.minute, undefined);
+      assert.equal(durationValue.second, undefined);
+    });
+  });
+
+  describe('toICS', function() {
+    it('should render duration value', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.setDuration({
+        value: -1,
+        day: 5,
+        hour: 4,
+        minute: 3,
+        second: 2
+      });
+      assert.equal(durationValue.toICS(), '-P5DT4H3M2S');
+    });
+
+    it('should render day duration value', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.setDuration({
+        value: 1,
+        day: 5
+      });
+      assert.equal(durationValue.toICS(), 'P5D');
+    });
+
+    it('should render time duration value', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.setDuration({
+        value: -1,
+        minute: 15
+      });
+      assert.equal(durationValue.toICS(), '-P15M');
+    });
+  });
+});

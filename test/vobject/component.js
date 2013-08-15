@@ -105,7 +105,7 @@ describe('lib/vobject/component.js', function() {
           'PRODID:-//Sunrise Atelier, Inc//EN',
           'BEGIN:VEVENT',
           'SUMMARY:Hello World!',
-          'DTSTART;VALUE=DATE-TIME:19861018T110000Z',
+          'DTSTART:19861018T110000Z',
           'END:VEVENT',
           'END:VCALENDAR'
         ]);

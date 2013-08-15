@@ -1,6 +1,6 @@
 # VObject.calendar()
 
-This is a VCALENDAR component which is an instance of a [`component`](./component.md) object.
+This is a VCALENDAR component which is a subclass of the [`component`](./component.md) object.
 
 Default properties:
 

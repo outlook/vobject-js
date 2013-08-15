@@ -4,6 +4,11 @@ var moment = require('moment');
 
 describe('lib/vobject/dateTimeValue.js', function() {
   describe('initialize', function() {
+    it('type should be dateTimeValue', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      assert.equal(dateTimeValue.type, 'dateTimeValue');
+    });
+
     it('should parse dateTimeString from constructor', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
       assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
@@ -12,20 +17,6 @@ describe('lib/vobject/dateTimeValue.js', function() {
     it('should default to now', function() {
       var dateTimeValue = vobject.dateTimeValue();
       assert.ok(moment().utc().unix() - dateTimeValue.dateTime.unix() < 5);
-    });
-  });
-
-  describe('isDate', function() {
-    it('should return false', function() {
-      var dateTimeValue = vobject.dateTimeValue();
-      assert.equal(dateTimeValue.isDate(), false);
-    });
-  });
-
-  describe('isDateTime', function() {
-    it('should return true', function() {
-      var dateTimeValue = vobject.dateTimeValue();
-      assert.equal(dateTimeValue.isDateTime(), true);
     });
   });
 

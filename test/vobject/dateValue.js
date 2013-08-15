@@ -4,6 +4,11 @@ var moment = require('moment');
 
 describe('lib/vobject/dateValue.js', function() {
   describe('initialize', function() {
+    it('type should be dateValue', function() {
+      var dateValue = vobject.dateValue();
+      assert.equal(dateValue.type, 'dateValue');
+    });
+
     it('should parse dateTimeString from constructor', function() {
       var dateValue = vobject.dateValue('2013-08-14');
       assert.equal(dateValue.year, 2013);
@@ -17,20 +22,6 @@ describe('lib/vobject/dateValue.js', function() {
       assert.equal(dateValue.year, now.year());
       assert.equal(dateValue.month, now.month());
       assert.equal(dateValue.day, now.day());
-    });
-  });
-
-  describe('isDate', function() {
-    it('should return true', function() {
-      var dateValue = vobject.dateValue();
-      assert.equal(dateValue.isDate(), true);
-    });
-  });
-
-  describe('isDateTime', function() {
-    it('should return false', function() {
-      var dateValue = vobject.dateValue();
-      assert.equal(dateValue.isDateTime(), false);
     });
   });
 

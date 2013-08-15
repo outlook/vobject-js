@@ -63,7 +63,7 @@ describe('lib/vobject/event.js', function() {
 
       event.pushProperty = function(property) {
         assert.equal(property.name, 'DTSTART');
-        assert.equal(property.getParameter('VALUE'), 'DATE-TIME');
+        assert.equal(property.getParameter('VALUE'), undefined);
         assert.equal(property.value, '19861018T110000Z');
         done();
       };
@@ -105,7 +105,7 @@ describe('lib/vobject/event.js', function() {
 
       event.pushProperty = function(property) {
         assert.equal(property.name, 'DTEND');
-        assert.equal(property.getParameter('VALUE'), 'DATE-TIME');
+        assert.equal(property.getParameter('VALUE'), undefined);
         assert.equal(property.value, '19861018T110000Z');
         done();
       };
