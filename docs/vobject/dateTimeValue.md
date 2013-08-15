@@ -12,17 +12,17 @@ Example:
 
 which translates to August 13th, 2013 - 9:33:40pm UTC
 
-#### dateTimeValue.type = 'dateTimeValue'
+##### dateTimeValue.type = 'dateTimeValue'
 Type definition of the value. Useful when used in conjunction with [`properties`](./property.md).
 
-#### dateTimeValue.parseDateTime(dateTimeString)
+##### dateTimeValue.parseDateTime(dateTimeString)
 
 - `dateTimeString` to parse into year, month, day. Expects the format `YYYY-MM-DDTHH:mm:ssZ`. Ex: 2013-08-13T17:33:40-04:00
 
-#### dateTimeValue.parseTimestamp(timestamp)
+##### dateTimeValue.parseTimestamp(timestamp)
 
 - `timestamp` to parse defined as seconds since UNIX epoch. Expects an INTEGER
 
-#### dateTimeValue.toICS()
+##### dateTimeValue.toICS()
 
 - **returns** rendered iCalendar string representation of the DATE-TIME value type. Ex: 20130813T213340Z

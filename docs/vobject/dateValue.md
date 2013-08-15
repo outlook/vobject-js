@@ -12,13 +12,13 @@ Example:
 
 which translates to July 14th, 2013
 
-#### dateValue.type = 'dateValue'
+##### dateValue.type = 'dateValue'
 Type definition of the value. Useful when used in conjunction with [`properties`](./property.md).
 
-#### date.parseDate(dateString)
+##### date.parseDate(dateString)
 
 - `dateString` to parse into year, month, day. Expects the format `YYYY-MM-DD`. Ex: 2013-07-14
 
-#### date.toICS()
+##### date.toICS()
 
 - **returns** rendered iCalendar string representation of the DATE value type. Ex: 20130714
