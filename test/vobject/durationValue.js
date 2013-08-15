@@ -79,5 +79,14 @@ describe('lib/vobject/durationValue.js', function() {
       });
       assert.equal(durationValue.toICS(), '-P15M');
     });
+
+    it('should ignore value when duration is zero', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.setDuration({
+        value: -1,
+        minute: 0
+      });
+      assert.equal(durationValue.toICS(), 'P0M');
+    });
   });
 });
