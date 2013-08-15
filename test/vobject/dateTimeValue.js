@@ -28,6 +28,14 @@ describe('lib/vobject/dateTimeValue.js', function() {
     });
   });
 
+  describe('parseTimestamp', function() {
+    it('should parse timestamp string', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.parseTimestamp(1376605015);
+      assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-15 22:16:55 +00:00');
+    });
+  });
+
   describe('toICS', function() {
     it('should print ICS format', function() {
       var dateTimeValue = vobject.dateTimeValue();
