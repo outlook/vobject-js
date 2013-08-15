@@ -87,11 +87,19 @@ END:VEVENT
 
 ##### event.setDTStamp(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)
 
-- `date` to set as the timestamp for the event. Expects either a [`date`](./date.md) or [`date time`](./date_time.md) object
+- `date` to set as the timestamp for the event. Expects either a [`date time`](./date_time.md) object
 
 ##### event.getDTStamp() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)
 
 - **returns** a string representation of the timestamp for the event
+
+##### event.setLastModified(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.3)
+
+- `date` to set as the last modified date for the event. Expects a [`date time`](./date_time.md) object
+
+##### event.getLastModified() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.3)
+
+- **returns** a string representation of the last modified date for the event
 
 ##### event.setSequence(integer) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.4)
 Sequence number of the event. Should be monotonically increasing.

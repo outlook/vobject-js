@@ -224,6 +224,24 @@ describe('lib/vobject/event.js', function() {
     });
   });
 
+  describe('setLastModified', function() {
+    it('should set LAST-MODIFIED', function() {
+      var event = VObject.event();
+      var dateTimeValue = VObject.dateTimeValue('1986-10-18T13:00:00+02:00');
+      event.setLastModified(dateTimeValue);
+      assert.equal(event.properties['LAST-MODIFIED'][0].value, dateTimeValue.toICS());
+    });
+  });
+
+  describe('getLastModified', function() {
+    it('should get LAST-MODIFIED', function() {
+      var event = VObject.event();
+      var dateTimeValue = VObject.dateTimeValue('1986-10-18T13:00:00+02:00');
+      event.properties['LAST-MODIFIED'] = [VObject.property('LAST-MODIFIED', dateTimeValue.toICS())];
+      assert.equal(event.getLastModified(), dateTimeValue.toICS());
+    });
+  });
+
   describe('setSequence', function() {
     it('should set SEQUENCE', function(done) {
       var event = VObject.event();
