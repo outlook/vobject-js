@@ -348,4 +348,20 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.getRRULEs(), 'value');
     });
   });
+
+  describe('setTransparency', function() {
+    it('should set TRANSPARENCY property', function() {
+      var event = VObject.event();
+      event.setTransparency('transparent');
+      assert.equal(event.properties['TRANSPARENCY'][0].value, 'TRANSPARENT');
+    });
+  });
+
+  describe('getTransparency', function() {
+    it('should get TRANSPARENCY property value', function() {
+      var event = VObject.event();
+      event.properties['TRANSPARENCY'] = [VObject.property('TRANSPARENCY', 'TRANSPARENT')];
+      assert.equal(event.getTransparency(), 'TRANSPARENT');
+    });
+  });
 });

@@ -101,10 +101,10 @@ END:VEVENT
 
 - **returns** a string representation of the last modified date for the event
 
-##### event.setSequence(integer) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.4)
-Sequence number of the event. Should be monotonically increasing.
+##### event.setSequence(sequence) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.4)
+Sequence number of the event. Should be monotonically increasing on changes on the fields: `DTSTART`, `DTEND`, `DUE`, `RDATE`, `RRULE`, `EXDATE`, `EXRULE`, and `STATUS`.
 
-- `integer` to set as the sequence number of the event. Expects an INTEGER
+- `sequence` to set as the sequence number of the event. Expects an INTEGER
 
 ##### event.getSequence() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.4)
 
@@ -141,3 +141,11 @@ Sequence number of the event. Should be monotonically increasing.
 ##### event.getRRULEs() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.3)
 
 - **returns** an array of RRULE properties
+
+##### event.setTransparency(transparency) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
+
+- `transparency` to set for the event. Expects either TRANSPARENT or OPAQUE
+
+##### event.getTransparency() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
+
+- **returns** the string value set as the transparency of the event
