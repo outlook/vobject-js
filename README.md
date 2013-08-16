@@ -6,7 +6,7 @@ VObject-JS allows you to easily manipulate iCalendar objects using JavaScript. I
 
 ```
 npm install vobject
-var VObject = require('vobject');
+var vobject = require('vobject');
 ```
 
 ## Example
@@ -16,7 +16,7 @@ var VObject = require('vobject');
 The top-level element in iCalendar is the Calendaring and Scheduling Core Object, a collection of calendar and scheduling information. Typically, this information will consist of a single iCalendar object.
 
 ```js
-var calendar = VObject.calendar();
+var calendar = vobject.calendar();
 ```
 
 The body of the iCalendar object (the icalbody) is made up of a list of calendar properties and one or more calendar components.
@@ -28,7 +28,7 @@ calendar.setMethod('REQUEST')
 ### Create a Event
 
 ```js
-var event = VObject.event();
+var event = vobject.event();
 event.setSummary('Hello World!');
 event.setDescription('(made with Sunrise)');
 ```
@@ -48,7 +48,7 @@ calendar.toICS();
 ### Add Attendees and Organizer
 
 ```js
-var attendee = VObject.attendee();
+var attendee = vobject.attendee();
 attendee.setCN('Pierre Valade');
 attendee.setMail('user@domain.com');
 attendee.setPartStat('ACCEPTED');
@@ -56,7 +56,7 @@ event.addAttendee(attendee);
 ```
 
 ```js
-var organizer = VObject.organizer();
+var organizer = vobject.organizer();
 organizer.setCN('Jeremy Le Van');
 organizer.setMail('user@domain.com');
 event.setOrganizer(organizer);
@@ -67,7 +67,7 @@ event.setOrganizer(organizer);
 Date:
 
 ```js
-var date = VObject.dateValue();
+var date = vobject.dateValue();
 date.setDate(1986, 10, 18);
 // or
 date.parseDate('1986-10-18');
@@ -76,7 +76,7 @@ date.parseDate('1986-10-18');
 Date Time:
 
 ```js
-var dateTime = VObject.dateTimeValue();
+var dateTime = vobject.dateTimeValue();
 dateTime.setDateTime(1986, 10, 18, 13, 05, 00, 120); // last parameter is offset in minutes
 // or
 dateTime.parseDateTime('1986-10-18T13:00:00+02:00'); // ISO 8601 (with TimeZone support)
@@ -91,7 +91,7 @@ event.setDTStart(dateTime)
 
 ## API
 
-### [VObject.property(name, value, parameters)](docs/vobject/property.md)
+#### [vobject.property(name, value, parameters)](docs/vobject/property.md)
 ##### [property.setParameter(name, value)](docs/vobject/property.md#propertysetparameternamevalue)
 ##### [property.getParameter(name)](docs/vobject/property.md#propertygetparametername)
 
@@ -100,7 +100,7 @@ event.setDTStart(dateTime)
 
 ##### [property.toICS()](docs/vobject/property.md#propertytoics)
 
-### [VObject.component(name)](docs/vobject/component.md)
+#### [vobject.component(name)](docs/vobject/component.md)
 ##### [component.pushProperty(property)](docs/vobject/component.md#componentpushpropertyproperty)
 ##### [component.getProperties(name)](docs/vobject/component.md#componentgetpropertiesname)
 
@@ -112,11 +112,11 @@ event.setDTStart(dateTime)
 ##### [component.toICSLines()](docs/vobject/component.md#componenttoicslines)
 ##### [component.toICS()](docs/vobject/component.md#componenttoics)
 
-### [VObject.calendar()](docs/vobject/calendar.md)
+#### [vobject.calendar()](docs/vobject/calendar.md)
 ##### [calendar.setMethod(method)](docs/vobject/calendar.md#setmethodmethod)
 ##### [calendar.getMethod()](docs/vobject/calendar.md#getmethod)
 
-### [VObject.event()](docs/vobject/event.md)
+#### [vobject.event()](docs/vobject/event.md)
 ##### [event.setUID(uid)](docs/vobject/event.md#eventsetuiduid-rfc)
 ##### [event.getUID()](docs/vobject/event.md#eventgetuid-rfc)
 
@@ -141,6 +141,9 @@ event.setDTStart(dateTime)
 ##### [event.setDTStamp(date)](docs/vobject/event.md#eventsetdtstampdate-rfc)
 ##### [event.getDTStamp()](docs/vobject/event.md#eventgetdtstamp-rfc)
 
+##### [event.setLastModified(date)](docs/vobject/event.md#eventsetlastmodifieddate-rfc)
+##### [event.getLastModified()](docs/vobject/event.md#eventgetlastmodified-rfc)
+
 ##### [event.setSequence(integer)](docs/vobject/event.md#eventsetsequenceinteger-rfc)
 ##### [event.getSequence()](docs/vobject/event.md#eventgetsequence-rfc)
 
@@ -156,7 +159,13 @@ event.setDTStart(dateTime)
 ##### [event.addRRULE(rrule)](docs/vobject/event.md#eventaddrrulerrule-rfc)
 ##### [event.getRRULEs()](docs/vobject/event.md#eventgetrrules-rfc)
 
-### [VObject.person(name)](docs/vobject/person.md)
+##### [event.setRecurrenceID(date)](docs/vobject/event.md#eventsetrecurrenceiddate-rfc)
+##### [event.getRecurrenceID()](docs/vobject/event.md#eventgetrecurrenceid-rfc)
+
+##### [event.setTransparency(transparency)](docs/vobject/event.md#settransparencytransparency)
+##### [event.getTransparency()](docs/vobject/event.md#eventgettransparency)
+
+#### [vobject.person(name)](docs/vobject/person.md)
 ##### [person.setCUType(type)](docs/vobject/person.md#personsetcutypetype-rfc)
 ##### [person.getCUType()](docs/vobject/person.md#persongetcutype-rfc)
 
@@ -166,7 +175,7 @@ event.setDTStart(dateTime)
 ##### [person.setMail(mail)](docs/vobject/person.md#personsetmailmail)
 ##### [person.getMail()](docs/vobject/person.md#persongetmail)
 
-### [VObject.attendee()](docs/vobject/attendee.md)
+#### [vobject.attendee()](docs/vobject/attendee.md)
 ##### [attendee.setRole(role)](docs/vobject/attendee.md#attendeesetrolerole-rfc)
 ##### [attendee.getRole()](docs/vobject/attendee.md#attendeegetrole-rfc)
 
@@ -176,17 +185,17 @@ event.setDTStart(dateTime)
 ##### [attendee.setRSVP(rsvp)](docs/vobject/attendee.md#attendeesetrsvprsvp-rfc)
 ##### [attendee.getRSVP()](docs/vobject/attendee.md#attendeegetrsvp-rfc)
 
-### [VObject.organizer()](docs/vobject/organizer.md)
+#### [vobject.organizer()](docs/vobject/organizer.md)
 
-### [VObject.dateValue(dateString='')](docs/vobject/dateValue.md)
-##### [date.isDate()](docs/vobject/dateValue.md#dateisdate)
-##### [date.isDateTime()](docs/vobject/dateValue.md#dateisdatetime)
-##### [date.setDate(year, month, day)](docs/vobject/dateValue.md#datesetdateyearmonthday)
-##### [date.parseDate(dateString)](docs/vobject/dateValue.md#dateparsedatedatestring)
-##### [date.toICS()](docs/vobject/dateValue.md#datetoics)
+#### [vobject.dateValue(dateString='')](docs/vobject/dateValue.md)
+##### [dateValue.type](docs/vobject/dateValue.md#datevaluetype--datevalue)
+##### [dateValue.parseDate(dateString)](docs/vobject/dateValue.md#dateparsedatedatestring)
+##### [dateValue.toICS()](docs/vobject/dateValue.md#datetoics)
 
-### [VObject.dateTimeValue(dateTimeString='')](docs/vobject/dateTimeValue.md)
-##### [date.isDate()](docs/vobject/dateTimeValue.md#dateisdate)
-##### [date.isDateTime()](docs/vobject/dateTimeValue.md#dateisdatetime)
-##### [date.parseDateTime(dateTimeString)](docs/vobject/dateTimeValue.md#dateparsedatetimedatetimestring)
-##### [date.toICS()](docs/vobject/dateTimeValue.md#datetoics)
+#### [vobject.dateTimeValue(dateTimeString='')](docs/vobject/dateTimeValue.md)
+##### [dateTimeValue.type](docs/vobject/dateTimeValue.md#datetimevaluetype--datetimevalue)
+##### [dateTimeValue.parseDateTime(dateTimeString)](docs/vobject/dateTimeValue.md#dateparsedatetimedatetimestring)
+##### [dateTimeValue.parseTimestamp(timestamp)](docs/vobject/dateTimeValue.md#dateparsetimestamptimestamp)
+##### [dateTimeValue.setTZID(tzid)](docs/vobject/dateTimeValue.md#datesettzidtzid)
+##### [dateTimeValue.getTZID()](docs/vobject/dateTimeValue.md#dategettzid)
+##### [dateTimeValue.toICS()](docs/vobject/dateTimeValue.md#datetoics)

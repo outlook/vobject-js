@@ -1,6 +1,6 @@
 # vobject.event() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.6.1)
 
-This is a VEVENT component which is a subclas of the [`component`](./component.md) object.
+This is a VEVENT component which is a subclass of the [`component`](./component.md) object.
 
 Usage:
 
@@ -40,21 +40,33 @@ TRANSP:OPAQUE
 END:VEVENT
 ```
 
+-----------------------------------------------------------------------------------------
+
 ##### event.setUID(uid) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.7)
 
-- `uid` for the event. Expects a STRING. Ex: 6ltoah81242h15kgqugp7ombm8@sunrise.am
+- `uid` for the event. Expects a STRING. Ex: `6ltoah81242h15kgqugp7ombm8@sunrise.am`
+
+```
+This property defines the persistent, globally unique identifier for the calendar component.
+```
 
 ##### event.getUID() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.7)
 
 - **returns** the UID for the event
 
+-----------------------------------------------------------------------------------------
+
 ##### event.setSummary(summary) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.12)
 
-- `summary` to set for the event. Expects a STRING. Ex: Dinner at Peels
+- `summary` to set for the event. Expects a STRING. Ex: "Dinner at Peels"
+
+Also known as the title for the event.
 
 ##### event.getSummary() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.12)
 
 - **returns** the summary for the event
+
+-----------------------------------------------------------------------------------------
 
 ##### event.setDTStart(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
@@ -72,37 +84,60 @@ END:VEVENT
 
 - **returns** a string representation of the end date for the event
 
+-----------------------------------------------------------------------------------------
+
 ##### event.setDescription(description) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.5)
 
-- `description` to set for the event. Expects a STRING. Ex: Meet at the corner of Broadway and Lafayette
+- `description` to set for the event. Expects a STRING. Ex: "Meet at the corner of Broadway and Lafayette"
 
 ##### event.getDescription() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.5)
 
 - **returns** the description for the event
 
+-----------------------------------------------------------------------------------------
+
 ##### event.setLocation(location) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.7)
 
-- `location` to set for the event. Expects a STRING. Ex: 123 Fake St.
+- `location` to set for the event. Expects a STRING. Ex: "123 Fake St.""
 
 ##### event.getLocation() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.7)
 
 - **returns** the location for the event
 
+-----------------------------------------------------------------------------------------
+
 ##### event.setStatus(status) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.11)
 
-- `status` to set for the event. Expects a STRING. Ex: CONFIRMED
+- `status` to set for the event. Expects a STRING. Ex: `TENTATIVE`, `CONFIRMED`, `CANCELLED`
+
+```
+Status values for a VEVENT
+  "TENTATIVE"    ;Indicates event is tentative.
+  "CONFIRMED"    ;Indicates event is definite.
+  "CANCELLED"    ;Indicates event was cancelled.
+```
 
 ##### event.getStatus() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.11)
 
 - **returns** the status of the event
 
+-----------------------------------------------------------------------------------------
+
 ##### event.setDTStamp(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)
 
 - `date` to set as the timestamp for the event. Expects either a [`dateTimeValue`](./dateTimeValue.md) object
 
+```
+In the case of an iCalendar object that specifies a "METHOD" property, this property specifies the date and time that
+the instance of the iCalendar object was created. In the case of an iCalendar object that doesn't specify a "METHOD" property, this
+property specifies the date and time that the information associated with the calendar component was last revised in the calendar store.
+```
+
 ##### event.getDTStamp() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)
 
 - **returns** a string representation of the timestamp for the event
+
+-----------------------------------------------------------------------------------------
 
 ##### event.setLastModified(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.3)
 
@@ -112,14 +147,19 @@ END:VEVENT
 
 - **returns** a string representation of the last modified date for the event
 
+-----------------------------------------------------------------------------------------
+
 ##### event.setSequence(sequence) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.4)
-Sequence number of the event. Should be monotonically increasing on changes on the fields: `DTSTART`, `DTEND`, `DUE`, `RDATE`, `RRULE`, `EXDATE`, `EXRULE`, and `STATUS`.
 
 - `sequence` to set as the sequence number of the event. Expects an INTEGER
+
+Sequence number of the event. Should be monotonically increasing on changes on the fields: `DTSTART`, `DTEND`, `DUE`, `RDATE`, `RRULE`, `EXDATE`, `EXRULE`, and `STATUS`.
 
 ##### event.getSequence() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.4)
 
 - **returns** the sequence number for the event
+
+-----------------------------------------------------------------------------------------
 
 ##### event.setCreated(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.1)
 
@@ -128,6 +168,8 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 ##### event.getCreated() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.1)
 
 - **returns** a string representation of the creation date for the event
+
+-----------------------------------------------------------------------------------------
 
 ##### event.setOrganizer(organizer) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.3)
 
@@ -145,6 +187,8 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 - **returns** an array of [`attendee`](./attendee.md) properties for the event
 
+-----------------------------------------------------------------------------------------
+
 ##### event.addRRULE(rrule) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.3)
 
 - `rrule` to be added to the event. Expects a STRING
@@ -153,14 +197,6 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 - **returns** an array of RRULE properties
 
-##### event.setTransparency(transparency) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
-
-- `transparency` to set for the event. Expects either TRANSPARENT or OPAQUE
-
-##### event.getTransparency() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
-
-- **returns** the string value set as the transparency of the event
-
 ##### event.setRecurrenceID(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
 
 - `date` to set as the recurrence id for the event. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
@@ -168,3 +204,13 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 ##### event.getRecurrenceID() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
 
 - **returns** the property set as the recurrence id for the event
+
+-----------------------------------------------------------------------------------------
+
+##### event.setTransparency(transparency) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
+
+- `transparency` to set for the event. Expects either TRANSPARENT or OPAQUE
+
+##### event.getTransparency() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
+
+- **returns** the string value set as the transparency of the event
