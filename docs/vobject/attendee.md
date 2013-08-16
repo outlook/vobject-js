@@ -20,6 +20,30 @@ ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;
 
 -----------------------------------------------------------------------------------------
 
+##### attendee.setCUTYPE(cutype) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.2.3)
+
+- `cutype` to set for the attendee. Expects a STRING. Ex: `INDIVIDUAL`, `GROUP`, `RESOURCE`, `ROOM`
+
+For the majority of cases, it should be set to `INDIVIDUAL`.
+
+```
+"INDIVIDUAL"   ; An individual
+"GROUP"        ; A group of individuals
+"RESOURCE"     ; A physical resource
+"ROOM"         ; A room resource
+"UNKNOWN"      ; Otherwise not known
+x-name         ; Experimental type
+iana-token)    ; Other IANA-registered
+               ; type
+; Default is INDIVIDUAL
+```
+
+##### attendee.getCUTYPE() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.2.3)
+
+- **returns** the cutype for the attendee
+
+-----------------------------------------------------------------------------------------
+
 ##### attendee.setRole(role) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.2.16)
 
 - `role` to set for the attendee. Expects a STRING. Ex: `REQ-PARTICIPANT`
