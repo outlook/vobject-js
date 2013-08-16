@@ -56,7 +56,7 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('setDTStart', function() {
-    it('should handle DateTime', function(done) {
+    it('should handle dateTimeValue', function(done) {
       var event = vobject.event();
       var dateTime = vobject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
@@ -70,7 +70,22 @@ describe('lib/vobject/event.js', function() {
       event.setDTStart(dateTime);
     });
 
-    it('should handle Date', function(done) {
+    it('should handle floating dateTimeValue', function(done) {
+      var event = vobject.event();
+      var dateTime = vobject.dateTimeValue();
+      dateTime.parseDateTime('2013-08-16T17:00:00-04:00');
+      dateTime.setTZID('America/New_York');
+
+      event.pushProperty = function(property) {
+        assert.equal(property.name, 'DTSTART');
+        assert.equal(property.getParameter('TZID'), 'America/New_York');
+        assert.equal(property.value, '20130816T170000');
+        done();
+      };
+      event.setDTStart(dateTime);
+    });
+
+    it('should handle dateValue', function(done) {
       var event = vobject.event();
       var date = vobject.dateValue();
       date.parseDate('1986-10-18');
@@ -98,7 +113,22 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('setDTEnd', function() {
-    it('should handle DateTime', function(done) {
+    it('should handle dateTimeValue', function(done) {
+      var event = vobject.event();
+      var dateTime = vobject.dateTimeValue();
+      dateTime.parseDateTime('2013-08-16T17:00:00-04:00');
+      dateTime.setTZID('America/New_York');
+
+      event.pushProperty = function(property) {
+        assert.equal(property.name, 'DTEND');
+        assert.equal(property.getParameter('TZID'), 'America/New_York');
+        assert.equal(property.value, '20130816T170000');
+        done();
+      };
+      event.setDTEnd(dateTime);
+    });
+
+    it('should handle floating dateTimeValue', function(done) {
       var event = vobject.event();
       var dateTime = vobject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
@@ -112,7 +142,7 @@ describe('lib/vobject/event.js', function() {
       event.setDTEnd(dateTime);
     });
 
-    it('should handle Date', function(done) {
+    it('should handle dateValue', function(done) {
       var event = vobject.event();
       var date = vobject.dateValue();
       date.parseDate('1986-10-18');

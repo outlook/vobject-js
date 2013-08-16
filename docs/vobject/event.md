@@ -70,7 +70,7 @@ Also known as the title for the event.
 
 ##### event.setDTStart(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
-- `date` to set as the start date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
+- `date` to set as the start date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object. If a TZID is specified for the dateTimeValue, the property will be set with a floating date format. See [`dateTimeValue.toICS()`](./dateTimeValue.md#datetimevaluetoics) for more information
 
 ##### event.getDTStart() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
@@ -78,7 +78,7 @@ Also known as the title for the event.
 
 ##### event.setDTEnd(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
-- `date` to set as the end date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
+- `date` to set as the end date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object.  If a TZID is specified for the dateTimeValue, the property will be set with a floating date format. See [`dateTimeValue.toICS()`](./dateTimeValue.md#datetimevaluetoics) for more information
 
 ##### event.getDTEnd() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 

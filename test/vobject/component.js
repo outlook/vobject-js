@@ -110,6 +110,13 @@ describe('lib/vobject/component.js', function() {
           'END:VCALENDAR'
         ]);
     });
+
+    it('should render multiple sub components', function() {
+      var component = VObject.component('PARENT');
+      component.pushComponent(VObject.component('CHILDCOMPONENT'));
+      component.pushComponent(VObject.component('CHILDCOMPONENT'));
+      assert.equal(component.toICSLines().length, 6);
+    });
   });
 
   describe('toICS', function() {
