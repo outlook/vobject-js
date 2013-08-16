@@ -198,6 +198,14 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 - **returns** an array of RRULE properties
 
+##### event.addEXDATE(exdate) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.1)
+
+- `exdate` to be added to the event. Expects a STRING
+
+##### event.getEXDATEs() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.1)
+
+- **returns** an array of EXDATE properties
+
 ##### event.setRecurrenceID(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
 
 - `date` to set as the recurrence id for the event. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object

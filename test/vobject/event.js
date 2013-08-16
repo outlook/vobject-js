@@ -349,6 +349,29 @@ describe('lib/vobject/event.js', function() {
     });
   });
 
+  describe('addEXDATE', function() {
+    it('should add EXDATE', function(done) {
+      var event = vobject.event();
+      event.pushProperty = function(property) {
+        assert.equal(property.name, 'EXDATE');
+        assert.equal(property.value, 'value');
+        done();
+      };
+      event.addEXDATE('value');
+    });
+  });
+
+  describe('getEXDATEs', function() {
+    it('should get all EXDATE', function() {
+      var event = vobject.event();
+      event.getProperties = function(name) {
+        assert.equal(name, 'EXDATE');
+        return 'value';
+      };
+      assert.equal(event.getEXDATEs(), 'value');
+    });
+  });
+
   describe('setRecurrenceID', function() {
     it('should set RECURRENCE-ID property with dateValue', function() {
       var event = vobject.event();
