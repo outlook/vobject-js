@@ -1,8 +1,10 @@
-# VObject.person(name)
+# vobject.person(name)
 
 This is a base structure of a person object. Person should only be instantiated by one of it's subclasses: [`attendee`](./attendee.md) or [`organizer`](./organizer.md)
 
 - `name` the name of the person object. Ex: `ATTENDEE`, `ORGANIZER`
+
+-----------------------------------------------------------------------------------------
 
 ##### person.setCUType(type) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.2.3)
 
@@ -12,6 +14,8 @@ This is a base structure of a person object. Person should only be instantiated 
 
 - **returns** the CUTYPE parameter of the person
 
+-----------------------------------------------------------------------------------------
+
 ##### person.setCN(cn) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.2.2)
 
 - `cn` to set for the person. Ex: Joey Dong
@@ -20,12 +24,16 @@ This is a base structure of a person object. Person should only be instantiated 
 
 - **returns** the CN parameter of the person
 
+-----------------------------------------------------------------------------------------
+
 ##### person.setMail(mail)
-The contact email address for the person.
 
 - `mail` to set for the person. Ex: joey@sunrise.am
 
-##### person.getMail()
 The contact email address for the person.
 
+##### person.getMail()
+
 - **returns** the mail value of the person
+
+The contact email address for the person.

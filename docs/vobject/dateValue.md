@@ -12,6 +12,8 @@ Example:
 
 which translates to July 14th, 2013
 
+-----------------------------------------------------------------------------------------
+
 ##### dateValue.type = 'dateValue'
 Type definition of the value. Useful when used in conjunction with [`properties`](./property.md).
 

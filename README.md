@@ -91,7 +91,7 @@ event.setDTStart(dateTime)
 
 ## API
 
-#### [vobject.property(name, value, parameters)](docs/vobject/property.md)
+### [vobject.property(name, value, parameters)](docs/vobject/property.md)
 ##### [property.setParameter(name, value)](docs/vobject/property.md#propertysetparameternamevalue)
 ##### [property.getParameter(name)](docs/vobject/property.md#propertygetparametername)
 
@@ -100,7 +100,7 @@ event.setDTStart(dateTime)
 
 ##### [property.toICS()](docs/vobject/property.md#propertytoics)
 
-#### [vobject.component(name)](docs/vobject/component.md)
+### [vobject.component(name)](docs/vobject/component.md)
 ##### [component.pushProperty(property)](docs/vobject/component.md#componentpushpropertyproperty)
 ##### [component.getProperties(name)](docs/vobject/component.md#componentgetpropertiesname)
 
@@ -112,11 +112,11 @@ event.setDTStart(dateTime)
 ##### [component.toICSLines()](docs/vobject/component.md#componenttoicslines)
 ##### [component.toICS()](docs/vobject/component.md#componenttoics)
 
-#### [vobject.calendar()](docs/vobject/calendar.md)
+### [vobject.calendar()](docs/vobject/calendar.md)
 ##### [calendar.setMethod(method)](docs/vobject/calendar.md#setmethodmethod)
 ##### [calendar.getMethod()](docs/vobject/calendar.md#getmethod)
 
-#### [vobject.event()](docs/vobject/event.md)
+### [vobject.event()](docs/vobject/event.md)
 ##### [event.setUID(uid)](docs/vobject/event.md#eventsetuiduid-rfc)
 ##### [event.getUID()](docs/vobject/event.md#eventgetuid-rfc)
 
@@ -165,7 +165,7 @@ event.setDTStart(dateTime)
 ##### [event.setTransparency(transparency)](docs/vobject/event.md#settransparencytransparency)
 ##### [event.getTransparency()](docs/vobject/event.md#eventgettransparency)
 
-#### [vobject.person(name)](docs/vobject/person.md)
+### [vobject.person(name)](docs/vobject/person.md)
 ##### [person.setCUType(type)](docs/vobject/person.md#personsetcutypetype-rfc)
 ##### [person.getCUType()](docs/vobject/person.md#persongetcutype-rfc)
 
@@ -175,7 +175,7 @@ event.setDTStart(dateTime)
 ##### [person.setMail(mail)](docs/vobject/person.md#personsetmailmail)
 ##### [person.getMail()](docs/vobject/person.md#persongetmail)
 
-#### [vobject.attendee()](docs/vobject/attendee.md)
+### [vobject.attendee()](docs/vobject/attendee.md)
 ##### [attendee.setRole(role)](docs/vobject/attendee.md#attendeesetrolerole-rfc)
 ##### [attendee.getRole()](docs/vobject/attendee.md#attendeegetrole-rfc)
 
@@ -185,14 +185,14 @@ event.setDTStart(dateTime)
 ##### [attendee.setRSVP(rsvp)](docs/vobject/attendee.md#attendeesetrsvprsvp-rfc)
 ##### [attendee.getRSVP()](docs/vobject/attendee.md#attendeegetrsvp-rfc)
 
-#### [vobject.organizer()](docs/vobject/organizer.md)
+### [vobject.organizer()](docs/vobject/organizer.md)
 
-#### [vobject.dateValue(dateString='')](docs/vobject/dateValue.md)
+### [vobject.dateValue(dateString='')](docs/vobject/dateValue.md)
 ##### [dateValue.type](docs/vobject/dateValue.md#datevaluetype--datevalue)
 ##### [dateValue.parseDate(dateString)](docs/vobject/dateValue.md#dateparsedatedatestring)
 ##### [dateValue.toICS()](docs/vobject/dateValue.md#datetoics)
 
-#### [vobject.dateTimeValue(dateTimeString='')](docs/vobject/dateTimeValue.md)
+### [vobject.dateTimeValue(dateTimeString='')](docs/vobject/dateTimeValue.md)
 ##### [dateTimeValue.type](docs/vobject/dateTimeValue.md#datetimevaluetype--datetimevalue)
 ##### [dateTimeValue.parseDateTime(dateTimeString)](docs/vobject/dateTimeValue.md#dateparsedatetimedatetimestring)
 ##### [dateTimeValue.parseTimestamp(timestamp)](docs/vobject/dateTimeValue.md#dateparsetimestamptimestamp)

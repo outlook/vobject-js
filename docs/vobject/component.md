@@ -1,8 +1,16 @@
-# VObject.component(name)
+# vobject.component(name)
 
 This is the base iCalendar object which consists of [`properties`](./property.md) and child `components`.
 
 - `name` of the component. Ex: `VCALENDAR`, `VEVENT`
+
+Usage:
+
+```js
+var component = vobject.component('VALARM');
+component.pushProperty(vobject.property('ACTION', 'DISPLAY'));
+component.toICS();
+```
 
 Example:
 
@@ -23,34 +31,43 @@ BEGIN:VCALENDAR
 END:VCALENDAR
 ```
 
-where `VCALENDAR` is an instance of a `VObject.component`, `PRODID, VERSION, CALSCALE` are properties of the component, and `VEVENT` is a sub-component.
+where `VCALENDAR` is an instance of a `vobject.component`, `PRODID, VERSION, CALSCALE` are properties of the component, and `VEVENT` is a sub-component.
 
-#### component.pushProperty(property)
+-----------------------------------------------------------------------------------------
+
+##### component.pushProperty(property)
 
 - `property` to push onto the component. Expects a [`property`](./property.md) object
 
-#### component.getProperties(name)
+##### component.getProperties(name)
 
 - `name` of the property to retrieve
 - **returns** an array of [`property`](./property.md) objects set for `name`, `[]` by default
 
-#### component.setProperty(property)
+-----------------------------------------------------------------------------------------
+
+##### component.setProperty(property)
 
 - `property` to set as a unique property for the component. Expects a [`property`](./property.md) object
 
-#### component.getProperty(name, index=0)
+##### component.getProperty(name, index=0)
 
 - `name` of the property to retrieve
 - `index` of the property in cases of multiple instances of the property
 - **returns** the [`property`](./property.md) object at the specified `name` and `index`, `undefined` by default
 
-#### component.pushComponent(childComponent)
+-----------------------------------------------------------------------------------------
+
+##### component.pushComponent(childComponent)
 
 - `childComponent` to be pushed onto the component. Expects a `component` object
 
-#### component.toICSLines()
+-----------------------------------------------------------------------------------------
+
+##### component.toICSLines()
+
 - **returns** rendered iCalendar representation of the component as an array of lines
 
-#### component.toICS()
+##### component.toICS()
 
 - **returns** rendered iCalendar string representation of the component

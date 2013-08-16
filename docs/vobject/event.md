@@ -129,8 +129,9 @@ Status values for a VEVENT
 
 ```
 In the case of an iCalendar object that specifies a "METHOD" property, this property specifies the date and time that
-the instance of the iCalendar object was created. In the case of an iCalendar object that doesn't specify a "METHOD" property, this
-property specifies the date and time that the information associated with the calendar component was last revised in the calendar store.
+the instance of the iCalendar object was created. In the case of an iCalendar object that doesn't specify a "METHOD"
+property, this property specifies the date and time that the information associated with the calendar component was
+last revised in the calendar store.
 ```
 
 ##### event.getDTStamp() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)

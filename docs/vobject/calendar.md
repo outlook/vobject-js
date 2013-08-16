@@ -1,14 +1,15 @@
 # vobject.calendar() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.7)
 
-This is a VCALENDAR component which is a subclass of the [`component`](./component.md) object.
+This is a VCALENDAR component which is a subclass of the [`component`](./component.md) object. The following properties are set by default:
+`VERSION = 2.0`, `CALSCALE = GREGORIAN`, `PRODID = -//Sunrise Atelier, Inc//EN`.
 
-Default properties:
+Usage:
 
-`VERSION = 2.0`
-
-`CALSCALE` = `GREGORIAN`
-
-`PRODID` = `-//Sunrise Atelier, Inc//EN`
+```js
+var calendar = vobject.calendar();
+calendar.setMethod('REQUEST');
+calendar.toICS();
+```
 
 Example:
 
@@ -21,7 +22,9 @@ METHOD:REQUEST
 END:VCALENDAR
 ```
 
-#### calendar.setMethod(method) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.7.2) [`RFC2`](http://tools.ietf.org/html/rfc2446#section-3.2)
+-----------------------------------------------------------------------------------------
+
+##### calendar.setMethod(method) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.7.2) [`RFC2`](http://tools.ietf.org/html/rfc2446#section-3.2)
 
 - `method` associated with this calendar object. Ex: `PUBLISH`, `REQUEST`, `REPLY`, `ADD`, `CANCEL`, `REFRESH`, `COUNTER`, `DECLINECOUNTER`
 
@@ -61,6 +64,6 @@ END:VCALENDAR
 +================+==================================================+
 ```
 
-#### calendar.getMethod()
+##### calendar.getMethod()
 
 - **returns** the `method` set for this calendar

@@ -1,4 +1,4 @@
-# vobject.dateTimeValue(dateTimeString='') [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.5)
+## vobject.dateTimeValue(dateTimeString='') [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.5)
 
 This is a DATE-TIME value type to represent a calendar date and time as a value of a [`property`](./property.md). The object methods closely resembles the [`dateValue`](./dateValue.md) object.
 
@@ -17,8 +17,12 @@ dateTimeValue.toICS(); // 20130813173340
 
 which translates to August 13th, 2013 - 9:33:40pm UTC
 
+-----------------------------------------------------------------------------------------
+
 ##### dateTimeValue.type = 'dateTimeValue'
 Type definition of the value. Useful when used in conjunction with [`properties`](./property.md).
+
+-----------------------------------------------------------------------------------------
 
 ##### dateTimeValue.parseDateTime(dateTimeString)
 
@@ -28,6 +32,8 @@ Type definition of the value. Useful when used in conjunction with [`properties`
 
 - `timestamp` to parse defined as seconds since UNIX epoch. Expects an INTEGER
 
+-----------------------------------------------------------------------------------------
+
 ##### dateTimeValue.setTZID(tzid)
 
 - `tzid` to set for the date time value. Expects a TZID string. Ex: `America/New_York`, `Europe/Paris`
@@ -35,6 +41,8 @@ Type definition of the value. Useful when used in conjunction with [`properties`
 ##### dateTimeValue.getTZID()
 
 - **returns** the tzid set for the date time value. Will only work if a time zone name is explicited defined. Date offsets (-04:00) do not have enough information to derive a time zone.
+
+-----------------------------------------------------------------------------------------
 
 ##### dateTimeValue.toICS()
 
