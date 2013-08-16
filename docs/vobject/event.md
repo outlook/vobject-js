@@ -1,6 +1,17 @@
-# VObject.event() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.6.1)
+# vobject.event() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.6.1)
 
-This is a VEVENT component which is an instance of a [`component`](./component.md) object.
+This is a VEVENT component which is a subclas of the [`component`](./component.md) object.
+
+Usage:
+
+```js
+var event = vobject.event();
+event.setDTStart(vobject.dateTimeValue('2013-08-14T19:00:00-04:00'));
+event.setDTEnd(vobject.dateTimeValue('2013-08-14T20:00:00-04:00'));
+event.setUID('6ltoah87095h151231fqugp2ombm8@sunrise.am');
+event.setSummary('Night Photowalk');
+event.toICS();
+```
 
 Example:
 
