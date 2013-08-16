@@ -349,6 +349,33 @@ describe('lib/vobject/event.js', function() {
     });
   });
 
+  describe('setRecurrenceID', function() {
+    it('should set RECURRENCE-ID property with dateValue', function() {
+      var event = VObject.event();
+      event.setRecurrenceID(VObject.dateValue('2013-08-16'));
+      assert.equal(event.properties['RECURRENCE-ID'][0].getParameter('VALUE'), 'DATE');
+      assert.equal(event.properties['RECURRENCE-ID'][0].value, '20130816');
+    });
+
+    it('should set RECURRENCE-ID property with dateTimeValue', function() {
+      var dateTimeValue = VObject.dateTimeValue('2013-08-13 21:33:40 -04:00');
+      dateTimeValue.setTZID('America/New_York');
+
+      var event = VObject.event();
+      event.setRecurrenceID(dateTimeValue);
+      assert.equal(event.properties['RECURRENCE-ID'][0].getParameter('TZID'), 'America/New_York');
+      assert.equal(event.properties['RECURRENCE-ID'][0].value, '20130813T213340');
+    });
+  });
+
+  describe('getRecurrenceID', function() {
+    it('should get RECURRENCE-ID property', function() {
+      var event = VObject.event();
+      event.properties['RECURRENCE-ID'] = [VObject.property('RECURRENCE-ID', 'VALUE')];
+      assert.equal(event.getRecurrenceID().value, 'VALUE');
+    });
+  });
+
   describe('setTransparency', function() {
     it('should set TRANSP property', function() {
       var event = VObject.event();

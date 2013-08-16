@@ -36,11 +36,39 @@ describe('lib/vobject/dateTimeValue.js', function() {
     });
   });
 
+  describe('setTZID', function() {
+    it('should save tzid string', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.setTZID('someTZID');
+      assert.equal(dateTimeValue.tzid, 'someTZID');
+    });
+  });
+
+  describe('getTZID', function() {
+    it('should get tzid string', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.tzid = 'someTZID';
+      assert.equal(dateTimeValue.getTZID(), 'someTZID');
+    });
+  });
+
   describe('toICS', function() {
     it('should print ICS format', function() {
       var dateTimeValue = vobject.dateTimeValue();
       dateTimeValue.dateTime = moment('2013-08-13T17:33:40-04:00', 'YYYY-MM-DDTHH:mm:ssZ');
       assert.equal(dateTimeValue.toICS(), '20130813T213340Z');
+    });
+
+    it('should print floating ICS format when TZID is specified', function() {
+      var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
+      dateTimeValue.setTZID('Europe/Paris');
+      assert.equal(dateTimeValue.toICS(), '20130813T233340');
+    });
+
+    it('should include workaround for Etc/GMT timezone', function() {
+      var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
+      dateTimeValue.setTZID('Etc/GMT');
+      assert.equal(dateTimeValue.toICS(), '20130813T213340');
     });
   });
 });

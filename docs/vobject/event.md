@@ -47,7 +47,7 @@ END:VEVENT
 
 ##### event.setDTStart(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
-- `date` to set as the start date. Expects either a [`date`](./date.md) or [`date time`](./date_time.md) object
+- `date` to set as the start date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
 
 ##### event.getDTStart() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
@@ -55,7 +55,7 @@ END:VEVENT
 
 ##### event.setDTEnd(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
-- `date` to set as the end date. Expects either a [`date`](./date.md) or [`date time`](./date_time.md) object
+- `date` to set as the end date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
 
 ##### event.getDTEnd() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
@@ -87,7 +87,7 @@ END:VEVENT
 
 ##### event.setDTStamp(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)
 
-- `date` to set as the timestamp for the event. Expects either a [`date time`](./date_time.md) object
+- `date` to set as the timestamp for the event. Expects either a [`dateTimeValue`](./dateTimeValue.md) object
 
 ##### event.getDTStamp() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)
 
@@ -95,7 +95,7 @@ END:VEVENT
 
 ##### event.setLastModified(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.3)
 
-- `date` to set as the last modified date for the event. Expects a [`date time`](./date_time.md) object
+- `date` to set as the last modified date for the event. Expects a [`dateTimeValue`](./dateTimeValue.md) object
 
 ##### event.getLastModified() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.3)
 
@@ -112,7 +112,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.setCreated(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.1)
 
-- `date` to set as the creation date. Expects either a [`date`](./date.md) or [`date time`](./date_time.md) object
+- `date` to set as the creation date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
 
 ##### event.getCreated() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.1)
 
@@ -149,3 +149,11 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 ##### event.getTransparency() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
 
 - **returns** the string value set as the transparency of the event
+
+##### event.setRecurrenceID(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
+
+- `date` to set as the recurrence id for the event. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
+
+##### event.getRecurrenceID() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
+
+- **returns** the property set as the recurrence id for the event

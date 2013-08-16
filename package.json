@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "moment": "2.1.x",
+    "moment-timezone": "0.0.2",
     "underscore": "1.5.x"
   },
   "devDependencies": {
