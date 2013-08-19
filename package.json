@@ -1,6 +1,20 @@
 {
   "name": "vobject",
-  "version": "0.0.1",
+  "description": "iCalendar VObject Manipulation in NodeJS",
+  "keywords": [
+    "ical",
+    "icalendar",
+    "vobject",
+    "caldav"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sunrise/vobject-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sunrise/vobject-js/issues"
+  },
+  "version": "0.0.5",
   "dependencies": {
     "moment": "2.1.x",
     "moment-timezone": "0.0.2",
