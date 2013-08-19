@@ -74,7 +74,7 @@ Also known as the title for the event.
 
 ##### event.getDTStart() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
-- **returns** a string representation of the start date for the event
+- **returns** the property set as the start date for the event
 
 ##### event.setDTEnd(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
@@ -82,7 +82,7 @@ Also known as the title for the event.
 
 ##### event.getDTEnd() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
-- **returns** a string representation of the end date for the event
+- **returns** the property set as the end date for the event
 
 -----------------------------------------------------------------------------------------
 

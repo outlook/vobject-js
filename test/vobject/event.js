@@ -56,115 +56,74 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('setDTStart', function() {
-    it('should handle dateTimeValue', function(done) {
+    it('should handle dateTimeValue', function() {
       var event = vobject.event();
-      var dateTime = vobject.dateTimeValue();
-      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
-
-      event.pushProperty = function(property) {
-        assert.equal(property.name, 'DTSTART');
-        assert.equal(property.getParameter('VALUE'), undefined);
-        assert.equal(property.value, '19861018T110000Z');
-        done();
-      };
-      event.setDTStart(dateTime);
+      event.setDTStart(vobject.dateTimeValue('1986-10-18T13:00:00+02:00'));
+      assert.equal(event.properties['DTSTART'][0].getParameter('VALUE'), undefined);
+      assert.equal(event.properties['DTSTART'][0].getParameter('TZID'), undefined);
+      assert.equal(event.properties['DTSTART'][0].value, '19861018T110000Z');
     });
 
-    it('should handle floating dateTimeValue', function(done) {
-      var event = vobject.event();
-      var dateTime = vobject.dateTimeValue();
-      dateTime.parseDateTime('2013-08-16T17:00:00-04:00');
+    it('should handle floating dateTimeValue', function() {
+      var dateTime = vobject.dateTimeValue('2013-08-16T17:00:00-04:00');
       dateTime.setTZID('America/New_York');
-
-      event.pushProperty = function(property) {
-        assert.equal(property.name, 'DTSTART');
-        assert.equal(property.getParameter('TZID'), 'America/New_York');
-        assert.equal(property.value, '20130816T170000');
-        done();
-      };
+      var event = vobject.event();
       event.setDTStart(dateTime);
+      assert.equal(event.properties['DTSTART'][0].getParameter('VALUE'), undefined);
+      assert.equal(event.properties['DTSTART'][0].getParameter('TZID'), 'America/New_York');
+      assert.equal(event.properties['DTSTART'][0].value, '20130816T170000');
     });
 
-    it('should handle dateValue', function(done) {
+    it('should handle dateValue', function() {
       var event = vobject.event();
-      var date = vobject.dateValue();
-      date.parseDate('1986-10-18');
-
-      event.pushProperty = function(property) {
-        assert.equal(property.name, 'DTSTART');
-        assert.equal(property.getParameter('VALUE'), 'DATE');
-        assert.equal(property.value, '19861018');
-        done();
-      };
-      event.setDTStart(date);
+      event.setDTStart(vobject.dateValue('1986-10-18'));
+      assert.equal(event.properties['DTSTART'][0].getParameter('VALUE'), 'DATE');
+      assert.equal(event.properties['DTSTART'][0].getParameter('TZID'), undefined);
+      assert.equal(event.properties['DTSTART'][0].value, '19861018');
     });
   });
 
   describe('getDTStart', function() {
-    it('should get DTSTART', function() {
+    it('should get DTSTART property', function() {
       var event = vobject.event();
-      event.getProperty = function(name) {
-        assert.equal(name, 'DTSTART');
-        return vobject.property('DTSTART', 'value');
-      };
-
-      assert.equal(event.getDTStart(), 'value');
+      event.properties['DTSTART'] = [vobject.property('DTSTART', 'VALUE')];
+      assert.equal(event.getDTStart().value, 'VALUE');
     });
   });
 
   describe('setDTEnd', function() {
-    it('should handle dateTimeValue', function(done) {
+    it('should handle dateTimeValue', function() {
       var event = vobject.event();
-      var dateTime = vobject.dateTimeValue();
-      dateTime.parseDateTime('2013-08-16T17:00:00-04:00');
+      event.setDTEnd(vobject.dateTimeValue('1986-10-18T13:00:00+02:00'));
+      assert.equal(event.properties['DTEND'][0].getParameter('VALUE'), undefined);
+      assert.equal(event.properties['DTEND'][0].getParameter('TZID'), undefined);
+      assert.equal(event.properties['DTEND'][0].value, '19861018T110000Z');
+    });
+
+    it('should handle floating dateTimeValue', function() {
+      var dateTime = vobject.dateTimeValue('2013-08-16T17:00:00-04:00');
       dateTime.setTZID('America/New_York');
-
-      event.pushProperty = function(property) {
-        assert.equal(property.name, 'DTEND');
-        assert.equal(property.getParameter('TZID'), 'America/New_York');
-        assert.equal(property.value, '20130816T170000');
-        done();
-      };
+      var event = vobject.event();
       event.setDTEnd(dateTime);
+      assert.equal(event.properties['DTEND'][0].getParameter('VALUE'), undefined);
+      assert.equal(event.properties['DTEND'][0].getParameter('TZID'), 'America/New_York');
+      assert.equal(event.properties['DTEND'][0].value, '20130816T170000');
     });
 
-    it('should handle floating dateTimeValue', function(done) {
+    it('should handle dateValue', function() {
       var event = vobject.event();
-      var dateTime = vobject.dateTimeValue();
-      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
-
-      event.pushProperty = function(property) {
-        assert.equal(property.name, 'DTEND');
-        assert.equal(property.getParameter('VALUE'), undefined);
-        assert.equal(property.value, '19861018T110000Z');
-        done();
-      };
-      event.setDTEnd(dateTime);
-    });
-
-    it('should handle dateValue', function(done) {
-      var event = vobject.event();
-      var date = vobject.dateValue();
-      date.parseDate('1986-10-18');
-
-      event.pushProperty = function(property) {
-        assert.equal(property.name, 'DTEND');
-        assert.equal(property.getParameter('VALUE'), 'DATE');
-        assert.equal(property.value, '19861018');
-        done();
-      };
-      event.setDTEnd(date);
+      event.setDTEnd(vobject.dateValue('1986-10-18'));
+      assert.equal(event.properties['DTEND'][0].getParameter('VALUE'), 'DATE');
+      assert.equal(event.properties['DTEND'][0].getParameter('TZID'), undefined);
+      assert.equal(event.properties['DTEND'][0].value, '19861018');
     });
   });
 
   describe('getDTEnd', function() {
-    it('should get DTEND', function() {
+    it('should get DTEND property', function() {
       var event = vobject.event();
-      event.getProperty = function(name) {
-        assert.equal(name, 'DTEND');
-        return vobject.property('DTEND', 'value');
-      };
-      assert.equal(event.getDTEnd(), 'value');
+      event.properties['DTEND'] = [vobject.property('DTEND', 'VALUE')];
+      assert.equal(event.getDTEnd().value, 'VALUE');
     });
   });
 
