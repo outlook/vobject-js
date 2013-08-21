@@ -52,7 +52,7 @@ This property defines the persistent, globally unique identifier for the calenda
 
 ##### event.getUID() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.7)
 
-- **returns** the UID for the event
+- **returns** the UID for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -64,7 +64,7 @@ Also known as the title for the event.
 
 ##### event.getSummary() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.12)
 
-- **returns** the summary for the event
+- **returns** the summary for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ Also known as the title for the event.
 
 ##### event.getDTStart() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
-- **returns** the property set as the start date for the event
+- **returns** the property set as the start date for the event or `undefined` by default
 
 ##### event.setDTEnd(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
@@ -82,7 +82,7 @@ Also known as the title for the event.
 
 ##### event.getDTEnd() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
-- **returns** the property set as the end date for the event
+- **returns** the property set as the end date for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -92,7 +92,7 @@ Also known as the title for the event.
 
 ##### event.getDescription() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.5)
 
-- **returns** the description for the event
+- **returns** the description for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ Also known as the title for the event.
 
 ##### event.getLocation() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.7)
 
-- **returns** the location for the event
+- **returns** the location for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -119,7 +119,7 @@ Status values for a VEVENT
 
 ##### event.getStatus() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.11)
 
-- **returns** the status of the event
+- **returns** the status of the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -136,7 +136,7 @@ last revised in the calendar store.
 
 ##### event.getDTStamp() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.2)
 
-- **returns** a string representation of the timestamp for the event
+- **returns** a string representation of the timestamp for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -146,7 +146,7 @@ last revised in the calendar store.
 
 ##### event.getLastModified() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.3)
 
-- **returns** a string representation of the last modified date for the event
+- **returns** a string representation of the last modified date for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -158,7 +158,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getSequence() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.4)
 
-- **returns** the sequence number for the event
+- **returns** the sequence number for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -168,7 +168,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getCreated() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.7.1)
 
-- **returns** a string representation of the creation date for the event
+- **returns** a string representation of the creation date for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -178,7 +178,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getOrganizer() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.3)
 
-- **returns** the [`organizer`](./organizer.md) property for the event
+- **returns** the [`organizer`](./organizer.md) property for the event or `undefined` by default
 
 ##### event.addAttendee(attendee) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.1)
 
@@ -186,7 +186,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getAttendees() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.1)
 
-- **returns** an array of [`attendee`](./attendee.md) properties for the event
+- **returns** an array of [`attendee`](./attendee.md) properties for the event or `[]` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -196,7 +196,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getRRULEs() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.3)
 
-- **returns** an array of RRULE properties
+- **returns** an array of RRULE properties or `[]` by default
 
 ##### event.addEXDATE(exdate) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.1)
 
@@ -204,7 +204,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getEXDATEs() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.1)
 
-- **returns** an array of EXDATE properties
+- **returns** an array of EXDATE properties or `[]` by default
 
 ##### event.setRecurrenceID(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
 
@@ -212,7 +212,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getRecurrenceID() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
 
-- **returns** the property set as the recurrence id for the event
+- **returns** the property set as the recurrence id for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -222,4 +222,4 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getTransparency() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.7)
 
-- **returns** the string value set as the transparency of the event
+- **returns** the string value set as the transparency of the event or `undefined` by default

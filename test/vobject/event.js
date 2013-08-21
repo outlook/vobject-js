@@ -1,17 +1,20 @@
 var assert = require('assert');
 var vobject = require('../../index');
 
+var event;
+beforeEach(function() {
+  event = vobject.event();
+});
+
 describe('lib/vobject/event.js', function() {
   describe('initialize', function() {
     it('should set name to VEVENT', function() {
-      var event = vobject.event();
       assert.equal(event.name, 'VEVENT');
     });
   });
 
   describe('setUID', function() {
     it('should set UID', function(done) {
-      var event = vobject.event();
       event.setProperty = function(property) {
         assert.equal(property.name, 'UID');
         assert.equal(property.value, 'value');
@@ -22,8 +25,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getUID', function() {
+    it('should return undefined by default', function() {
+      assert.equal(event.getUID(), undefined);
+    });
+
     it('should get UID', function() {
-      var event = vobject.event();
       event.setUID('value');
       assert.equal(event.getUID(), 'value');
     });
@@ -31,7 +37,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setSummary', function() {
     it('should set SUMMARY', function(done) {
-      var event = vobject.event();
       event.setProperty = function(property) {
         assert.equal(property.name, 'SUMMARY');
         assert.equal(property.value, 'value');
@@ -41,15 +46,17 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should escape special characters', function() {
-      var event = vobject.event();
       event.setSummary('\n;,');
       assert.equal(event.getSummary(), '\\n\\;\\,');
     });
   });
 
   describe('getSummary', function() {
+    it('should return undefined by default', function() {
+      assert.equal(event.getSummary(), undefined);
+    });
+
     it('should get SUMMARY', function() {
-      var event = vobject.event();
       event.setSummary('value');
       assert.equal(event.getSummary(), 'value');
     });
@@ -57,7 +64,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setDTStart', function() {
     it('should handle dateTimeValue', function() {
-      var event = vobject.event();
       event.setDTStart(vobject.dateTimeValue('1986-10-18T13:00:00+02:00'));
       assert.equal(event.properties['DTSTART'][0].getParameter('VALUE'), undefined);
       assert.equal(event.properties['DTSTART'][0].getParameter('TZID'), undefined);
@@ -67,7 +73,6 @@ describe('lib/vobject/event.js', function() {
     it('should handle floating dateTimeValue', function() {
       var dateTime = vobject.dateTimeValue('2013-08-16T17:00:00-04:00');
       dateTime.setTZID('America/New_York');
-      var event = vobject.event();
       event.setDTStart(dateTime);
       assert.equal(event.properties['DTSTART'][0].getParameter('VALUE'), undefined);
       assert.equal(event.properties['DTSTART'][0].getParameter('TZID'), 'America/New_York');
@@ -75,7 +80,6 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should handle dateValue', function() {
-      var event = vobject.event();
       event.setDTStart(vobject.dateValue('1986-10-18'));
       assert.equal(event.properties['DTSTART'][0].getParameter('VALUE'), 'DATE');
       assert.equal(event.properties['DTSTART'][0].getParameter('TZID'), undefined);
@@ -84,8 +88,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getDTStart', function() {
+    it('should return undefined by default', function() {
+      assert.equal(event.getDTStart(), undefined);
+    });
+
     it('should get DTSTART property', function() {
-      var event = vobject.event();
       event.properties['DTSTART'] = [vobject.property('DTSTART', 'VALUE')];
       assert.equal(event.getDTStart().value, 'VALUE');
     });
@@ -93,7 +100,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setDTEnd', function() {
     it('should handle dateTimeValue', function() {
-      var event = vobject.event();
       event.setDTEnd(vobject.dateTimeValue('1986-10-18T13:00:00+02:00'));
       assert.equal(event.properties['DTEND'][0].getParameter('VALUE'), undefined);
       assert.equal(event.properties['DTEND'][0].getParameter('TZID'), undefined);
@@ -103,7 +109,6 @@ describe('lib/vobject/event.js', function() {
     it('should handle floating dateTimeValue', function() {
       var dateTime = vobject.dateTimeValue('2013-08-16T17:00:00-04:00');
       dateTime.setTZID('America/New_York');
-      var event = vobject.event();
       event.setDTEnd(dateTime);
       assert.equal(event.properties['DTEND'][0].getParameter('VALUE'), undefined);
       assert.equal(event.properties['DTEND'][0].getParameter('TZID'), 'America/New_York');
@@ -111,7 +116,6 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should handle dateValue', function() {
-      var event = vobject.event();
       event.setDTEnd(vobject.dateValue('1986-10-18'));
       assert.equal(event.properties['DTEND'][0].getParameter('VALUE'), 'DATE');
       assert.equal(event.properties['DTEND'][0].getParameter('TZID'), undefined);
@@ -120,8 +124,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getDTEnd', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getDTEnd(), undefined);
+    });
+
     it('should get DTEND property', function() {
-      var event = vobject.event();
       event.properties['DTEND'] = [vobject.property('DTEND', 'VALUE')];
       assert.equal(event.getDTEnd().value, 'VALUE');
     });
@@ -129,7 +136,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setDescription', function() {
     it('should set DESCRIPTION', function(done) {
-      var event = vobject.event();
       event.setProperty = function(property) {
         assert.equal(property.name, 'DESCRIPTION');
         assert.equal(property.value, 'value');
@@ -139,15 +145,17 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should escape special characters', function() {
-      var event = vobject.event();
       event.setDescription('\n;,');
       assert.equal(event.getDescription(), '\\n\\;\\,');
     });
   });
 
   describe('getDescription', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getDescription(), undefined);
+    });
+
     it('should get DESCRIPTION', function() {
-      var event = vobject.event();
       event.setDescription('value');
       assert.equal(event.getDescription(), 'value');
     });
@@ -155,7 +163,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setLocation', function() {
     it('should set LOCATION', function(done) {
-      var event = vobject.event();
       event.setProperty = function(property) {
         assert.equal(property.name, 'LOCATION');
         assert.equal(property.value, 'value');
@@ -166,8 +173,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getLocation', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getLocation(), undefined);
+    });
+
     it('should get LOCATION', function() {
-      var event = vobject.event();
       event.setLocation('value');
       assert.equal(event.getLocation(), 'value');
     });
@@ -175,7 +185,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setStatus', function() {
     it('should set STATUS', function(done) {
-      var event = vobject.event();
       event.setProperty = function(property) {
         assert.equal(property.name, 'STATUS');
         assert.equal(property.value, 'VALUE');
@@ -186,8 +195,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getStatus', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getStatus(), undefined);
+    });
+
     it('should get STATUS', function() {
-      var event = vobject.event();
       event.setStatus('value');
       assert.equal(event.getStatus(), 'VALUE');
     });
@@ -195,7 +207,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setDTStamp', function() {
     it('should (ONLY) handle DateTime', function() {
-      var event = vobject.event();
       var dateTime = vobject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStamp(dateTime);
@@ -204,8 +215,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getDTStamp', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getDTStamp(), undefined);
+    });
+
     it('should get DTSTAMP', function() {
-      var event = vobject.event();
       var dateTime = vobject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStamp(dateTime);
@@ -215,7 +229,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setLastModified', function() {
     it('should set LAST-MODIFIED', function() {
-      var event = vobject.event();
       var dateTimeValue = vobject.dateTimeValue('1986-10-18T13:00:00+02:00');
       event.setLastModified(dateTimeValue);
       assert.equal(event.properties['LAST-MODIFIED'][0].value, dateTimeValue.toICS());
@@ -223,8 +236,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getLastModified', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getLastModified(), undefined);
+    });
+
     it('should get LAST-MODIFIED', function() {
-      var event = vobject.event();
       var dateTimeValue = vobject.dateTimeValue('1986-10-18T13:00:00+02:00');
       event.properties['LAST-MODIFIED'] = [vobject.property('LAST-MODIFIED', dateTimeValue.toICS())];
       assert.equal(event.getLastModified(), dateTimeValue.toICS());
@@ -233,7 +249,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setSequence', function() {
     it('should set SEQUENCE', function(done) {
-      var event = vobject.event();
       event.setProperty = function(property) {
         assert.equal(property.name, 'SEQUENCE');
         assert.equal(property.value, 'value');
@@ -244,8 +259,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getSequence', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getSequence(), undefined);
+    });
+
     it('should get SEQUENCE', function() {
-      var event = vobject.event();
       event.setSequence(11);
       assert.equal(event.getSequence(), 11);
     });
@@ -253,7 +271,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setCreated', function() {
     it('should set CREATED', function() {
-      var event = vobject.event();
       var dateTime = vobject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setCreated(dateTime);
@@ -262,8 +279,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getCreated', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getCreated(), undefined);
+    });
+
     it('should get CREATED', function() {
-      var event = vobject.event();
       var dateTime = vobject.dateTimeValue();
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setCreated(dateTime);
@@ -273,7 +293,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setOrganizer', function() {
     it('should set ORGANIZER', function(done) {
-      var event = vobject.event();
       event.setProperty = function(property) {
         assert.equal(property, 'value');
         done();
@@ -283,8 +302,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getOrganizer', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getOrganizer(), undefined);
+    });
+
     it('should get ORGANIZER', function() {
-      var event = vobject.event();
       event.getProperty = function(name) {
         assert.equal(name, 'ORGANIZER');
         return 'value';
@@ -295,7 +317,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('addAttendee', function() {
     it('should add ATTENDEE', function(done) {
-      var event = vobject.event();
       event.pushProperty = function(property) {
         assert.equal(property, 'value');
         done();
@@ -305,8 +326,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getAttendees', function() {
+    it('should be [] by default', function() {
+      assert.deepEqual(event.getAttendees(), []);
+    });
+
     it('should get all ATTENDEE', function() {
-      var event = vobject.event();
       event.getProperties = function(name) {
         assert.equal(name, 'ATTENDEE');
         return 'value';
@@ -317,7 +341,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('addRRULE', function() {
     it('should add RRULE', function(done) {
-      var event = vobject.event();
       event.pushProperty = function(property) {
         assert.equal(property.name, 'RRULE');
         assert.equal(property.value, 'value');
@@ -328,8 +351,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getRRULEs', function() {
+    it('should be [] by default', function() {
+      assert.deepEqual(event.getRRULEs(), []);
+    });
+
     it('should get all RRULE', function() {
-      var event = vobject.event();
       event.getProperties = function(name) {
         assert.equal(name, 'RRULE');
         return 'value';
@@ -340,7 +366,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('addEXDATE', function() {
     it('should add EXDATE', function(done) {
-      var event = vobject.event();
       event.pushProperty = function(property) {
         assert.equal(property.name, 'EXDATE');
         assert.equal(property.value, 'value');
@@ -351,8 +376,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getEXDATEs', function() {
+    it('should be [] by default', function() {
+      assert.deepEqual(event.getEXDATEs(), []);
+    });
+
     it('should get all EXDATE', function() {
-      var event = vobject.event();
       event.getProperties = function(name) {
         assert.equal(name, 'EXDATE');
         return 'value';
@@ -363,7 +391,6 @@ describe('lib/vobject/event.js', function() {
 
   describe('setRecurrenceID', function() {
     it('should set RECURRENCE-ID property with dateValue', function() {
-      var event = vobject.event();
       event.setRecurrenceID(vobject.dateValue('2013-08-16'));
       assert.equal(event.properties['RECURRENCE-ID'][0].getParameter('VALUE'), 'DATE');
       assert.equal(event.properties['RECURRENCE-ID'][0].value, '20130816');
@@ -373,7 +400,6 @@ describe('lib/vobject/event.js', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13 21:33:40 -04:00');
       dateTimeValue.setTZID('America/New_York');
 
-      var event = vobject.event();
       event.setRecurrenceID(dateTimeValue);
       assert.equal(event.properties['RECURRENCE-ID'][0].getParameter('TZID'), 'America/New_York');
       assert.equal(event.properties['RECURRENCE-ID'][0].value, '20130813T213340');
@@ -381,8 +407,11 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('getRecurrenceID', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getRecurrenceID(), undefined);
+    });
+
     it('should get RECURRENCE-ID property', function() {
-      var event = vobject.event();
       event.properties['RECURRENCE-ID'] = [vobject.property('RECURRENCE-ID', 'VALUE')];
       assert.equal(event.getRecurrenceID().value, 'VALUE');
     });
@@ -390,15 +419,17 @@ describe('lib/vobject/event.js', function() {
 
   describe('setTransparency', function() {
     it('should set TRANSP property', function() {
-      var event = vobject.event();
       event.setTransparency('transparent');
       assert.equal(event.properties['TRANSP'][0].value, 'TRANSPARENT');
     });
   });
 
   describe('getTransparency', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getTransparency(), undefined);
+    });
+
     it('should get TRANSP property value', function() {
-      var event = vobject.event();
       event.properties['TRANSP'] = [vobject.property('TRANSP', 'TRANSPARENT')];
       assert.equal(event.getTransparency(), 'TRANSPARENT');
     });
