@@ -2,6 +2,10 @@
 
 VObject-JS allows you to easily manipulate iCalendar objects using JavaScript. Implements [rfc5545](http://tools.ietf.org/html/rfc5545). Inspired by [node-icalendar](https://github.com/tritech/node-icalendar), [ical.js](https://github.com/mozilla-comm/ical.js/) and [sabre-vobject](https://github.com/fruux/sabre-vobject).
 
+## Test
+
+[ ![Codeship Status for sunrise/vobject-js](https://www.codeship.io/projects/3d19f660-ee41-0130-a06d-5a4a20d5c6cf/status?branch=master)](https://www.codeship.io/projects/6175)
+
 ## Installation
 
 ```
