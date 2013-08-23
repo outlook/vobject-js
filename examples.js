@@ -13,7 +13,7 @@ dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
 event.setDTStart(dateTime);
 
 // RRules
-event.addRRule('FREQ=DAILY;COUNT=10');
+event.addRRULE('FREQ=DAILY;COUNT=10');
 
 // Attendees
 var attendee = VObject.attendee();
