@@ -38,6 +38,10 @@ Set the duration of the value. Valid options are:
 - `minute` which can be `0`, a positive integer, or `undefined`
 - `second` which can be `0`, a positive integer, or `undefined`
 
+##### durationValue.getDurationSeconds()
+
+- **returns** Integer seconds representation of the duration value
+
 -----------------------------------------------------------------------------------------
 
 ##### durationValue.parseICS()

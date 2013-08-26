@@ -49,6 +49,28 @@ describe('lib/vobject/durationValue.js', function() {
     });
   });
 
+  describe('getDurationSeconds', function() {
+    it('should return negative seconds with one unit set', function() {
+      var durationValue = vobject.durationValue({
+        value: -1,
+        hour: 2
+      });
+      assert.strictEqual(durationValue.getDurationSeconds(), -7200);
+    });
+
+    it('should return seconds with every unit set', function() {
+      var durationValue = vobject.durationValue({
+        value: 1,
+        day: 2,
+        hour: 4,
+        minute: 5,
+        second: 10
+      });
+
+      assert.strictEqual(durationValue.getDurationSeconds(), 187510);
+    });
+  });
+
   describe('parseICS', function() {
     it('should parse duration value', function() {
       var durationValue = vobject.durationValue();
