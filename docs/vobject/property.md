@@ -51,6 +51,10 @@ ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;
 
 -----------------------------------------------------------------------------------------
 
+##### property.parseICS(ics)
+
+- `ics` string to be parsed. Ex: `ATTENDEE;CUTYPE=INDIVIDUAL:mailto:joeydong@whitepixel.us`
+
 ##### property.toICS()
 
 - **returns** rendered iCalendar string representation of the property, `''` by default

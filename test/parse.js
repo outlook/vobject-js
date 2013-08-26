@@ -40,27 +40,4 @@ describe('lib/parse.js', function() {
       assert.equal(parse.unescape(ics), 'this,that');
     });
   });
-
-  describe('parseObject', function() {
-    it('should fallback to plain key/val object', function() {
-      assert.deepEqual(parse.parseObject('key', 'val'), {
-        key: 'key',
-        val: 'val'
-      });
-    });
-  });
-
-  describe('treeICS', function() {
-
-  });
-
-  describe('parseICS', function() {
-    it('should call self.treeICS', function(done) {
-      parse.treeICS = function(ics) {
-        assert.equal(ics, 'ics');
-        done();
-      };
-      parse.parseICS('ics');
-    });
-  });
 });
