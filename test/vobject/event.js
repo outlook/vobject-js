@@ -447,9 +447,27 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.getRecurrenceID(), undefined);
     });
 
-    it('should get RECURRENCE-ID property', function() {
-      event.properties['RECURRENCE-ID'] = [vobject.property('RECURRENCE-ID', 'VALUE')];
-      assert.equal(event.getRecurrenceID().value, 'VALUE');
+    it('should get RECURRENCE-ID dateValue', function() {
+      var property = vobject.property('RECURRENCE-ID', '20130826');
+      property.setParameter('VALUE', 'DATE');
+      event.properties['RECURRENCE-ID'] = [property];
+      assert.equal(event.getRecurrenceID().type, 'dateValue');
+      assert.equal(event.getRecurrenceID().toICS(), '20130826');
+    });
+
+    it('should get RECURRENCE-ID dateTimeValue in absolute time', function() {
+      event.properties['RECURRENCE-ID'] = [vobject.property('RECURRENCE-ID', '20130813T173000Z')];
+      assert.equal(event.getRecurrenceID().type, 'dateTimeValue');
+      assert.equal(event.getRecurrenceID().toDateTime(), '2013-08-13T17:30:00+00:00');
+    });
+
+    it('should get RECURRENCE-ID dateTimeValue in floating time', function() {
+      var property = vobject.property('RECURRENCE-ID', '20130813T173000');
+      property.setParameter('TZID', 'America/New_York');
+      event.properties['RECURRENCE-ID'] = [property];
+      assert.equal(event.getRecurrenceID().type, 'dateTimeValue');
+      assert.equal(event.getRecurrenceID().getTZID(), 'America/New_York');
+      assert.equal(event.getRecurrenceID().toDateTime(), '2013-08-13T21:30:00+00:00');
     });
   });
 

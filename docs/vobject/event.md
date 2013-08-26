@@ -212,7 +212,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.getRecurrenceID() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.4.4)
 
-- **returns** the property set as the recurrence id for the event or `undefined` by default
+- **returns** the [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) set as the recurrence id for the event, otherwise `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
