@@ -80,11 +80,13 @@ where `VCALENDAR` is an instance of a `vobject.component`, `PRODID, VERSION, CAL
 -----------------------------------------------------------------------------------------
 
 ##### component.escape [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.11)
+Escapes TEXT strings according to iCal spec. Characters to be escaped are `\n` (newline), `;` (semicolon), `:` (colon), and `,` (comma)
+
+- `str` String to be escaped
+- **returns** String escaped string
 
 ##### component.unescape(str) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.11)
-Unescapes TEXT strings according to iCal spec
-
-Characters to be unescaped are `;` (semicolon), `:` (colon), and `,` (comma)
+Unescapes TEXT strings according to iCal spec. Characters to be unescaped are `\n` (newline), `;` (semicolon), `:` (colon), and `,` (comma)
 
 - `str` String to be unescaped
 - **returns** String unescaped string

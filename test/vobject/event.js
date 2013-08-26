@@ -97,13 +97,19 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.getDTStart().toICS(), '20130826');
     });
 
-    it('should get DTSTART dateTimeValue with TZID set', function() {
-      var property = vobject.property('DTSTART', '20130813T173000Z');
+    it('should get DTSTART dateTimeValue in absolute time', function() {
+      event.properties['DTSTART'] = [vobject.property('DTSTART', '20130813T173000Z')];
+      assert.equal(event.getDTStart().type, 'dateTimeValue');
+      assert.equal(event.getDTStart().toDateTime(), '2013-08-13T17:30:00+00:00');
+    });
+
+    it('should get DTSTART dateTimeValue in floating time', function() {
+      var property = vobject.property('DTSTART', '20130813T173000');
       property.setParameter('TZID', 'America/New_York');
       event.properties['DTSTART'] = [property];
       assert.equal(event.getDTStart().type, 'dateTimeValue');
       assert.equal(event.getDTStart().getTZID(), 'America/New_York');
-      assert.equal(event.getDTStart().toDateTime(), '2013-08-13T17:30:00+00:00');
+      assert.equal(event.getDTStart().toDateTime(), '2013-08-13T21:30:00+00:00');
     });
   });
 
@@ -145,13 +151,19 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.getDTEnd().toICS(), '20130826');
     });
 
-    it('should get DTEND dateTimeValue with TZID set', function() {
-      var property = vobject.property('DTEND', '20130813T173000Z');
+    it('should get DTEND dateTimeValue in absolute time', function() {
+      event.properties['DTEND'] = [vobject.property('DTEND', '20130813T173000Z')];
+      assert.equal(event.getDTEnd().type, 'dateTimeValue');
+      assert.equal(event.getDTEnd().toDateTime(), '2013-08-13T17:30:00+00:00');
+    });
+
+    it('should get DTEND dateTimeValue in floating time', function() {
+      var property = vobject.property('DTEND', '20130813T173000');
       property.setParameter('TZID', 'America/New_York');
       event.properties['DTEND'] = [property];
       assert.equal(event.getDTEnd().type, 'dateTimeValue');
       assert.equal(event.getDTEnd().getTZID(), 'America/New_York');
-      assert.equal(event.getDTEnd().toDateTime(), '2013-08-13T17:30:00+00:00');
+      assert.equal(event.getDTEnd().toDateTime(), '2013-08-13T21:30:00+00:00');
     });
   });
 

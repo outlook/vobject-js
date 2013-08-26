@@ -50,9 +50,9 @@ Type definition of the value. Useful when used in conjunction with [`properties`
 
 -----------------------------------------------------------------------------------------
 
-##### dateTimeValue.parseICS(ics)
+##### dateTimeValue.parseICS(ics, tz = UTC)
 
-- `ics` string to parse. Expects the format `YYYYMMDDTHHmmssZ`. Ex: `20130823T213340Z`
+- `ics` string to parse. Expects the absolute format `YYYYMMDDTHHmmssZ` or floating format `YYYYMMDDTHHmmss` and a time zone. Ex: `20130823T213340Z`, `20130823T173340, America/New_York`
 
 ##### dateTimeValue.toICS()
 
