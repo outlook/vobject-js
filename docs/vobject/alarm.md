@@ -26,8 +26,8 @@ This is a VALARM component which is a subclass of the [`component`](./component.
 
 ##### alarm.setTrigger(trigger)
 
-- `trigger` to set for the alarm. Expects either a [`durationValue`](./durationValue.md) or [`dateTimeValue`](./dateTimeValue.md) object.
+- `trigger` to set for the alarm. Expects either a [`durationValue`](./durationValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
 
 ##### alarm.getTrigger(trigger)
 
-- **returns** the [`property`](./property.md) set as the trigger for the alarm.
+- **returns** the [`durationValue`](./durationValue.md) or [`dateTimeValue`](./dateTimeValue.md) set as the trigger for the alarm

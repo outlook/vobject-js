@@ -49,6 +49,38 @@ describe('lib/vobject/durationValue.js', function() {
     });
   });
 
+  describe('parseICS', function() {
+    it('should parse duration value', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.parseICS('-P5DT4H3M2S');
+      assert.equal(durationValue.value, -1);
+      assert.equal(durationValue.day, 5);
+      assert.equal(durationValue.hour, 4);
+      assert.equal(durationValue.minute, 3);
+      assert.equal(durationValue.second, 2);
+    });
+
+    it('should parse day duration value', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.parseICS('P5D');
+      assert.equal(durationValue.value, 1);
+      assert.equal(durationValue.day, 5);
+      assert.equal(durationValue.hour, undefined);
+      assert.equal(durationValue.minute, undefined);
+      assert.equal(durationValue.second, undefined);
+    });
+
+    it('should parse time duration value', function() {
+      var durationValue = vobject.durationValue();
+      durationValue.parseICS('-P15M');
+      assert.equal(durationValue.value, -1);
+      assert.equal(durationValue.day, undefined);
+      assert.equal(durationValue.hour, undefined);
+      assert.equal(durationValue.minute, 15);
+      assert.equal(durationValue.second, undefined);
+    });
+  });
+
   describe('toICS', function() {
     it('should render duration value', function() {
       var durationValue = vobject.durationValue();

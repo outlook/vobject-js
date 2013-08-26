@@ -51,10 +51,25 @@ describe('lib/vobject/alarm.js', function() {
   });
 
   describe('getTrigger', function() {
-    it('should return value of TRIGGER property', function() {
+    it('should be undefined by default', function() {
       var alarm = vobject.alarm();
-      alarm.setProperty(vobject.property('TRIGGER', 'VALUE'));
-      assert.equal(alarm.getTrigger().value, 'VALUE');
+      assert.equal(alarm.getTrigger(), undefined);
+    });
+
+    it('should return dateTimeValue trigger', function() {
+      var property = vobject.property('TRIGGER', '20130823T222931Z');
+      property.setParameter('VALUE', 'DATE-TIME');
+      var alarm = vobject.alarm();
+      alarm.properties['TRIGGER'] = [property];
+      assert.equal(alarm.getTrigger().type, 'dateTimeValue');
+      assert.equal(alarm.getTrigger().toICS(), '20130823T222931Z');
+    });
+
+    it('should return durationValue trigger', function() {
+      var alarm = vobject.alarm();
+      alarm.properties['TRIGGER'] = [vobject.property('TRIGGER', '-P5M')];
+      assert.equal(alarm.getTrigger().type, 'durationValue');
+      assert.equal(alarm.getTrigger().toICS(), '-P5M');
     });
   });
 });

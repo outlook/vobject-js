@@ -40,6 +40,10 @@ Set the duration of the value. Valid options are:
 
 -----------------------------------------------------------------------------------------
 
+##### durationValue.parseICS()
+
+- `ics` to be parsed. See [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.6) for accepted formats
+
 ##### durationValue.toICS()
 
 - **returns** rendered iCalendar string representation of the DURATION value type. Ex: `-P5M`
