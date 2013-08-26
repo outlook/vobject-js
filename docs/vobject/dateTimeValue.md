@@ -38,6 +38,10 @@ Type definition of the value. Useful when used in conjunction with [`properties`
 
 - `timestamp` to parse defined as seconds since UNIX epoch. Expects an INTEGER
 
+##### dateTimeValue.toTimestamp();
+
+- **returns** string representation of timestamp as seconds since UNIX epoch
+
 -----------------------------------------------------------------------------------------
 
 ##### dateTimeValue.setTZID(tzid)

@@ -44,6 +44,14 @@ describe('lib/vobject/dateTimeValue.js', function() {
     });
   });
 
+  describe('toTimestamp', function() {
+    it('should format timestamp in UTC', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.dateTime = moment('2013-08-13T17:33:40-04:00', 'YYYY-MM-DDTHH:mm:ssZ');
+      assert.strictEqual(dateTimeValue.toTimestamp(), '1376429620');
+    });
+  });
+
   describe('setTZID', function() {
     it('should save tzid string', function() {
       var dateTimeValue = vobject.dateTimeValue();
