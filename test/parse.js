@@ -23,21 +23,4 @@ describe('lib/parse.js', function() {
       assert.deepEqual(parse.splitICS(ics), ['FIRST', 'SECOND1SECOND2', 'THIRD']);
     });
   });
-
-  describe('unescape', function() {
-    it('should unescape colon', function() {
-      var ics = 'this\\:that';
-      assert.equal(parse.unescape(ics), 'this:that');
-    });
-
-    it('should unescape semicolon', function() {
-      var ics = 'this\\;that';
-      assert.equal(parse.unescape(ics), 'this;that');
-    });
-
-    it('should unescape comma', function() {
-      var ics = 'this\\,that';
-      assert.equal(parse.unescape(ics), 'this,that');
-    });
-  });
 });

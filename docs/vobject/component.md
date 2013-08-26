@@ -62,6 +62,11 @@ where `VCALENDAR` is an instance of a `vobject.component`, `PRODID, VERSION, CAL
 
 - `childComponent` to be pushed onto the component. Expects a `component` object
 
+##### component.getComponents(name)
+
+- `name` of the subcomponent
+- **returns** an array of subcomponents with specified name, `[]` by default
+
 -----------------------------------------------------------------------------------------
 
 ##### component.toICSLines()
@@ -71,3 +76,15 @@ where `VCALENDAR` is an instance of a `vobject.component`, `PRODID, VERSION, CAL
 ##### component.toICS()
 
 - **returns** rendered iCalendar string representation of the component
+
+-----------------------------------------------------------------------------------------
+
+##### component.escape [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.11)
+
+##### component.unescape(str) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.3.11)
+Unescapes TEXT strings according to iCal spec
+
+Characters to be unescaped are `;` (semicolon), `:` (colon), and `,` (comma)
+
+- `str` String to be unescaped
+- **returns** String unescaped string

@@ -14,13 +14,9 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('setUID', function() {
-    it('should set UID', function(done) {
-      event.setProperty = function(property) {
-        assert.equal(property.name, 'UID');
-        assert.equal(property.value, 'value');
-        done();
-      };
+    it('should set UID', function() {
       event.setUID('value');
+      assert.equal(event.properties['UID'][0].value, 'value');
     });
   });
 
@@ -30,24 +26,20 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should get UID', function() {
-      event.setUID('value');
+      event.properties['UID'] = [vobject.property('UID', 'value')];
       assert.equal(event.getUID(), 'value');
     });
   });
 
   describe('setSummary', function() {
-    it('should set SUMMARY', function(done) {
-      event.setProperty = function(property) {
-        assert.equal(property.name, 'SUMMARY');
-        assert.equal(property.value, 'value');
-        done();
-      };
+    it('should set SUMMARY', function() {
       event.setSummary('value');
+      assert.equal(event.properties['SUMMARY'][0].value, 'value');
     });
 
     it('should escape special characters', function() {
       event.setSummary('\n;,');
-      assert.equal(event.getSummary(), '\\n\\;\\,');
+      assert.equal(event.properties['SUMMARY'][0].value, '\\n\\;\\,');
     });
   });
 
@@ -57,8 +49,13 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should get SUMMARY', function() {
-      event.setSummary('value');
+      event.properties['SUMMARY'] = [vobject.property('SUMMARY', 'value')];
       assert.equal(event.getSummary(), 'value');
+    });
+
+    it('should unescape SUMMARY', function() {
+      event.properties['SUMMARY'] = [vobject.property('SUMMARY', '\\n\\;\\,')];
+      assert.equal(event.getSummary(), '\n;,');
     });
   });
 
@@ -92,9 +89,21 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.getDTStart(), undefined);
     });
 
-    it('should get DTSTART property', function() {
-      event.properties['DTSTART'] = [vobject.property('DTSTART', 'VALUE')];
-      assert.equal(event.getDTStart().value, 'VALUE');
+    it('should get DTSTART dateValue', function() {
+      var property = vobject.property('DTSTART', '20130826');
+      property.setParameter('VALUE', 'DATE');
+      event.properties['DTSTART'] = [property];
+      assert.equal(event.getDTStart().type, 'dateValue');
+      assert.equal(event.getDTStart().toICS(), '20130826');
+    });
+
+    it('should get DTSTART dateTimeValue with TZID set', function() {
+      var property = vobject.property('DTSTART', '20130813T173000Z');
+      property.setParameter('TZID', 'America/New_York');
+      event.properties['DTSTART'] = [property];
+      assert.equal(event.getDTStart().type, 'dateTimeValue');
+      assert.equal(event.getDTStart().getTZID(), 'America/New_York');
+      assert.equal(event.getDTStart().toDateTime(), '2013-08-13T17:30:00+00:00');
     });
   });
 
@@ -128,25 +137,33 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.getDTEnd(), undefined);
     });
 
-    it('should get DTEND property', function() {
-      event.properties['DTEND'] = [vobject.property('DTEND', 'VALUE')];
-      assert.equal(event.getDTEnd().value, 'VALUE');
+    it('should get DTEND dateValue', function() {
+      var property = vobject.property('DTEND', '20130826');
+      property.setParameter('VALUE', 'DATE');
+      event.properties['DTEND'] = [property];
+      assert.equal(event.getDTEnd().type, 'dateValue');
+      assert.equal(event.getDTEnd().toICS(), '20130826');
+    });
+
+    it('should get DTEND dateTimeValue with TZID set', function() {
+      var property = vobject.property('DTEND', '20130813T173000Z');
+      property.setParameter('TZID', 'America/New_York');
+      event.properties['DTEND'] = [property];
+      assert.equal(event.getDTEnd().type, 'dateTimeValue');
+      assert.equal(event.getDTEnd().getTZID(), 'America/New_York');
+      assert.equal(event.getDTEnd().toDateTime(), '2013-08-13T17:30:00+00:00');
     });
   });
 
   describe('setDescription', function() {
-    it('should set DESCRIPTION', function(done) {
-      event.setProperty = function(property) {
-        assert.equal(property.name, 'DESCRIPTION');
-        assert.equal(property.value, 'value');
-        done();
-      };
+    it('should set DESCRIPTION', function() {
       event.setDescription('value');
+      assert.equal(event.properties['DESCRIPTION'][0].value, 'value');
     });
 
     it('should escape special characters', function() {
       event.setDescription('\n;,');
-      assert.equal(event.getDescription(), '\\n\\;\\,');
+      assert.equal(event.properties['DESCRIPTION'][0].value, '\\n\\;\\,');
     });
   });
 
@@ -156,19 +173,25 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should get DESCRIPTION', function() {
-      event.setDescription('value');
+      event.properties['DESCRIPTION'] = [vobject.property('DESCRIPTION', 'value')];
       assert.equal(event.getDescription(), 'value');
+    });
+
+    it('should unescape DESCRIPTION', function() {
+      event.properties['DESCRIPTION'] = [vobject.property('DESCRIPTION', '\\n\\;\\,')];
+      assert.equal(event.getDescription(), '\n;,');
     });
   });
 
   describe('setLocation', function() {
-    it('should set LOCATION', function(done) {
-      event.setProperty = function(property) {
-        assert.equal(property.name, 'LOCATION');
-        assert.equal(property.value, 'value');
-        done();
-      };
+    it('should set LOCATION', function() {
       event.setLocation('value');
+      assert.equal(event.properties['LOCATION'][0].value, 'value');
+    });
+
+    it('should escape special characters', function() {
+      event.setLocation('\n;,');
+      assert.equal(event.properties['LOCATION'][0].value, '\\n\\;\\,');
     });
   });
 
@@ -178,19 +201,20 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should get LOCATION', function() {
-      event.setLocation('value');
+      event.properties['LOCATION'] = [vobject.property('LOCATION', 'value')];
       assert.equal(event.getLocation(), 'value');
+    });
+
+    it('should unescape LOCATION', function() {
+      event.properties['LOCATION'] = [vobject.property('LOCATION', '\\n\\;\\,')];
+      assert.equal(event.getLocation(), '\n;,');
     });
   });
 
   describe('setStatus', function() {
-    it('should set STATUS', function(done) {
-      event.setProperty = function(property) {
-        assert.equal(property.name, 'STATUS');
-        assert.equal(property.value, 'VALUE');
-        done();
-      };
+    it('should set STATUS', function() {
       event.setStatus('value');
+      assert.equal(event.properties['STATUS'][0].value, 'VALUE');
     });
   });
 
@@ -200,7 +224,7 @@ describe('lib/vobject/event.js', function() {
     });
 
     it('should get STATUS', function() {
-      event.setStatus('value');
+      event.properties['STATUS'] = [vobject.property('STATUS', 'VALUE')];
       assert.equal(event.getStatus(), 'VALUE');
     });
   });

@@ -9,7 +9,7 @@ describe('lib/vobject/dateValue.js', function() {
       assert.equal(dateValue.type, 'dateValue');
     });
 
-    it('should parse dateTimeString from constructor', function() {
+    it('should parse dateString from constructor', function() {
       var dateValue = vobject.dateValue('2013-08-14');
       assert.equal(dateValue.year, 2013);
       assert.equal(dateValue.month, 8);
@@ -26,12 +26,32 @@ describe('lib/vobject/dateValue.js', function() {
   });
 
   describe('parseDate', function() {
-    it('should parse 1986-10-18', function() {
+    it('should parse dateString', function() {
       var dateValue = vobject.dateValue();
       dateValue.parseDate('1986-10-18');
       assert.equal(dateValue.year, 1986);
       assert.equal(dateValue.month, 10);
       assert.equal(dateValue.day, 18);
+    });
+  });
+
+  describe('toDate', function() {
+    it('should generate dateString', function() {
+      var dateValue = vobject.dateValue();
+      dateValue.year = 2013;
+      dateValue.month = 8;
+      dateValue.day = 23;
+      assert.equal(dateValue.toDate(), '2013-08-23');
+    });
+  });
+
+  describe('parseICS', function() {
+    it('should parse ICS formatted dateString', function() {
+      var dateValue = vobject.dateValue();
+      dateValue.parseICS('20130823');
+      assert.equal(dateValue.year, 2013);
+      assert.equal(dateValue.month, 8);
+      assert.equal(dateValue.day, 23);
     });
   });
 

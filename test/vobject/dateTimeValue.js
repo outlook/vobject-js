@@ -28,6 +28,14 @@ describe('lib/vobject/dateTimeValue.js', function() {
     });
   });
 
+  describe('toDateTime', function() {
+    it('should format dateTimeString in UTC', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.dateTime = moment('2013-08-13T17:33:40-04:00', 'YYYY-MM-DDTHH:mm:ssZ');
+      assert.equal(dateTimeValue.toDateTime(), '2013-08-13T21:33:40+00:00');
+    });
+  });
+
   describe('parseTimestamp', function() {
     it('should parse timestamp string', function() {
       var dateTimeValue = vobject.dateTimeValue();

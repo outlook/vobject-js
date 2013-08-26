@@ -26,7 +26,13 @@ Type definition of the value. Useful when used in conjunction with [`properties`
 
 ##### dateTimeValue.parseDateTime(dateTimeString)
 
-- `dateTimeString` to parse into year, month, day. Expects the format `YYYY-MM-DDTHH:mm:ssZ`. Ex: 2013-08-13T17:33:40-04:00
+- `dateTimeString` to parse. Expects the format `YYYY-MM-DDTHH:mm:ssZ`. Ex: 2013-08-13T17:33:40-04:00
+
+##### dateTimeValue.toDateTime()
+
+- **returns** rendered date time string representation of the DATE-TIME value type with the UTC offset. Ex: `2013-08-13T21:33:40+00:00`
+
+-----------------------------------------------------------------------------------------
 
 ##### dateTimeValue.parseTimestamp(timestamp)
 
@@ -43,6 +49,10 @@ Type definition of the value. Useful when used in conjunction with [`properties`
 - **returns** the tzid set for the date time value. Will only work if a time zone name is explicited defined. Date offsets (-04:00) do not have enough information to derive a time zone.
 
 -----------------------------------------------------------------------------------------
+
+##### dateTimeValue.parseICS(ics)
+
+- `ics` string to parse. Expects the format `YYYYMMDDTHHmmssZ`. Ex: `20130823T213340Z`
 
 ##### dateTimeValue.toICS()
 

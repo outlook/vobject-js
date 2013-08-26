@@ -17,9 +17,21 @@ which translates to July 14th, 2013
 ##### dateValue.type = 'dateValue'
 Type definition of the value. Useful when used in conjunction with [`properties`](./property.md).
 
+-----------------------------------------------------------------------------------------
+
 ##### date.parseDate(dateString)
 
 - `dateString` to parse into year, month, day. Expects the format `YYYY-MM-DD`. Ex: 2013-07-14
+
+##### date.toDate()
+
+- **returns** rendered date string representation of the DATE value type. Ex: 2013-07-14
+
+-----------------------------------------------------------------------------------------
+
+##### date.parseICS(ics)
+
+- `ics` string to be parsed. Expects format `YYYYMMDD`. Ex: 20130714
 
 ##### date.toICS()
 

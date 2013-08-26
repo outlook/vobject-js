@@ -64,7 +64,7 @@ Also known as the title for the event.
 
 ##### event.getSummary() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.12)
 
-- **returns** the summary for the event or `undefined` by default
+- **returns** the unescaped summary for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -74,7 +74,7 @@ Also known as the title for the event.
 
 ##### event.getDTStart() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.4)
 
-- **returns** the property set as the start date for the event or `undefined` by default
+- **returns** the [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) set as the start date for the event, otherwise `undefined` by default
 
 ##### event.setDTEnd(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
@@ -82,7 +82,7 @@ Also known as the title for the event.
 
 ##### event.getDTEnd() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.2)
 
-- **returns** the property set as the end date for the event or `undefined` by default
+- **returns** the [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) set as the end date for the event, otherwise `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -92,7 +92,7 @@ Also known as the title for the event.
 
 ##### event.getDescription() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.5)
 
-- **returns** the description for the event or `undefined` by default
+- **returns** the unescaped description for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ Also known as the title for the event.
 
 ##### event.getLocation() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.7)
 
-- **returns** the location for the event or `undefined` by default
+- **returns** the unescaped location for the event or `undefined` by default
 
 -----------------------------------------------------------------------------------------
 
