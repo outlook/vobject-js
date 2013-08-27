@@ -18,6 +18,7 @@
   "dependencies": {
     "moment": "2.1.x",
     "moment-timezone": "0.0.2",
+    "timezone": "0.0.23",
     "underscore": "1.5.x"
   },
   "devDependencies": {
