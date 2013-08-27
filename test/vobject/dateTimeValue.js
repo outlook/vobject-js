@@ -80,6 +80,12 @@ describe('lib/vobject/dateTimeValue.js', function() {
       dateTimeValue.parseICS('20130813T173340', 'America/New_York');
       assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
     });
+
+    it('should parse ICS with floating time Etc/GMT', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.parseICS('20130813T213340', 'Etc/GMT');
+      assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
+    });
   });
 
   describe('toICS', function() {
