@@ -7,6 +7,11 @@ describe('lib/vobject/timezone.js', function() {
       var timezone = vobject.timezone();
       assert.equal(timezone.name, 'VTIMEZONE');
     });
+
+    it('should save reference to tzid', function() {
+      var timezone = vobject.timezone('timezone');
+      assert.equal(timezone.tzid, 'timezone');
+    });
   });
 
   describe('toICSLines', function() {
