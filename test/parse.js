@@ -23,4 +23,89 @@ describe('lib/parse.js', function() {
       assert.deepEqual(parse.splitICS(ics), ['FIRST', 'SECOND1SECOND2', 'THIRD']);
     });
   });
+
+  describe('parseComponent', function() {
+    beforeEach(function() {
+      parse.vobject = {
+        calendar: function() {
+          return 'VCALENDAR';
+        },
+        event: function() {
+          return 'VEVENT';
+        },
+        todo: function() {
+          return 'VTODO';
+        },
+        alarm: function() {
+          return 'VALARM';
+        },
+        component: function() {
+          return 'VCOMPONENT';
+        }
+      };
+    });
+
+    it('should delegate calendar object', function() {
+      assert.equal(parse.parseComponent('BEGIN:VCALENDAR'), 'VCALENDAR');
+    });
+
+    it('should delegate event object', function() {
+      assert.equal(parse.parseComponent('BEGIN:VEVENT'), 'VEVENT');
+    });
+
+    it('should delegate todo object', function() {
+      assert.equal(parse.parseComponent('BEGIN:VTODO'), 'VTODO');
+    });
+
+    it('should delegate alarm object', function() {
+      assert.equal(parse.parseComponent('BEGIN:VALARM'), 'VALARM');
+    });
+
+    it('should default to component object', function() {
+      assert.equal(parse.parseComponent('BEGIN:VCOMPONENT'), 'VCOMPONENT');
+    });
+  });
+
+  describe('parseProperty', function() {
+    beforeEach(function() {
+      parse.vobject = {
+        attendee: function() {
+          return {
+            name: 'ATTENDEE',
+            parseICS: function(ics) {
+              assert.equal(ics, 'ATTENDEE');
+            }
+          };
+        },
+        organizer: function() {
+          return {
+            name: 'ORGANIZER',
+            parseICS: function(ics) {
+              assert.equal(ics, 'ORGANIZER');
+            }
+          };
+        },
+        property: function() {
+          return {
+            name: 'PROPERTY',
+            parseICS: function(ics) {
+              assert.equal(ics, 'PROPERTY');
+            }
+          };
+        }
+      };
+    });
+
+    it('should delegate attendee property', function() {
+      assert.equal(parse.parseProperty('ATTENDEE').name, 'ATTENDEE');
+    });
+
+    it('should delegate organizer property', function() {
+      assert.equal(parse.parseProperty('ORGANIZER').name, 'ORGANIZER');
+    });
+
+    it('should default to property', function() {
+      assert.equal(parse.parseProperty('PROPERTY').name, 'PROPERTY');
+    });
+  });
 });
