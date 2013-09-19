@@ -56,5 +56,11 @@ describe('lib/vobject/person.js', function() {
       person.setValue('mailto:user@domain.com');
       assert.equal(person.getMail(), 'user@domain.com');
     });
+
+    it('should parse VALUE with capitalized MAILTO', function() {
+      var person = VObject.person();
+      person.setValue('MAILTO:user@domain.com');
+      assert.equal(person.getMail(), 'user@domain.com');
+    });
   });
 });
