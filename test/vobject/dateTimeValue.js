@@ -113,6 +113,12 @@ describe('lib/vobject/dateTimeValue.js', function() {
       assert.equal(dateTimeValue.toICS(), '20130813T213340');
     });
 
+    it('should include workaround for Etc/UTC timezone', function() {
+      var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
+      dateTimeValue.setTZID('Etc/UTC');
+      assert.equal(dateTimeValue.toICS(), '20130813T213340');
+    });
+
     it('should include workaround for Japan timezone', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
       dateTimeValue.setTZID('Japan');
