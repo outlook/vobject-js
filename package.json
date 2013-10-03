@@ -17,7 +17,7 @@
   "version": "0.0.12",
   "dependencies": {
     "moment": "2.1.x",
-    "moment-timezone": "0.0.2",
+    "moment-timezone": "git://github.com/moment/moment-timezone.git#1867c2378f893f34211e6012e46d99dce2a31cd5",
     "timezone": "0.0.23",
     "underscore": "1.5.x"
   },
