@@ -177,6 +177,11 @@ describe('lib/vobject/component.js', function() {
       var str = 'this,that';
       assert.equal(vobject.component().escape(str), 'this\\,that');
     });
+
+    it('should escape double quote', function() {
+      var str = 'this"that';
+      assert.equal(vobject.component().escape(str), 'this\\"that');
+    });
   });
 
   describe('unescape', function() {
@@ -198,6 +203,11 @@ describe('lib/vobject/component.js', function() {
     it('should unescape comma', function() {
       var str = 'this\\,that';
       assert.equal(vobject.component().unescape(str), 'this,that');
+    });
+
+    it('should unescape double quote', function() {
+      var str = 'this\\"that';
+      assert.equal(vobject.component().unescape(str), 'this"that');
     });
   });
 });
