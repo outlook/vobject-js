@@ -89,7 +89,7 @@ describe('lib/parse.js', function() {
           return {
             name: 'PROPERTY',
             parseICS: function(ics) {
-              assert.equal(ics, 'PROPERTY');
+              assert.ok(ics === 'EXDATE' || ics === 'PROPERTY');
             }
           };
         }
@@ -102,6 +102,10 @@ describe('lib/parse.js', function() {
 
     it('should delegate organizer property', function() {
       assert.equal(parse.parseProperty('ORGANIZER').name, 'ORGANIZER');
+    });
+
+    it('should set multiProperty for exdate property', function() {
+      assert.equal(parse.parseProperty('EXDATE').isMultiProperty, true);
     });
 
     it('should default to property', function() {
