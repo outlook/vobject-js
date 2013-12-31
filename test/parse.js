@@ -22,6 +22,21 @@ describe('lib/parse.js', function() {
       var ics = 'FIRST\r\nSECOND1\r\n\tSECOND2\r\nTHIRD\r\n';
       assert.deepEqual(parse.splitICS(ics), ['FIRST', 'SECOND1SECOND2', 'THIRD']);
     });
+
+    it('should expand lines with trailing LF only', function() {
+      var ics = 'FIRST\nSECOND\nTHIRD\n';
+      assert.deepEqual(parse.splitICS(ics), ['FIRST', 'SECOND', 'THIRD']);
+    });
+
+    it('should fold lines with leading space with trailing LF only', function() {
+      var ics = 'FIRST\nSECOND1\n SECOND2\nTHIRD\n';
+      assert.deepEqual(parse.splitICS(ics), ['FIRST', 'SECOND1SECOND2', 'THIRD']);
+    });
+
+    it('should fold lines with leading tab with trailing LF only', function() {
+      var ics = 'FIRST\nSECOND1\n\tSECOND2\nTHIRD\n';
+      assert.deepEqual(parse.splitICS(ics), ['FIRST', 'SECOND1SECOND2', 'THIRD']);
+    });
   });
 
   describe('parseComponent', function() {
