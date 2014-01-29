@@ -163,11 +163,6 @@ describe('lib/vobject/component.js', function() {
       assert.equal(vobject.component().escape(str), 'this\\nthat');
     });
 
-    it('should escape colon', function() {
-      var str = 'this:that';
-      assert.equal(vobject.component().escape(str), 'this\\:that');
-    });
-
     it('should escape semicolon', function() {
       var str = 'this;that';
       assert.equal(vobject.component().escape(str), 'this\\;that');
@@ -188,11 +183,6 @@ describe('lib/vobject/component.js', function() {
     it('should unescape newline', function() {
       var str = 'this\\nthat';
       assert.equal(vobject.component().unescape(str), 'this\nthat');
-    });
-
-    it('should unescape colon', function() {
-      var str = 'this\\:that';
-      assert.equal(vobject.component().unescape(str), 'this:that');
     });
 
     it('should unescape semicolon', function() {
