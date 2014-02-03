@@ -167,6 +167,60 @@ describe('lib/vobject/event.js', function() {
     });
   });
 
+  describe('setDue', function() {
+    it('should handle dateTimeValue', function() {
+      event.setDue(vobject.dateTimeValue('1986-10-18T13:00:00+02:00'));
+      assert.equal(event.properties['DUE'][0].getParameter('VALUE'), undefined);
+      assert.equal(event.properties['DUE'][0].getParameter('TZID'), undefined);
+      assert.equal(event.properties['DUE'][0].value, '19861018T110000Z');
+    });
+
+    it('should handle floating dateTimeValue', function() {
+      var dateTime = vobject.dateTimeValue('2013-08-16T17:00:00-04:00');
+      dateTime.setTZID('America/New_York');
+      event.setDue(dateTime);
+      assert.equal(event.properties['DUE'][0].getParameter('VALUE'), undefined);
+      assert.equal(event.properties['DUE'][0].getParameter('TZID'), 'America/New_York');
+      assert.equal(event.properties['DUE'][0].value, '20130816T170000');
+    });
+
+    it('should handle dateValue', function() {
+      event.setDue(vobject.dateValue('1986-10-18'));
+      assert.equal(event.properties['DUE'][0].getParameter('VALUE'), 'DATE');
+      assert.equal(event.properties['DUE'][0].getParameter('TZID'), undefined);
+      assert.equal(event.properties['DUE'][0].value, '19861018');
+    });
+  });
+
+  describe('getDue', function() {
+    it('should be undefined by default', function() {
+      assert.equal(event.getDue(), undefined);
+    });
+
+    it('should get DUE dateValue', function() {
+      var property = vobject.property('DUE', '20130826');
+      property.setParameter('VALUE', 'DATE');
+      event.properties['DUE'] = [property];
+      assert.equal(event.getDue().type, 'dateValue');
+      assert.equal(event.getDue().toICS(), '20130826');
+    });
+
+    it('should get DUE dateTimeValue in absolute time', function() {
+      event.properties['DUE'] = [vobject.property('DUE', '20130813T173000Z')];
+      assert.equal(event.getDue().type, 'dateTimeValue');
+      assert.equal(event.getDue().toDateTime(), '2013-08-13T17:30:00+00:00');
+    });
+
+    it('should get DUE dateTimeValue in floating time', function() {
+      var property = vobject.property('DUE', '20130813T173000');
+      property.setParameter('TZID', 'America/New_York');
+      event.properties['DUE'] = [property];
+      assert.equal(event.getDue().type, 'dateTimeValue');
+      assert.equal(event.getDue().getTZID(), 'America/New_York');
+      assert.equal(event.getDue().toDateTime(), '2013-08-13T21:30:00+00:00');
+    });
+  });
+
   describe('setDescription', function() {
     it('should set DESCRIPTION', function() {
       event.setDescription('value');
