@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/sunrise/vobject-js/issues"
   },
-  "version": "0.0.21",
+  "version": "0.0.22",
   "dependencies": {
     "moment": "2.3.x",
     "moment-timezone": "0.0.3",
@@ -26,6 +26,6 @@
     "jshint": "latest"
   },
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/mocha --check-leaks test/*"
+    "test": "make"
   }
 }

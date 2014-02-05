@@ -1,9 +1,12 @@
-test: jshint mocha
+ENV_VAR = NODE_ENV=test
+
+all: jshint
+	$(ENV_VAR) ./node_modules/.bin/mocha --check-leaks test/* test/*/*
 
 jshint:
-	./node_modules/.bin/jshint index.js lib/* test/*
+	$(ENV_VAR) ./node_modules/.bin/jshint index.js lib/* test/*
 
 mocha:
-	NODE_ENV=test ./node_modules/.bin/mocha --check-leaks -w test/*
+	$(ENV_VAR) ./node_modules/.bin/mocha --check-leaks --watch test/* test/*/*
 
-.PHONY: test
+.PHONY: all
