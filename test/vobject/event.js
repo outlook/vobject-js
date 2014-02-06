@@ -430,13 +430,13 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('addRRULE', function() {
-    it('should add RRULE', function(done) {
+    it('should add RRULE ics', function(done) {
       event.pushProperty = function(property) {
         assert.equal(property.name, 'RRULE');
-        assert.equal(property.value, 'value');
+        assert.equal(property.value, 'FREQ=DAILY');
         done();
       };
-      event.addRRULE('value');
+      event.addRRULE('RRULE:FREQ=DAILY');
     });
   });
 
@@ -455,13 +455,14 @@ describe('lib/vobject/event.js', function() {
   });
 
   describe('addEXDATE', function() {
-    it('should add EXDATE', function(done) {
+    it('should add EXDATE ics', function(done) {
       event.pushProperty = function(property) {
         assert.equal(property.name, 'EXDATE');
-        assert.equal(property.value, 'value');
+        assert.equal(property.getParameter('VALUE'), 'DATE');
+        assert.equal(property.value, '20140206');
         done();
       };
-      event.addEXDATE('value');
+      event.addEXDATE('EXDATE;VALUE=DATE:20140206');
     });
   });
 

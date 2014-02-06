@@ -200,7 +200,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.addRRULE(rrule) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.3)
 
-- `rrule` to be added to the event. Expects a STRING
+- `rrule` to be added to the event. Expects an ICS STRING. Ex: `RRULE:FREQ=DAILY`
 
 ##### event.getRRULEs() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.3)
 
@@ -208,7 +208,7 @@ Sequence number of the event. Should be monotonically increasing on changes on t
 
 ##### event.addEXDATE(exdate) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.1)
 
-- `exdate` to be added to the event. Expects a STRING
+- `exdate` to be added to the event. Expects an ICS STRING. Ex: `EXDATE;VALUE=DATE:20140206`
 
 ##### event.getEXDATEs() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.5.1)
 
