@@ -119,10 +119,6 @@ describe('lib/parse.js', function() {
       assert.equal(parse.parseProperty('ORGANIZER').name, 'ORGANIZER');
     });
 
-    it('should set multiProperty for exdate property', function() {
-      assert.equal(parse.parseProperty('EXDATE').isMultiProperty, true);
-    });
-
     it('should default to property', function() {
       assert.equal(parse.parseProperty('PROPERTY').name, 'PROPERTY');
     });

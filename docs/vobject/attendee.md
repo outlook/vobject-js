@@ -20,10 +20,6 @@ ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;
 
 -----------------------------------------------------------------------------------------
 
-##### attendee.isMultiProperty set to `true` signifying that the property can appear in a component multiple times
-
------------------------------------------------------------------------------------------
-
 ##### attendee.setCUTYPE(cutype) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.2.3)
 
 - `cutype` to set for the attendee. Expects a STRING. Ex: `INDIVIDUAL`, `GROUP`, `RESOURCE`, `ROOM`

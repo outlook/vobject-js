@@ -7,11 +7,6 @@ describe('lib/vobject/attendee.js', function() {
       var attendee = vobject.attendee();
       assert.equal(attendee.name, 'ATTENDEE');
     });
-
-    it('should set isMultiProperty to true', function() {
-      var attendee = vobject.attendee();
-      assert.equal(attendee.isMultiProperty, true);
-    });
   });
 
   describe('setCUTYPE', function() {
