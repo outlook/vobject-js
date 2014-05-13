@@ -123,4 +123,22 @@ describe('lib/parse.js', function() {
       assert.equal(parse.parseProperty('PROPERTY').name, 'PROPERTY');
     });
   });
+
+  describe('parseICS', function() {
+    it('should parse ICS into component object', function() {
+      var ics = [
+        'BEGIN:COMPONENTNAME',
+        'PROPERTYNAME:PROPERTYVALUE',
+        'MULTIPROPERTYNAME:MULTIPROPERTYVALUE0',
+        'MULTIPROPERTYNAME:MULTIPROPERTYVALUE1',
+        'BEGIN:NESTEDCOMPONENTNAME',
+        'NESTEDPROPERTYNAME:NESTEDPROPERTYVALUE',
+        'END:NESTEDCOMPONENTNAME',
+        'END:COMPONENTNAME'
+      ].join('\r\n');
+
+      var component = parse.parseICS(ics);
+      assert.equal(component.toICSLines().join('\r\n'), ics);
+    });
+  });
 });
