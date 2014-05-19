@@ -84,14 +84,6 @@ Also known as the title for the event.
 
 - **returns** the [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) set as the end date for the event, otherwise `undefined` by default
 
-##### event.setDue(date) [`RFC`](http://www.kanzaki.com/docs/ical/vtodo.html)
-
-- `date` to set as the due date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object. If a TZID is specified for the dateTimeValue, the property will be set with a floating date format. See [`dateTimeValue.toICS()`](./dateTimeValue.md#datetimevaluetoics) for more information
-
-##### event.getDue() [`RFC`](http://www.kanzaki.com/docs/ical/vtodo.html)
-
-- **returns** the [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) set as the due date for the event, otherwise `undefined` by default
-
 -----------------------------------------------------------------------------------------
 
 ##### event.setDescription(description) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.1.5)
