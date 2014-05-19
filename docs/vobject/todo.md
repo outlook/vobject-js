@@ -11,3 +11,13 @@ This is a VTODO component which is a subclass of the ['vEvent'](./event.md) obje
 ##### todo.getDue() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.3)
 
 - **returns** the [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) set as the due date for the todo, otherwise `undefined` by default
+
+-----------------------------------------------------------------------------------------
+
+##### todo.setCompleted(date) [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.1)
+
+- `date` to set as the completed date. Expects either a [`dateValue`](./dateValue.md) or [`dateTimeValue`](./dateTimeValue.md) object
+
+##### todo.getCompleted() [`RFC`](http://tools.ietf.org/html/rfc5545#section-3.8.2.1)
+
+- **returns** a string representation of the completed date for the todo or `undefined` by default

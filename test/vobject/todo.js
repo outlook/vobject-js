@@ -66,4 +66,26 @@ describe('lib/vobject/todo.js', function() {
       assert.equal(todo.getDue().toDateTime(), '2013-08-13T21:30:00+00:00');
     });
   });
+
+  describe('setCompleted', function() {
+    it('should set COMPLETED', function() {
+      var dateTime = vobject.dateTimeValue();
+      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
+      todo.setCompleted(dateTime);
+      assert.equal(todo.getCompleted(), '19861018T110000Z');
+    });
+  });
+
+  describe('getCompleted', function() {
+    it('should be undefined by default', function() {
+      assert.equal(todo.getCompleted(), undefined);
+    });
+
+    it('should get COMPLETED', function() {
+      var dateTime = vobject.dateTimeValue();
+      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
+      todo.setCompleted(dateTime);
+      assert.equal(todo.getCompleted(), '19861018T110000Z');
+    });
+  });
 });
