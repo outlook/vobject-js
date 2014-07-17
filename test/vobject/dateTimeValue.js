@@ -113,6 +113,15 @@ describe('lib/vobject/dateTimeValue.js', function() {
       assert.equal(dateTimeValue.toICS(), '20130813T233340');
     });
 
+    it('should catch moment-timezone errors and return UTC format', function() {
+      var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
+      dateTimeValue.setTZID('Europe/Paris');
+      dateTimeValue.dateTime.tz = function() {
+        throw new Error('moment-timezone error');
+      };
+      assert.equal(dateTimeValue.toICS(), '20130813T213340Z');
+    });
+
     it('should include workaround for Etc/GMT timezone', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
       dateTimeValue.setTZID('Etc/GMT');
