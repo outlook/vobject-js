@@ -1,6 +1,6 @@
 var assert = require('assert');
 var vobject = require('../../index');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 describe('lib/vobject/dateTimeValue.js', function() {
   describe('initialize', function() {
