@@ -19,5 +19,10 @@ describe('lib/vobject/timezone.js', function() {
       var timezone = vobject.timezone('Asia/Colombo');
       assert.equal(timezone.toICSLines()[1], 'TZID:Asia/Colombo');
     });
+
+    it('should default to nothing for invalid tzid', function() {
+      var timezone = vobject.timezone('garbage');
+      assert.equal(timezone.toICSLines(), undefined);
+    });
   });
 });

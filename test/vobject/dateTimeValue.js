@@ -1,6 +1,6 @@
 var assert = require('assert');
 var vobject = require('../../index');
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 describe('lib/vobject/dateTimeValue.js', function() {
   describe('initialize', function() {
@@ -53,18 +53,24 @@ describe('lib/vobject/dateTimeValue.js', function() {
   });
 
   describe('setTZID', function() {
-    it('should save tzid string', function() {
+    it('should save valid tzid string', function() {
       var dateTimeValue = vobject.dateTimeValue();
-      dateTimeValue.setTZID('someTZID');
-      assert.equal(dateTimeValue.tzid, 'someTZID');
+      dateTimeValue.setTZID('America/New_York');
+      assert.equal(dateTimeValue.tzid, 'America/New_York');
+    });
+
+    it('should ignore invalid tzid string', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.setTZID('garbage');
+      assert.equal(dateTimeValue.tzid, undefined);
     });
   });
 
   describe('getTZID', function() {
     it('should get tzid string', function() {
       var dateTimeValue = vobject.dateTimeValue();
-      dateTimeValue.tzid = 'someTZID';
-      assert.equal(dateTimeValue.getTZID(), 'someTZID');
+      dateTimeValue.tzid = 'America/New_York';
+      assert.equal(dateTimeValue.getTZID(), 'America/New_York');
     });
   });
 
@@ -93,42 +99,55 @@ describe('lib/vobject/dateTimeValue.js', function() {
       assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 12:33:40 +00:00');
     });
 
-    it('should set floatingTime to true when tzid is missing', function() {
+    it('should set floatingTime to true when tzid is missing and default dateTime to UTC', function() {
       var dateTimeValue = vobject.dateTimeValue();
       dateTimeValue.parseICS('20130813T213340');
       assert.equal(dateTimeValue.floatingTime, true);
+      assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
+    });
+
+    it('should set floatingTime to true when tzid is invalid and default dateTime to UTC', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.parseICS('20130813T213340', 'garbage');
+      assert.equal(dateTimeValue.floatingTime, true);
+      assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
     });
   });
 
   describe('toICS', function() {
     it('should print ICS format', function() {
-      var dateTimeValue = vobject.dateTimeValue();
-      dateTimeValue.dateTime = moment('2013-08-13T17:33:40-04:00', 'YYYY-MM-DDTHH:mm:ssZ');
+      var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
       assert.equal(dateTimeValue.toICS(), '20130813T213340Z');
     });
 
     it('should print floating ICS format when TZID is specified', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
-      dateTimeValue.setTZID('Europe/Paris');
+      dateTimeValue.tzid = 'Europe/Paris';
       assert.equal(dateTimeValue.toICS(), '20130813T233340');
     });
 
     it('should include workaround for Etc/GMT timezone', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
-      dateTimeValue.setTZID('Etc/GMT');
+      dateTimeValue.tzid = 'Etc/GMT';
       assert.equal(dateTimeValue.toICS(), '20130813T213340');
     });
 
     it('should include workaround for Etc/UTC timezone', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
-      dateTimeValue.setTZID('Etc/UTC');
+      dateTimeValue.tzid = 'Etc/UTC';
       assert.equal(dateTimeValue.toICS(), '20130813T213340');
     });
 
     it('should include workaround for Japan timezone', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
-      dateTimeValue.setTZID('Japan');
+      dateTimeValue.tzid = 'Japan';
       assert.equal(dateTimeValue.toICS(), '20130814T063340');
+    });
+
+    it('should default to absolute time on garbage tzid', function() {
+      var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
+      dateTimeValue.tzid = 'garbage';
+      assert.equal(dateTimeValue.toICS(), '20130813T213340Z');
     });
   });
 });

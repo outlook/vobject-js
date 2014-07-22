@@ -1,6 +1,5 @@
 var assert = require('assert');
 var vobject = require('../../index');
-var moment = require('moment');
 
 describe('lib/vobject/dateValue.js', function() {
   describe('initialize', function() {
@@ -16,12 +15,11 @@ describe('lib/vobject/dateValue.js', function() {
       assert.equal(dateValue.day, 14);
     });
 
-    it('should default to now', function() {
-      var now = moment();
+    it('should default to undefined', function() {
       var dateValue = vobject.dateValue();
-      assert.equal(dateValue.year, now.year());
-      assert.equal(dateValue.month, now.month());
-      assert.equal(dateValue.day, now.day());
+      assert.equal(dateValue.year, undefined);
+      assert.equal(dateValue.month, undefined);
+      assert.equal(dateValue.day, undefined);
     });
   });
 
