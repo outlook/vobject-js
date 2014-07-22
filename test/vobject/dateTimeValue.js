@@ -99,10 +99,18 @@ describe('lib/vobject/dateTimeValue.js', function() {
       assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 12:33:40 +00:00');
     });
 
-    it('should set floatingTime to true when tzid is missing', function() {
+    it('should set floatingTime to true when tzid is missing and default dateTime to UTC', function() {
       var dateTimeValue = vobject.dateTimeValue();
       dateTimeValue.parseICS('20130813T213340');
       assert.equal(dateTimeValue.floatingTime, true);
+      assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
+    });
+
+    it('should set floatingTime to true when tzid is invalid and default dateTime to UTC', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      dateTimeValue.parseICS('20130813T213340', 'garbage');
+      assert.equal(dateTimeValue.floatingTime, true);
+      assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
     });
   });
 
