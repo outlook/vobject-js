@@ -14,10 +14,10 @@
   "bugs": {
     "url": "https://github.com/sunrise/vobject-js/issues"
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "dependencies": {
-    "moment-timezone": "0.2.1",
-    "underscore": "1.5.x"
+    "moment-timezone": "0.2.x",
+    "underscore": "1.7.x"
   },
   "devDependencies": {
     "mocha": "latest",
