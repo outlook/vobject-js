@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/sunrise/vobject-js/issues"
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "dependencies": {
     "moment-timezone": "0.2.x",
     "underscore": "1.7.x"
