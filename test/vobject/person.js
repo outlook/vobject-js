@@ -41,7 +41,7 @@ describe('lib/vobject/person.js', function() {
   });
 
   describe('getCN', function() {
-    it('should default tom undefined', function() {
+    it('should default to undefined', function() {
       var person = VObject.person();
       assert.equal(person.getCN(), undefined);
     });
