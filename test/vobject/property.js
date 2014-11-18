@@ -123,48 +123,4 @@ describe('lib/vobject/property.js', function() {
       assert.equal(property.toICS(), 'DESCRIPTION:Interactive Telecommunications Program\\nTisch School of the Art\r\n s\\nNew York University\\n721 Broadway\\, 4th Floor\\, South Elevators\\nNew Yor\r\n k NY 10003\\n\\nTake the left elevators to the 4th Floor\\nThis event is free \r\n and open to the public\\nNo need to RSVP');
     });
   });
-
-  describe('escape', function() {
-    it('should escape newline', function() {
-      var str = 'this\nthat';
-      assert.equal(vobject.property().escape(str), 'this\\nthat');
-    });
-
-    it('should escape semicolon', function() {
-      var str = 'this;that';
-      assert.equal(vobject.property().escape(str), 'this\\;that');
-    });
-
-    it('should escape comma', function() {
-      var str = 'this,that';
-      assert.equal(vobject.property().escape(str), 'this\\,that');
-    });
-
-    it('should escape double quote', function() {
-      var str = 'this"that';
-      assert.equal(vobject.property().escape(str), 'this\\"that');
-    });
-  });
-
-  describe('unescape', function() {
-    it('should unescape newline', function() {
-      var str = 'this\\nthat';
-      assert.equal(vobject.property().unescape(str), 'this\nthat');
-    });
-
-    it('should unescape semicolon', function() {
-      var str = 'this\\;that';
-      assert.equal(vobject.property().unescape(str), 'this;that');
-    });
-
-    it('should unescape comma', function() {
-      var str = 'this\\,that';
-      assert.equal(vobject.property().unescape(str), 'this,that');
-    });
-
-    it('should unescape double quote', function() {
-      var str = 'this\\"that';
-      assert.equal(vobject.property().unescape(str), 'this"that');
-    });
-  });
 });

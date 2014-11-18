@@ -25,18 +25,12 @@ describe('lib/vobject/person.js', function() {
   describe('setCN', function() {
     it('should set CN (escaped)', function(done) {
       var person = VObject.person();
-
-      person.escape = function(str) {
-        assert.deepEqual(str, 'value');
-        return 'escaped value';
-      };
-
       person.setParameter = function(name, value) {
         assert.equal(name, 'CN');
-        assert.equal(value, 'escaped value');
+        assert.equal(value, 'value\\n\\;\\,');
         done();
       };
-      person.setCN('value');
+      person.setCN('value\n;,');
     });
   });
 
@@ -48,14 +42,8 @@ describe('lib/vobject/person.js', function() {
 
     it('should get CN (unescaped)', function() {
       var person = VObject.person();
-
-      person.unescape = function(str) {
-        assert.deepEqual(str, 'value');
-        return 'unescaped value';
-      };
-
-      person.setCN('value');
-      assert.equal(person.getCN(), 'unescaped value');
+      person.parameters['CN'] = 'value\\n\\;\\,';
+      assert.equal(person.getCN(), 'value\n;,');
     });
   });
 

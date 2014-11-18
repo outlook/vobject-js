@@ -156,48 +156,4 @@ describe('lib/vobject/component.js', function() {
       assert.equal(component.toICS(), 'a\r\nb\r\n');
     });
   });
-
-  describe('escape', function() {
-    it('should escape newline', function() {
-      var str = 'this\nthat';
-      assert.equal(vobject.component().escape(str), 'this\\nthat');
-    });
-
-    it('should escape semicolon', function() {
-      var str = 'this;that';
-      assert.equal(vobject.component().escape(str), 'this\\;that');
-    });
-
-    it('should escape comma', function() {
-      var str = 'this,that';
-      assert.equal(vobject.component().escape(str), 'this\\,that');
-    });
-
-    it('should escape double quote', function() {
-      var str = 'this"that';
-      assert.equal(vobject.component().escape(str), 'this\\"that');
-    });
-  });
-
-  describe('unescape', function() {
-    it('should unescape newline', function() {
-      var str = 'this\\nthat';
-      assert.equal(vobject.component().unescape(str), 'this\nthat');
-    });
-
-    it('should unescape semicolon', function() {
-      var str = 'this\\;that';
-      assert.equal(vobject.component().unescape(str), 'this;that');
-    });
-
-    it('should unescape comma', function() {
-      var str = 'this\\,that';
-      assert.equal(vobject.component().unescape(str), 'this,that');
-    });
-
-    it('should unescape double quote', function() {
-      var str = 'this\\"that';
-      assert.equal(vobject.component().unescape(str), 'this"that');
-    });
-  });
 });
