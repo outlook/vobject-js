@@ -23,22 +23,27 @@ describe('lib/vobject/person.js', function() {
   });
 
   describe('setCN', function() {
-    it('should set CN', function(done) {
+    it('should set CN (escaped)', function(done) {
       var person = VObject.person();
       person.setParameter = function(name, value) {
         assert.equal(name, 'CN');
-        assert.equal(value, 'value');
+        assert.equal(value, 'value\\n\\;\\,');
         done();
       };
-      person.setCN('value');
+      person.setCN('value\n;,');
     });
   });
 
   describe('getCN', function() {
-    it('should get CN', function() {
+    it('should default to undefined', function() {
       var person = VObject.person();
-      person.setCN('value');
-      assert.equal(person.getCN(), 'value');
+      assert.equal(person.getCN(), undefined);
+    });
+
+    it('should get CN (unescaped)', function() {
+      var person = VObject.person();
+      person.parameters['CN'] = 'value\\n\\;\\,';
+      assert.equal(person.getCN(), 'value\n;,');
     });
   });
 
