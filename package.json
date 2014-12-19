@@ -21,7 +21,8 @@
   },
   "devDependencies": {
     "mocha": "latest",
-    "jshint": "latest"
+    "jshint": "latest",
+    "nsp": "latest"
   },
   "scripts": {
     "test": "make"
