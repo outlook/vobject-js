@@ -18,16 +18,16 @@ describe('lib/vobject/helpers.js', function() {
       assert.equal(helpers.escape(str), 'this\\,that');
     });
 
-    it('should escape double quote', function() {
-      var str = 'this"that';
-      assert.equal(helpers.escape(str), 'this\\"that');
+    it('should escape backslash', function() {
+      var str = 'this\\that';
+      assert.equal(helpers.escape(str), 'this\\\\that');
     });
   });
 
   describe('unescape', function() {
     it('should unescape newline', function() {
-      var str = 'this\\nthat';
-      assert.equal(helpers.unescape(str), 'this\nthat');
+      var str = 'this\\nthat\\Nthose';
+      assert.equal(helpers.unescape(str), 'this\nthat\nthose');
     });
 
     it('should unescape semicolon', function() {
@@ -40,9 +40,9 @@ describe('lib/vobject/helpers.js', function() {
       assert.equal(helpers.unescape(str), 'this,that');
     });
 
-    it('should unescape double quote', function() {
-      var str = 'this\\"that';
-      assert.equal(helpers.unescape(str), 'this"that');
+    it('should unescape backslash', function() {
+      var str = 'this\\\\that';
+      assert.equal(helpers.unescape(str), 'this\\that');
     });
   });
 });
