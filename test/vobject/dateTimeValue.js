@@ -144,6 +144,12 @@ describe('lib/vobject/dateTimeValue.js', function() {
       assert.equal(dateTimeValue.toICS(), '20130814T063340');
     });
 
+    it('should use latest Chilean DST settings', function() {
+      var dateTimeValue = vobject.dateTimeValue('2015-06-09T14:00:00+00:00');
+      dateTimeValue.tzid = 'America/Santiago';
+      assert.equal(dateTimeValue.toICS(), '20150609T110000');
+    });
+
     it('should default to absolute time on garbage tzid', function() {
       var dateTimeValue = vobject.dateTimeValue('2013-08-13T17:33:40-04:00');
       dateTimeValue.tzid = 'garbage';
