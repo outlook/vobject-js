@@ -12,7 +12,7 @@ tests:
 	$(ENV_VAR) ./node_modules/.bin/mocha --check-leaks --recursive ./test
 
 vulnerabilities:
-	./node_modules/.bin/nsp audit-package
+	./node_modules/.bin/nsp check
 
 outdated:
 	npm outdated --depth 0 --long
