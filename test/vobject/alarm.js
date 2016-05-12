@@ -15,6 +15,12 @@ describe('lib/vobject/alarm.js', function() {
       alarm.setAction('display');
       assert.equal(alarm.properties['ACTION'][0].value, 'DISPLAY');
     });
+
+    it('should return reference to instance', function() {
+      var alarm = vobject.alarm();
+      var that = alarm.setAction('display');
+      assert.equal(that, alarm);
+    });
   });
 
   describe('getAction', function() {
@@ -31,6 +37,12 @@ describe('lib/vobject/alarm.js', function() {
       alarm.setDescription('description of the alarm');
       assert.equal(alarm.properties['DESCRIPTION'][0].value, 'description of the alarm');
     });
+
+    it('should return reference to instance', function() {
+      var alarm = vobject.alarm();
+      var that = alarm.setDescription('description of the alarm');
+      assert.equal(that, alarm);
+    });
   });
 
   describe('getDescription', function() {
@@ -44,9 +56,14 @@ describe('lib/vobject/alarm.js', function() {
   describe('setTrigger', function() {
     it('should accept duration value', function() {
       var alarm = vobject.alarm();
-      alarm.setTrigger(vobject.durationValue({value: -1, minute: 15}));
-      assert.deepEqual(alarm.properties['TRIGGER'][0].parameters, {});
-      assert.equal(alarm.properties['TRIGGER'][0].value, '-P15M');
+      var that = alarm.setTrigger(vobject.durationValue({value: -1, minute: 15}));
+      assert.deepEqual(that, alarm);
+    });
+
+    it('should return reference to instance', function() {
+      var alarm = vobject.alarm();
+      var that = alarm.setTrigger(vobject.durationValue({value: -1, minute: 15}));
+      assert.equal(that, alarm);
     });
   });
 

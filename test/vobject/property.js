@@ -30,7 +30,13 @@ describe('lib/vobject/property.js', function() {
     it('should set .parameters[name]', function() {
       var property = vobject.property();
       property.setParameter('name', 'value');
-      assert.equal(property.parameters['NAME'],  'value');
+      assert.equal(property.parameters['NAME'], 'value');
+    });
+
+    it('should return reference to instance', function() {
+      var property = vobject.property();
+      var that = property.setParameter('name', 'value');
+      assert.equal(that, property);
     });
   });
 
@@ -38,7 +44,7 @@ describe('lib/vobject/property.js', function() {
     it('should get .parameters[name]', function() {
       var property = vobject.property();
       property.parameters['NAME'] = 'value';
-      assert.equal(property.getParameter('name'),  'value');
+      assert.equal(property.getParameter('name'), 'value');
     });
 
     it('should return undefined by default', function() {
@@ -52,6 +58,12 @@ describe('lib/vobject/property.js', function() {
       var property = vobject.property();
       property.setValue('value');
       assert.equal(property.value, 'value');
+    });
+
+    it('should return reference to instance', function() {
+      var property = vobject.property();
+      var that = property.setValue('value');
+      assert.equal(that, property);
     });
   });
 
@@ -86,6 +98,12 @@ describe('lib/vobject/property.js', function() {
       var property = vobject.property();
       property.parseICS('ATTENDEE;NAME=name;KIND=kind:value');
       assert.equal(property.getValue(), 'value');
+    });
+
+    it('should return reference to instance', function() {
+      var property = vobject.property();
+      var that = property.parseICS('ATTENDEE;NAME=name;KIND=kind:value');
+      assert.equal(that, property);
     });
   });
 

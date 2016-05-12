@@ -30,6 +30,12 @@ describe('lib/vobject/calendar.js', function() {
       calendar.setMethod('value');
       assert.equal(calendar.getProperty('METHOD').value, 'VALUE');
     });
+
+    it('should return reference to instance', function() {
+      var calendar = VObject.calendar();
+      var that = calendar.setMethod('value');
+      assert.equal(that, calendar);
+    });
   });
 
   describe('getMethod', function() {

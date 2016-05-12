@@ -36,6 +36,13 @@ describe('lib/vobject/todo.js', function() {
       assert.equal(todo.properties['DUE'][0].getParameter('TZID'), undefined);
       assert.equal(todo.properties['DUE'][0].value, '19861018');
     });
+
+    it('should return reference to itself', function() {
+      var dateTime = vobject.dateTimeValue('2013-08-16T17:00:00-04:00');
+      dateTime.setTZID('America/New_York');
+      var that = todo.setDue(dateTime);
+      assert.equal(that, todo);
+    });
   });
 
   describe('getDue', function() {
@@ -73,6 +80,13 @@ describe('lib/vobject/todo.js', function() {
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       todo.setCompleted(dateTime);
       assert.equal(todo.getCompleted(), '19861018T110000Z');
+    });
+
+    it('should return reference to itself', function() {
+      var dateTime = vobject.dateTimeValue();
+      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
+      var that = todo.setCompleted(dateTime);
+      assert.equal(that, todo);
     });
   });
 

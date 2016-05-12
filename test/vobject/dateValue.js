@@ -31,6 +31,12 @@ describe('lib/vobject/dateValue.js', function() {
       assert.equal(dateValue.month, 10);
       assert.equal(dateValue.day, 18);
     });
+
+    it('should return reference to itself', function() {
+      var dateValue = vobject.dateValue();
+      var that = dateValue.parseDate('1986-10-18');
+      assert.equal(that, dateValue);
+    });
   });
 
   describe('toDate', function() {
@@ -50,6 +56,12 @@ describe('lib/vobject/dateValue.js', function() {
       assert.equal(dateValue.year, 2013);
       assert.equal(dateValue.month, 8);
       assert.equal(dateValue.day, 23);
+    });
+
+    it('should return reference to itself', function() {
+      var dateValue = vobject.dateValue();
+      var that = dateValue.parseICS('20130823');
+      assert.equal(that, dateValue);
     });
   });
 

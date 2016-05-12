@@ -15,6 +15,12 @@ describe('lib/vobject/attendee.js', function() {
       attendee.setCUTYPE('value');
       assert.equal(attendee.parameters['CUTYPE'], 'VALUE');
     });
+
+    it('should return reference to instance', function() {
+      var attendee = vobject.attendee();
+      var that = attendee.setCUTYPE('value');
+      assert.equal(that, attendee);
+    });
   });
 
   describe('getCUTYPE', function() {
@@ -30,6 +36,12 @@ describe('lib/vobject/attendee.js', function() {
       var attendee = vobject.attendee();
       attendee.setRole('value');
       assert.equal(attendee.parameters['ROLE'], 'VALUE');
+    });
+
+    it('should return reference to instance', function() {
+      var attendee = vobject.attendee();
+      var that = attendee.setRole('value');
+      assert.equal(that, attendee);
     });
   });
 
@@ -47,6 +59,12 @@ describe('lib/vobject/attendee.js', function() {
       attendee.setPartStat('value');
       assert.equal(attendee.parameters['PARTSTAT'], 'VALUE');
     });
+
+    it('should return reference to instance', function() {
+      var attendee = vobject.attendee();
+      var that = attendee.setPartStat('value');
+      assert.equal(that, attendee);
+    });
   });
 
   describe('getPartStat', function() {
@@ -62,6 +80,12 @@ describe('lib/vobject/attendee.js', function() {
       var attendee = vobject.attendee();
       attendee.setRSVP('value');
       assert.equal(attendee.parameters['RSVP'], 'VALUE');
+    });
+
+    it('should return reference to instance', function() {
+      var attendee = vobject.attendee();
+      var that = attendee.setRSVP('value');
+      assert.equal(that, attendee);
     });
   });
 
