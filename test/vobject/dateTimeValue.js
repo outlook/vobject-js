@@ -26,6 +26,12 @@ describe('lib/vobject/dateTimeValue.js', function() {
       dateTimeValue.parseDateTime('2013-08-13T17:33:40-04:00');
       assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
     });
+
+    it('should return reference to itself', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      var that = dateTimeValue.parseDateTime('2013-08-13T17:33:40-04:00');
+      assert.equal(that, dateTimeValue);
+    });
   });
 
   describe('toDateTime', function() {
@@ -41,6 +47,12 @@ describe('lib/vobject/dateTimeValue.js', function() {
       var dateTimeValue = vobject.dateTimeValue();
       dateTimeValue.parseTimestamp(1376605015);
       assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-15 22:16:55 +00:00');
+    });
+
+    it('should return reference to itself', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      var that = dateTimeValue.parseTimestamp(1376605015);
+      assert.equal(that, dateTimeValue);
     });
   });
 
@@ -63,6 +75,12 @@ describe('lib/vobject/dateTimeValue.js', function() {
       var dateTimeValue = vobject.dateTimeValue();
       dateTimeValue.setTZID('garbage');
       assert.equal(dateTimeValue.tzid, undefined);
+    });
+
+    it('should return reference to itself', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      var that = dateTimeValue.setTZID('garbage');
+      assert.equal(that, dateTimeValue);
     });
   });
 
@@ -111,6 +129,12 @@ describe('lib/vobject/dateTimeValue.js', function() {
       dateTimeValue.parseICS('20130813T213340', 'garbage');
       assert.equal(dateTimeValue.floatingTime, true);
       assert.equal(dateTimeValue.dateTime.format('YYYY-MM-DD HH:mm:ss Z'), '2013-08-13 21:33:40 +00:00');
+    });
+
+    it('should return reference to itself', function() {
+      var dateTimeValue = vobject.dateTimeValue();
+      var that = dateTimeValue.parseICS('20130813T213340Z');
+      assert.equal(that, dateTimeValue);
     });
   });
 

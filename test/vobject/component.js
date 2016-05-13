@@ -30,6 +30,12 @@ describe('lib/vobject/component.js', function() {
       component.pushProperty(vobject.property('NAME', 'value'));
       assert.equal(component.properties['NAME'][0].value, 'value');
     });
+
+    it('should return reference to instance', function() {
+      var component = vobject.component();
+      var that = component.pushProperty(vobject.property('NAME', 'value'));
+      assert.equal(that, component);
+    });
   });
 
   describe('getProperties', function() {
@@ -56,6 +62,12 @@ describe('lib/vobject/component.js', function() {
       var component = vobject.component();
       component.setProperty(vobject.property('NAME', 'value'));
       assert.equal(component.properties['NAME'][0].value, 'value');
+    });
+
+    it('should return reference to instance', function() {
+      var component = vobject.component();
+      var that = component.setProperty(vobject.property('NAME', 'value'));
+      assert.equal(that, component);
     });
   });
 
@@ -97,6 +109,12 @@ describe('lib/vobject/component.js', function() {
       component.pushComponent(vobject.component('SUBCOMPONENT'));
       component.pushComponent(vobject.component('SUBCOMPONENT'));
       assert.equal(component.components['SUBCOMPONENT'][1].name, 'SUBCOMPONENT');
+    });
+
+    it('should return reference to instance', function() {
+      var component = vobject.component();
+      var that = component.pushComponent(vobject.component('SUBCOMPONENT'));
+      assert.equal(that, component);
     });
   });
 

@@ -12,6 +12,12 @@ describe('lib/vobject/person.js', function() {
       };
       person.setCUType('value');
     });
+
+    it('should return reference to itself', function() {
+      var person = VObject.person();
+      var that = person.setCUType('value');
+      assert.equal(that, person);
+    });
   });
 
   describe('getCUType', function() {
@@ -31,6 +37,12 @@ describe('lib/vobject/person.js', function() {
         done();
       };
       person.setCN('value\n;,');
+    });
+
+    it('should return reference to itself', function() {
+      var person = VObject.person();
+      var that = person.setCN('value');
+      assert.equal(that, person);
     });
   });
 
@@ -52,6 +64,12 @@ describe('lib/vobject/person.js', function() {
       var person = VObject.person();
       person.setMail('user@domain.com');
       assert.equal(person.getValue(), 'mailto:user@domain.com');
+    });
+
+    it('should return reference to itself', function() {
+      var person = VObject.person();
+      var that = person.setMail('user@domain.com');
+      assert.equal(that, person);
     });
   });
 

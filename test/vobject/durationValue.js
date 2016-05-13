@@ -47,6 +47,15 @@ describe('lib/vobject/durationValue.js', function() {
       assert.equal(durationValue.minute, undefined);
       assert.equal(durationValue.second, undefined);
     });
+
+    it('should return reference to itself', function() {
+      var durationValue = vobject.durationValue();
+      var that = durationValue.setDuration({
+        value: 1,
+        day: 5
+      });
+      assert.equal(that, durationValue);
+    });
   });
 
   describe('getDurationSeconds', function() {
@@ -100,6 +109,12 @@ describe('lib/vobject/durationValue.js', function() {
       assert.equal(durationValue.hour, undefined);
       assert.equal(durationValue.minute, 15);
       assert.equal(durationValue.second, undefined);
+    });
+
+    it('should return reference to itself', function() {
+      var durationValue = vobject.durationValue();
+      var that = durationValue.parseICS('-P15M');
+      assert.equal(that, durationValue);
     });
   });
 

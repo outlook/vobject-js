@@ -18,6 +18,11 @@ describe('lib/vobject/event.js', function() {
       event.setUID('value');
       assert.equal(event.properties['UID'][0].value, 'value');
     });
+
+    it('should return reference to itself', function() {
+      var that = event.setUID('value');
+      assert.equal(that, event);
+    });
   });
 
   describe('getUID', function() {
@@ -40,6 +45,11 @@ describe('lib/vobject/event.js', function() {
     it('should escape special characters', function() {
       event.setSummary('\n;,');
       assert.equal(event.properties['SUMMARY'][0].value, '\\n\\;\\,');
+    });
+
+    it('should return reference to itself', function() {
+      var that = event.setSummary('value');
+      assert.equal(that, event);
     });
   });
 
@@ -81,6 +91,11 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.properties['DTSTART'][0].getParameter('VALUE'), 'DATE');
       assert.equal(event.properties['DTSTART'][0].getParameter('TZID'), undefined);
       assert.equal(event.properties['DTSTART'][0].value, '19861018');
+    });
+
+    it('should return reference to itself', function() {
+      var that = event.setDTStart(vobject.dateValue('1986-10-18'));
+      assert.equal(that, event);
     });
   });
 
@@ -136,6 +151,11 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.properties['DTEND'][0].getParameter('TZID'), undefined);
       assert.equal(event.properties['DTEND'][0].value, '19861018');
     });
+
+    it('should return reference to itself', function() {
+      var that = event.setDTEnd(vobject.dateValue('1986-10-18'));
+      assert.equal(that, event);
+    });
   });
 
   describe('getDTEnd', function() {
@@ -177,6 +197,11 @@ describe('lib/vobject/event.js', function() {
       event.setDescription('\n;,');
       assert.equal(event.properties['DESCRIPTION'][0].value, '\\n\\;\\,');
     });
+
+    it('should return reference to itself', function() {
+      var that = event.setDescription('value');
+      assert.equal(that, event);
+    });
   });
 
   describe('getDescription', function() {
@@ -205,6 +230,11 @@ describe('lib/vobject/event.js', function() {
       event.setLocation('\n;,');
       assert.equal(event.properties['LOCATION'][0].value, '\\n\\;\\,');
     });
+
+    it('should return reference to itself', function() {
+      var that = event.setLocation('value');
+      assert.equal(that, event);
+    });
   });
 
   describe('getLocation', function() {
@@ -228,6 +258,11 @@ describe('lib/vobject/event.js', function() {
       event.setStatus('value');
       assert.equal(event.properties['STATUS'][0].value, 'VALUE');
     });
+
+    it('should return reference to itself', function() {
+      var that = event.setStatus('value');
+      assert.equal(that, event);
+    });
   });
 
   describe('getStatus', function() {
@@ -247,6 +282,13 @@ describe('lib/vobject/event.js', function() {
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStamp(dateTime);
       assert.equal(event.getDTStamp(), '19861018T110000Z');
+    });
+
+    it('should return reference to itself', function() {
+      var dateTime = vobject.dateTimeValue();
+      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
+      var that = event.setDTStamp(dateTime);
+      assert.equal(that, event);
     });
   });
 
@@ -268,6 +310,12 @@ describe('lib/vobject/event.js', function() {
       var dateTimeValue = vobject.dateTimeValue('1986-10-18T13:00:00+02:00');
       event.setLastModified(dateTimeValue);
       assert.equal(event.properties['LAST-MODIFIED'][0].value, dateTimeValue.toICS());
+    });
+
+    it('should return reference to itself', function() {
+      var dateTimeValue = vobject.dateTimeValue('1986-10-18T13:00:00+02:00');
+      var that = event.setLastModified(dateTimeValue);
+      assert.equal(that, event);
     });
   });
 
@@ -292,6 +340,11 @@ describe('lib/vobject/event.js', function() {
       };
       event.setSequence('value');
     });
+
+    it('should return reference to itself', function() {
+      var that = event.setSequence('value');
+      assert.equal(that, event);
+    });
   });
 
   describe('getSequence', function() {
@@ -311,6 +364,13 @@ describe('lib/vobject/event.js', function() {
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setCreated(dateTime);
       assert.equal(event.getCreated(), '19861018T110000Z');
+    });
+
+    it('should return reference to itself', function() {
+      var dateTime = vobject.dateTimeValue();
+      dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
+      var that = event.setCreated(dateTime);
+      assert.equal(that, event);
     });
   });
 
@@ -335,6 +395,12 @@ describe('lib/vobject/event.js', function() {
       };
       event.setOrganizer('value');
     });
+
+    it('should return reference to itself', function() {
+      var organizer = vobject.organizer();
+      var that = event.setOrganizer(organizer);
+      assert.equal(that, event);
+    });
   });
 
   describe('getOrganizer', function() {
@@ -358,6 +424,12 @@ describe('lib/vobject/event.js', function() {
         done();
       };
       event.addAttendee('value');
+    });
+
+    it('should return reference to itself', function() {
+      var attendee = vobject.attendee();
+      var that = event.addAttendee(attendee);
+      assert.equal(that, event);
     });
   });
 
@@ -384,6 +456,11 @@ describe('lib/vobject/event.js', function() {
       };
       event.addRRULE('RRULE:FREQ=DAILY');
     });
+
+    it('should return reference to itself', function() {
+      var that = event.addRRULE('RRULE:FREQ=DAILY');
+      assert.equal(that, event);
+    });
   });
 
   describe('getRRULEs', function() {
@@ -409,6 +486,11 @@ describe('lib/vobject/event.js', function() {
         done();
       };
       event.addEXDATE('EXDATE;VALUE=DATE:20140206');
+    });
+
+    it('should return reference to itself', function() {
+      var that = event.addEXDATE('EXDATE;VALUE=DATE:20140206');
+      assert.equal(that, event);
     });
   });
 
@@ -440,6 +522,14 @@ describe('lib/vobject/event.js', function() {
       event.setRecurrenceID(dateTimeValue);
       assert.equal(event.properties['RECURRENCE-ID'][0].getParameter('TZID'), 'America/New_York');
       assert.equal(event.properties['RECURRENCE-ID'][0].value, '20130813T213340');
+    });
+
+    it('should return reference to itself', function() {
+      var dateTimeValue = vobject.dateTimeValue('2013-08-13 21:33:40 -04:00');
+      dateTimeValue.setTZID('America/New_York');
+
+      var that = event.setRecurrenceID(dateTimeValue);
+      assert.equal(that, event);
     });
   });
 
@@ -476,6 +566,11 @@ describe('lib/vobject/event.js', function() {
     it('should set TRANSP property', function() {
       event.setTransparency('transparent');
       assert.equal(event.properties['TRANSP'][0].value, 'TRANSPARENT');
+    });
+
+    it('should return reference to itself', function() {
+      var that = event.setTransparency('transparent');
+      assert.equal(that, event);
     });
   });
 
