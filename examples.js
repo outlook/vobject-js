@@ -1,3 +1,5 @@
+'use strict';
+
 var VObject = require('./index');
 
 var calendar = VObject.calendar();

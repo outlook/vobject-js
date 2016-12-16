@@ -1,3 +1,5 @@
+'use strict';
+
 var assert = require('assert');
 var VObject = require('../../index');
 var Property = VObject.property;
