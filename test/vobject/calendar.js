@@ -1,6 +1,7 @@
 var assert = require('assert');
 var VObject = require('../../index');
 var Property = VObject.property;
+var packageJson = require('../../package.json');
 
 describe('lib/vobject/calendar.js', function() {
   describe('initialize', function() {
@@ -55,7 +56,7 @@ describe('lib/vobject/calendar.js', function() {
       assert.equal(calendar.getProperty('VERSION').value, '2.0');
     });
 
-    it('should not set VERSION = 2.0 if VERSION is already set', function() {
+    it('should set VERSION = 2.0 even if VERSION is already set', function() {
       var calendar = VObject.calendar();
       calendar.pushProperty(new Property('VERSION', '8.9'));
 
@@ -65,7 +66,7 @@ describe('lib/vobject/calendar.js', function() {
       calendar.toICSLines();
 
       assert.deepEqual(calendar.getProperties('VERSION').length, 1);
-      assert.equal(calendar.getProperty('VERSION').value, '8.9');
+      assert.equal(calendar.getProperty('VERSION').value, '2.0');
     });
 
     it('should set CALSCALE to GREGORIAN if CALSCALE is missing', function() {
@@ -75,7 +76,7 @@ describe('lib/vobject/calendar.js', function() {
       assert.equal(calendar.getProperty('CALSCALE').value, 'GREGORIAN');
     });
 
-    it('should not set VERSION = 2.0 if VERSION is already set', function() {
+    it('should not set CALSCALE to GREGORIAN if CALSCALE is already set', function() {
       var calendar = VObject.calendar();
       calendar.pushProperty(new Property('CALSCALE', 'CHINESE'));
 
@@ -88,11 +89,14 @@ describe('lib/vobject/calendar.js', function() {
       assert.equal(calendar.getProperty('CALSCALE').value, 'CHINESE');
     });
 
+
+    var prodid = '-//'+packageJson.author.name+'//'+packageJson.name+'//EN';
+
     it('should set PRODID if PRODID is missing', function() {
       var calendar = VObject.calendar();
       assert.deepEqual(calendar.getProperties('PRODID'), []);
       calendar.toICSLines();
-      assert.equal(calendar.getProperty('PRODID').value, '-//Sunrise Atelier, Inc//EN');
+      assert.equal(calendar.getProperty('PRODID').value, prodid);
     });
 
     it('should not set VERSION = 2.0 if VERSION is already set', function() {
@@ -105,7 +109,7 @@ describe('lib/vobject/calendar.js', function() {
       calendar.toICSLines();
 
       assert.deepEqual(calendar.getProperties('PRODID').length, 1);
-      assert.equal(calendar.getProperty('PRODID').value, 'WonderCal');
+      assert.equal(calendar.getProperty('PRODID').value, prodid);
     });
   });
 });

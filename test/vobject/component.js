@@ -132,7 +132,7 @@ describe('lib/vobject/component.js', function() {
 
   describe('toICSLines', function() {
     it('should transform into ICS lines array', function() {
-      var calendar = vobject.calendar();
+      var parent = vobject.component('VPARENT');
 
       var event = vobject.event();
       event.setSummary('Hello World!');
@@ -140,19 +140,16 @@ describe('lib/vobject/component.js', function() {
       dateTime.parseDateTime('1986-10-18T13:00:00+02:00');
       event.setDTStart(dateTime);
 
-      calendar.pushComponent(event);
+      parent.pushComponent(event);
 
-      assert.deepEqual(calendar.toICSLines(),
+      assert.deepEqual(parent.toICSLines(),
         [
-          'BEGIN:VCALENDAR',
-          'VERSION:2.0',
-          'CALSCALE:GREGORIAN',
-          'PRODID:-//Sunrise Atelier, Inc//EN',
+          'BEGIN:VPARENT',
           'BEGIN:VEVENT',
           'SUMMARY:Hello World!',
           'DTSTART:19861018T110000Z',
           'END:VEVENT',
-          'END:VCALENDAR'
+          'END:VPARENT'
         ]);
     });
 

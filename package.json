@@ -1,12 +1,18 @@
 {
   "name": "vobject",
   "description": "iCalendar VObject Manipulation in NodeJS",
+  "version": "0.1.0",
+  "author": {
+    "name": "Microsoft Outlook"
+  },
   "keywords": [
     "ical",
     "icalendar",
     "vobject",
     "caldav"
   ],
+  "main": "index.js",
+  "homepage": "https://github.com/outlook/vobject-js",
   "repository": {
     "type": "git",
     "url": "https://github.com/outlook/vobject-js.git"
@@ -14,7 +20,6 @@
   "bugs": {
     "url": "https://github.com/outlook/vobject-js/issues"
   },
-  "version": "0.1.0",
   "dependencies": {
     "moment-timezone": "0.5.10",
     "underscore": "1.8.3"

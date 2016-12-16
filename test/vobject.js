@@ -8,19 +8,17 @@ beforeEach(function() {
 
 describe('lib/vobject.js', function() {
   it('conversion of parsed ICS should yield original ICS', function() {
-    var originalICS = ['BEGIN:VCALENDAR',
-                       'VERSION:2.0',
-                       'CALSCALE:GREGORIAN',
-                       'PRODID:-//WonderCal//EN',
-                       'BEGIN:VEVENT',
-                       'SUMMARY:Hello World!',
-                       'DESCRIPTION:Some description that is',
-                       'END:VEVENT',
-                       'END:VCALENDAR',
-                       ''].join('\r\n');
+    var event = vobject.event();
+    event.setSummary('Hello World!');
+    event.setDescription('(made for tests)');
 
-    var parsedAndStringifiedICS = vobject.parseICS(originalICS).toICS();
+    var calendar = vobject.calendar();
+    calendar.pushComponent(event);
 
-    assert.deepEqual(parsedAndStringifiedICS, originalICS);
+    var calendarICS = calendar.toICS();
+
+    var parsedAndStringifiedICS = vobject.parseICS(calendarICS).toICS();
+
+    assert.deepEqual(parsedAndStringifiedICS, calendarICS);
   });
 });
