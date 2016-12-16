@@ -9,10 +9,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sunrise/vobject-js.git"
+    "url": "https://github.com/outlook/vobject-js.git"
   },
   "bugs": {
-    "url": "https://github.com/sunrise/vobject-js/issues"
+    "url": "https://github.com/outlook/vobject-js/issues"
   },
   "version": "0.1.0",
   "dependencies": {
