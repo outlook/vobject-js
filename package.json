@@ -25,6 +25,11 @@
     "nsp": "2.6.2"
   },
   "scripts": {
-    "test": "make"
+    "jshint": "./node_modules/.bin/jshint index.js lib/* test/*",
+    "tests_once": "NODE_ENV=test ./node_modules/.bin/mocha --check-leaks --recursive ./test",
+    "watch_tests": "NODE_ENV=test ./node_modules/.bin/mocha --check-leaks --watch --colors --growl --recursive ./test",
+    "outdated": "npm outdated --depth 0 --long",
+    "vulnerabilities": "./node_modules/.bin/nsp check",
+    "test": "npm run jshint && npm run tests_once && npm run outdated && npm run vulnerabilities"
   }
 }
