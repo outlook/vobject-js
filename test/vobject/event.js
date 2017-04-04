@@ -586,4 +586,15 @@ describe('lib/vobject/event.js', function() {
       assert.equal(event.getTransparency(), 'TRANSPARENT');
     });
   });
+
+  describe('getCategories', function() {
+    it('should return undefined by default', function() {
+      assert.equal(event.getCategories(), undefined);
+    });
+
+    it('should get categories', function() {
+      event.properties['CATEGORIES'] = [vobject.property('CATEGORIES', 'value,value2')];
+      assert.deepEqual(event.getCategories(), ['value', 'value2']);
+    });
+  });
 });
