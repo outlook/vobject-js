@@ -1,7 +1,7 @@
 {
   "name": "vobject",
   "description": "iCalendar VObject Manipulation in NodeJS",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "Microsoft Outlook"
   },
@@ -21,13 +21,13 @@
     "url": "https://github.com/outlook/vobject-js/issues"
   },
   "dependencies": {
-    "moment-timezone": "0.5.10",
+    "moment-timezone": "^0.5.14",
     "underscore": "1.8.3"
   },
   "devDependencies": {
-    "mocha": "3.2.0",
-    "jshint": "2.9.4",
-    "nsp": "2.6.2"
+    "jshint": "^2.9.5",
+    "mocha": "^4.1.0",
+    "nsp": "^3.1.0"
   },
   "scripts": {
     "jshint": "./node_modules/.bin/jshint index.js lib/* test/*",
