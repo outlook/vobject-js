@@ -1,0 +1,4 @@
+{
+  "checkLeaks": true,
+  "recursive": true
+}
